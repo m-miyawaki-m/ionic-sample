@@ -6,17 +6,25 @@
   >
     <ScannerStatus :status="status" />
 
-    <!-- A) 縦並び型 — 検索バー + 結果カード -->
+    <!-- A) 縦並び型 — 検索バー + 一覧 + 結果カード -->
     <template v-if="layout === 'vertical'">
       <ion-list class="ion-margin-top">
         <SearchBar v-model="itemCode" label="品目コード" placeholder="スキャンまたは入力して検索"
           @search="search" @scan="scanAndSearch" />
       </ion-list>
+      <DataList
+        v-if="!result"
+        :items="filteredListItems"
+        @select="selectFromList"
+      />
       <ResultCard :visible="!!result" :title="result?.itemName ?? ''" :subtitle="result?.itemCode ?? ''"
         :items="resultItems" />
+      <ion-button v-if="result" expand="block" fill="outline" class="ion-margin-top" @click="resetSearch">
+        一覧に戻る
+      </ion-button>
     </template>
 
-    <!-- B) グループ分け型 — 検索カード + 結果カード -->
+    <!-- B) グループ分け型 — 検索カード + 一覧 + 結果カード -->
     <template v-if="layout === 'grouped'">
       <ion-card class="ion-margin-top">
         <ion-card-header>
@@ -29,18 +37,24 @@
           </ion-list>
         </ion-card-content>
       </ion-card>
-      <ion-card v-if="result">
+      <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>検索結果</ion-card-subtitle>
-          <ion-card-title>{{ result.itemName }}</ion-card-title>
+          <ion-card-subtitle>{{ result ? '検索結果' : '在庫一覧' }}</ion-card-subtitle>
+          <ion-card-title v-if="result">{{ result.itemName }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-list lines="none">
-            <ion-item v-for="item in resultItems" :key="item.label">
-              <ion-label>{{ item.label }}</ion-label>
-              <ion-note slot="end">{{ item.value }}</ion-note>
-            </ion-item>
-          </ion-list>
+          <template v-if="result">
+            <ion-list lines="none">
+              <ion-item v-for="item in resultItems" :key="item.label">
+                <ion-label>{{ item.label }}</ion-label>
+                <ion-note slot="end">{{ item.value }}</ion-note>
+              </ion-item>
+            </ion-list>
+            <ion-button expand="block" fill="outline" class="ion-margin-top" @click="resetSearch">
+              一覧に戻る
+            </ion-button>
+          </template>
+          <DataList v-else :items="filteredListItems" @select="selectFromList" />
         </ion-card-content>
       </ion-card>
     </template>
@@ -59,6 +73,7 @@
           <SearchBar v-model="itemCode" label="品目コード" placeholder="スキャンまたは入力して検索"
             @search="search" @scan="scanAndSearch" />
         </ion-list>
+        <DataList :items="filteredListItems" @select="selectFromList" />
       </template>
       <template v-else>
         <ResultCard :visible="!!result" :title="result?.itemName ?? ''" :subtitle="result?.itemCode ?? ''"
@@ -80,10 +95,10 @@ import PageLayout from '@/components/PageLayout.vue';
 import ScannerStatus from '@/components/ScannerStatus.vue';
 import SearchBar from '@/components/SearchBar.vue';
 import ResultCard from '@/components/ResultCard.vue';
+import DataList from '@/components/DataList.vue';
 import FeedbackToast from '@/components/FeedbackToast.vue';
 import { useSP2Scanner } from '@/composables/useSP2Scanner';
-import { useApi } from '@/composables/useApi';
-import type { InventoryInfo, MenuAction } from '@/types';
+import type { InventoryInfo, MenuAction, DataListItem } from '@/types';
 
 type LayoutType = 'vertical' | 'grouped' | 'stepper';
 
@@ -108,15 +123,48 @@ const onMenuSelect = (action: string) => {
 };
 
 const { status, startScan, onScanResult } = useSP2Scanner();
-const { get } = useApi();
+
+// モックデータ
+const mockInventory: InventoryInfo[] = [
+  { itemCode: 'ITEM-001', itemName: '防寒手袋', location: 'A-01-01', quantity: 150 },
+  { itemCode: 'ITEM-002', itemName: '作業帽', location: 'A-01-02', quantity: 80 },
+  { itemCode: 'ITEM-003', itemName: '安全靴 26cm', location: 'A-02-01', quantity: 45 },
+  { itemCode: 'ITEM-004', itemName: '安全靴 27cm', location: 'A-02-02', quantity: 32 },
+  { itemCode: 'ITEM-005', itemName: '防塵マスク', location: 'B-01-01', quantity: 500 },
+  { itemCode: 'ITEM-006', itemName: '保護メガネ', location: 'B-01-02', quantity: 120 },
+  { itemCode: 'ITEM-007', itemName: '作業服 上 M', location: 'C-01-01', quantity: 60 },
+  { itemCode: 'ITEM-008', itemName: '作業服 上 L', location: 'C-01-02', quantity: 75 },
+  { itemCode: 'ITEM-009', itemName: '作業服 下 M', location: 'C-02-01', quantity: 55 },
+  { itemCode: 'ITEM-010', itemName: '作業服 下 L', location: 'C-02-02', quantity: 70 },
+  { itemCode: 'ITEM-011', itemName: '軍手', location: 'D-01-01', quantity: 1000 },
+  { itemCode: 'ITEM-012', itemName: 'ヘルメット', location: 'D-01-02', quantity: 90 },
+];
 
 const itemCode = ref('');
 const result = ref<InventoryInfo | null>(null);
 const errorMessage = ref('');
 
+// 一覧表示用: 入力値で絞り込み
+const filteredListItems = computed<DataListItem[]>(() => {
+  const keyword = itemCode.value.toLowerCase();
+  return mockInventory
+    .filter((inv) =>
+      !keyword ||
+      inv.itemCode.toLowerCase().includes(keyword) ||
+      inv.itemName.toLowerCase().includes(keyword)
+    )
+    .map((inv) => ({
+      id: inv.itemCode,
+      title: inv.itemName,
+      subtitle: `${inv.itemCode} / ${inv.location}`,
+      note: `${inv.quantity}個`,
+    }));
+});
+
 const resultItems = computed(() => {
   if (!result.value) return [];
   return [
+    { label: '品目コード', value: result.value.itemCode },
     { label: 'ロケーション', value: result.value.location },
     { label: '在庫数', value: result.value.quantity },
   ];
@@ -131,14 +179,25 @@ const scanAndSearch = async () => {
   await startScan();
 };
 
-const search = async () => {
+const search = () => {
   result.value = null;
-  const res = await get<InventoryInfo>(`/inventory/${encodeURIComponent(itemCode.value)}`);
-  if (res.success && res.data) {
-    result.value = res.data;
+  const found = mockInventory.find(
+    (inv) => inv.itemCode.toLowerCase() === itemCode.value.toLowerCase()
+  );
+  if (found) {
+    result.value = found;
     searchDone.value = true;
   } else {
-    errorMessage.value = res.error || '在庫情報が見つかりません';
+    errorMessage.value = '在庫情報が見つかりません';
+  }
+};
+
+const selectFromList = (id: string) => {
+  const found = mockInventory.find((inv) => inv.itemCode === id);
+  if (found) {
+    itemCode.value = found.itemCode;
+    result.value = found;
+    searchDone.value = true;
   }
 };
 

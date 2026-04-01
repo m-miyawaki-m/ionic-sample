@@ -13,7 +13,7 @@
           @search="search" @scan="scanAndSearch" />
       </ion-list>
       <DataList
-        v-if="!result"
+        v-if="searched && !result && filteredListItems.length > 0"
         :items="filteredListItems"
         @select="selectFromList"
       />
@@ -54,7 +54,8 @@
               一覧に戻る
             </ion-button>
           </template>
-          <DataList v-else :items="filteredListItems" @select="selectFromList" />
+          <DataList v-else-if="searched && filteredListItems.length > 0" :items="filteredListItems" @select="selectFromList" />
+          <p v-else class="ion-padding ion-text-center" style="color:var(--ion-color-medium)">検索ボタンを押してください</p>
         </ion-card-content>
       </ion-card>
     </template>
@@ -73,7 +74,7 @@
           <SearchBar v-model="itemCode" label="品目コード" placeholder="スキャンまたは入力して検索"
             @search="search" @scan="scanAndSearch" />
         </ion-list>
-        <DataList :items="filteredListItems" @select="selectFromList" />
+        <DataList v-if="searched && filteredListItems.length > 0" :items="filteredListItems" @select="selectFromList" />
       </template>
       <template v-else>
         <ResultCard :visible="!!result" :title="result?.itemName ?? ''" :subtitle="result?.itemCode ?? ''"
@@ -143,23 +144,8 @@ const mockInventory: InventoryInfo[] = [
 const itemCode = ref('');
 const result = ref<InventoryInfo | null>(null);
 const errorMessage = ref('');
-
-// 一覧表示用: 入力値で絞り込み
-const filteredListItems = computed<DataListItem[]>(() => {
-  const keyword = itemCode.value.toLowerCase();
-  return mockInventory
-    .filter((inv) =>
-      !keyword ||
-      inv.itemCode.toLowerCase().includes(keyword) ||
-      inv.itemName.toLowerCase().includes(keyword)
-    )
-    .map((inv) => ({
-      id: inv.itemCode,
-      title: inv.itemName,
-      subtitle: `${inv.itemCode} / ${inv.location}`,
-      note: `${inv.quantity}個`,
-    }));
-});
+const searched = ref(false);
+const filteredListItems = ref<DataListItem[]>([]);
 
 const resultItems = computed(() => {
   if (!result.value) return [];
@@ -181,13 +167,29 @@ const scanAndSearch = async () => {
 
 const search = () => {
   result.value = null;
-  const found = mockInventory.find(
-    (inv) => inv.itemCode.toLowerCase() === itemCode.value.toLowerCase()
+  searched.value = true;
+  const keyword = itemCode.value.toLowerCase();
+  const matches = mockInventory.filter((inv) =>
+    !keyword ||
+    inv.itemCode.toLowerCase().includes(keyword) ||
+    inv.itemName.toLowerCase().includes(keyword)
   );
-  if (found) {
-    result.value = found;
+
+  if (matches.length === 1) {
+    // 1件だけなら直接詳細表示
+    result.value = matches[0];
     searchDone.value = true;
+    filteredListItems.value = [];
+  } else if (matches.length > 1) {
+    // 複数件なら一覧表示
+    filteredListItems.value = matches.map((inv) => ({
+      id: inv.itemCode,
+      title: inv.itemName,
+      subtitle: `${inv.itemCode} / ${inv.location}`,
+      note: `${inv.quantity}個`,
+    }));
   } else {
+    filteredListItems.value = [];
     errorMessage.value = '在庫情報が見つかりません';
   }
 };
@@ -205,5 +207,7 @@ const resetSearch = () => {
   itemCode.value = '';
   result.value = null;
   searchDone.value = false;
+  searched.value = false;
+  filteredListItems.value = [];
 };
 </script>

@@ -5,11 +5,13 @@
     @menu-select="onMenuSelect"
   >
     <ScannerStatus :status="status" />
+    <ion-spinner v-if="loading && loadingMode === 'button'" name="crescent" class="ion-margin-top" style="display:block;margin-left:auto;margin-right:auto;" />
 
     <!-- A) 縦並び型 — 検索バー + 一覧 + 結果カード -->
     <template v-if="layout === 'vertical'">
       <ion-list class="ion-margin-top">
         <SearchBar v-model="itemCode" label="品目コード" placeholder="スキャンまたは入力して検索"
+          :disabled="loading"
           @search="search" @scan="scanAndSearch" />
       </ion-list>
       <DataList
@@ -85,14 +87,14 @@
       </template>
     </template>
 
-    <LoadingOverlay :visible="loading" message="検索中..." />
+    <LoadingOverlay :visible="loading && loadingMode === 'overlay'" message="検索中..." />
     <FeedbackToast :message="errorMessage" color="danger" @dismiss="errorMessage = ''" />
   </PageLayout>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { IonList, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonLabel, IonNote, IonButton, IonText, IonProgressBar } from '@ionic/vue';
+import { IonList, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonLabel, IonNote, IonButton, IonText, IonProgressBar, IonSpinner } from '@ionic/vue';
 import PageLayout from '@/components/PageLayout.vue';
 import ScannerStatus from '@/components/ScannerStatus.vue';
 import SearchBar from '@/components/SearchBar.vue';
@@ -101,12 +103,14 @@ import DataList from '@/components/DataList.vue';
 import FeedbackToast from '@/components/FeedbackToast.vue';
 import LoadingOverlay from '@/components/LoadingOverlay.vue';
 import { useSP2Scanner } from '@/composables/useSP2Scanner';
+import { useLoadingMode } from '@/composables/useLoadingMode';
 import type { InventoryInfo, MenuAction, DataListItem } from '@/types';
 
 type LayoutType = 'vertical' | 'grouped' | 'stepper';
 
 const layout = ref<LayoutType>((localStorage.getItem('inventoryLayout') as LayoutType) || 'vertical');
 const searchDone = ref(false);
+const { loadingMode, setMode } = useLoadingMode();
 
 const menuItems: MenuAction[] = [
   { label: 'QRコード読み取り', action: 'qr' },
@@ -115,6 +119,8 @@ const menuItems: MenuAction[] = [
   { label: 'A) 縦並び表示', action: 'vertical' },
   { label: 'B) グループ表示', action: 'grouped' },
   { label: 'C) ステッパー表示', action: 'stepper' },
+  { label: 'ローディング: 全画面', action: 'loading-overlay' },
+  { label: 'ローディング: ボタン', action: 'loading-button' },
 ];
 
 const onMenuSelect = (action: string) => {
@@ -122,6 +128,10 @@ const onMenuSelect = (action: string) => {
     layout.value = action as LayoutType;
     localStorage.setItem('inventoryLayout', action);
     searchDone.value = false;
+  } else if (action === 'loading-overlay') {
+    setMode('overlay');
+  } else if (action === 'loading-button') {
+    setMode('button');
   }
 };
 

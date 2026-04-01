@@ -84,7 +84,7 @@
       </div>
     </template>
 
-    <LoadingOverlay :visible="loading" message="登録中..." />
+    <LoadingOverlay :visible="loading && loadingMode === 'overlay'" message="登録中..." />
     <FeedbackToast :message="toastMessage" :color="toastColor" @dismiss="toastMessage = ''" />
   </PageLayout>
 </template>
@@ -101,6 +101,7 @@ import FeedbackToast from '@/components/FeedbackToast.vue';
 import LoadingOverlay from '@/components/LoadingOverlay.vue';
 import { useSP2Scanner } from '@/composables/useSP2Scanner';
 import { useApi } from '@/composables/useApi';
+import { useLoadingMode } from '@/composables/useLoadingMode';
 import type { RelocationItem, MenuAction } from '@/types';
 
 type LayoutType = 'vertical' | 'grouped' | 'stepper';
@@ -116,12 +117,16 @@ const steps = [
   { field: 'quantity', label: '数量' },
 ];
 
+const { loadingMode, setMode } = useLoadingMode();
+
 const menuItems: MenuAction[] = [
   { label: 'QRコード読み取り', action: 'qr' },
   { label: 'バーコード読み取り', action: 'barcode' },
   { label: 'A) 縦並び表示', action: 'vertical' },
   { label: 'B) グループ表示', action: 'grouped' },
   { label: 'C) ステッパー表示', action: 'stepper' },
+  { label: 'ローディング: 全画面', action: 'loading-overlay' },
+  { label: 'ローディング: ボタン', action: 'loading-button' },
 ];
 
 const onMenuSelect = (action: string) => {
@@ -129,6 +134,10 @@ const onMenuSelect = (action: string) => {
     layout.value = action as LayoutType;
     localStorage.setItem('relocationLayout', action);
     currentStep.value = 0;
+  } else if (action === 'loading-overlay') {
+    setMode('overlay');
+  } else if (action === 'loading-button') {
+    setMode('button');
   }
 };
 

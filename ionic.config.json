@@ -1,0 +1,7 @@
+{
+  "name": "ionic-sample-tmp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

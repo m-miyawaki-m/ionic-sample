@@ -77,6 +77,7 @@
       </div>
     </template>
 
+    <LoadingOverlay :visible="loading" message="登録中..." />
     <FeedbackToast :message="toastMessage" :color="toastColor" @dismiss="toastMessage = ''" />
   </PageLayout>
 </template>
@@ -90,6 +91,7 @@ import ScanInput from '@/components/ScanInput.vue';
 import NumberInput from '@/components/NumberInput.vue';
 import SubmitButton from '@/components/SubmitButton.vue';
 import FeedbackToast from '@/components/FeedbackToast.vue';
+import LoadingOverlay from '@/components/LoadingOverlay.vue';
 import { useSP2Scanner } from '@/composables/useSP2Scanner';
 import { useApi } from '@/composables/useApi';
 import type { StocktakingItem, MenuAction } from '@/types';

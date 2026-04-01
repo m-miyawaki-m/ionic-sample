@@ -85,6 +85,7 @@
       </template>
     </template>
 
+    <LoadingOverlay :visible="loading" message="検索中..." />
     <FeedbackToast :message="errorMessage" color="danger" @dismiss="errorMessage = ''" />
   </PageLayout>
 </template>
@@ -98,6 +99,7 @@ import SearchBar from '@/components/SearchBar.vue';
 import ResultCard from '@/components/ResultCard.vue';
 import DataList from '@/components/DataList.vue';
 import FeedbackToast from '@/components/FeedbackToast.vue';
+import LoadingOverlay from '@/components/LoadingOverlay.vue';
 import { useSP2Scanner } from '@/composables/useSP2Scanner';
 import type { InventoryInfo, MenuAction, DataListItem } from '@/types';
 
@@ -145,6 +147,7 @@ const itemCode = ref('');
 const result = ref<InventoryInfo | null>(null);
 const errorMessage = ref('');
 const searched = ref(false);
+const loading = ref(false);
 const filteredListItems = ref<DataListItem[]>([]);
 
 const resultItems = computed(() => {
@@ -165,9 +168,14 @@ const scanAndSearch = async () => {
   await startScan();
 };
 
-const search = () => {
+const search = async () => {
   result.value = null;
   searched.value = true;
+  loading.value = true;
+
+  // API通信の遅延をシミュレート（1〜2秒）
+  await new Promise((resolve) => setTimeout(resolve, 1000 + Math.random() * 1000));
+
   const keyword = itemCode.value.toLowerCase();
   const matches = mockInventory.filter((inv) =>
     !keyword ||
@@ -175,13 +183,13 @@ const search = () => {
     inv.itemName.toLowerCase().includes(keyword)
   );
 
+  loading.value = false;
+
   if (matches.length === 1) {
-    // 1件だけなら直接詳細表示
     result.value = matches[0];
     searchDone.value = true;
     filteredListItems.value = [];
   } else if (matches.length > 1) {
-    // 複数件なら一覧表示
     filteredListItems.value = matches.map((inv) => ({
       id: inv.itemCode,
       title: inv.itemName,

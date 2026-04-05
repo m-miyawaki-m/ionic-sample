@@ -74,3 +74,11 @@ export interface RelocationItem {
   itemCode: string;
   quantity: number;
 }
+
+/** バーコード分解結果 */
+export interface ParsedScanCode {
+  warehouseCode: string;
+  shelfCode: string;
+  itemCode: string;
+  raw: string;
+}

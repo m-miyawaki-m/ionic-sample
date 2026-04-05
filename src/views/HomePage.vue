@@ -86,7 +86,7 @@ import {
 import {
   downloadOutline, pushOutline, clipboardOutline,
   searchOutline, swapHorizontalOutline,
-  appsOutline, scanOutline, notificationsOutline,
+  appsOutline, scanOutline, notificationsOutline, chatboxOutline,
 } from 'ionicons/icons';
 import PageLayout from '@/components/PageLayout.vue';
 import type { MenuAction } from '@/types';
@@ -120,6 +120,7 @@ const samples = [
   { title: 'コンポーネント一覧', path: '/samples/components', icon: appsOutline },
   { title: 'スキャン入力デモ', path: '/samples/scan-demo', icon: scanOutline },
   { title: 'スキャンフィードバック', path: '/samples/feedback', icon: notificationsOutline },
+  { title: 'ダイアログデモ', path: '/samples/dialog-demo', icon: chatboxOutline },
 ];
 </script>
 

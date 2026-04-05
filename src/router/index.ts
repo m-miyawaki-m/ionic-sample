@@ -51,6 +51,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'ScanFeedback',
     component: () => import('@/views/samples/FeedbackPage.vue'),
   },
+  {
+    path: '/samples/dialog-demo',
+    name: 'DialogDemo',
+    component: () => import('@/views/samples/DialogDemoPage.vue'),
+  },
+  {
+    path: '/samples/dialog-demo/scan',
+    name: 'DialogDemoScan',
+    component: () => import('@/views/samples/dialogs/ScanParsePage.vue'),
+  },
 ];
 
 const router = createRouter({

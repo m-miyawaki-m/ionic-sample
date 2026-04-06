@@ -6,15 +6,23 @@
   >
     <ScannerStatus :status="status" />
 
+    <ion-button expand="block" class="ion-margin-top ion-margin-horizontal" @click="openScanDialog">
+      <ion-icon :icon="scanOutline" slot="start" />
+      スキャン
+    </ion-button>
+
     <!-- A) 縦並びフォーム -->
     <template v-if="layout === 'vertical'">
       <ion-list class="ion-margin-top">
-        <ScanInput v-model="form.fromLocation" label="移動元ロケーション" placeholder="スキャンまたは入力"
-          @focus="activeField = 'fromLocation'" @scan="scanTo('fromLocation')" />
-        <ScanInput v-model="form.toLocation" label="移動先ロケーション" placeholder="スキャンまたは入力"
-          @focus="activeField = 'toLocation'" @scan="scanTo('toLocation')" />
-        <ScanInput v-model="form.itemCode" label="品目コード" placeholder="スキャンまたは入力"
-          @focus="activeField = 'itemCode'" @scan="scanTo('itemCode')" />
+        <ion-item>
+          <ion-input v-model="form.fromLocation" label="移動元ロケーション" label-placement="stacked" placeholder="スキャンまたは入力" />
+        </ion-item>
+        <ion-item>
+          <ion-input v-model="form.toLocation" label="移動先ロケーション" label-placement="stacked" placeholder="スキャンまたは入力" />
+        </ion-item>
+        <ion-item>
+          <ion-input v-model="form.itemCode" label="品目コード" label-placement="stacked" placeholder="スキャンまたは入力" />
+        </ion-item>
         <NumberInput v-model="form.quantity" label="数量" placeholder="数量を入力" :min="0" />
       </ion-list>
       <SubmitButton label="移動登録" :loading="loading" @submit="submit" />
@@ -28,10 +36,12 @@
         </ion-card-header>
         <ion-card-content>
           <ion-list lines="none">
-            <ScanInput v-model="form.fromLocation" label="移動元ロケーション" placeholder="スキャンまたは入力"
-              @focus="activeField = 'fromLocation'" @scan="scanTo('fromLocation')" />
-            <ScanInput v-model="form.toLocation" label="移動先ロケーション" placeholder="スキャンまたは入力"
-              @focus="activeField = 'toLocation'" @scan="scanTo('toLocation')" />
+            <ion-item>
+              <ion-input v-model="form.fromLocation" label="移動元ロケーション" label-placement="stacked" placeholder="スキャンまたは入力" />
+            </ion-item>
+            <ion-item>
+              <ion-input v-model="form.toLocation" label="移動先ロケーション" label-placement="stacked" placeholder="スキャンまたは入力" />
+            </ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>
@@ -41,8 +51,9 @@
         </ion-card-header>
         <ion-card-content>
           <ion-list lines="none">
-            <ScanInput v-model="form.itemCode" label="品目コード" placeholder="スキャンまたは入力"
-              @focus="activeField = 'itemCode'" @scan="scanTo('itemCode')" />
+            <ion-item>
+              <ion-input v-model="form.itemCode" label="品目コード" label-placement="stacked" placeholder="スキャンまたは入力" />
+            </ion-item>
             <NumberInput v-model="form.quantity" label="数量" placeholder="数量を入力" :min="0" />
           </ion-list>
         </ion-card-content>
@@ -60,15 +71,15 @@
       </div>
 
       <ion-list class="ion-margin-top">
-        <ScanInput v-if="steps[currentStep].field === 'fromLocation'"
-          v-model="form.fromLocation" label="移動元ロケーション" placeholder="スキャンまたは入力"
-          @scan="scanTo('fromLocation')" />
-        <ScanInput v-if="steps[currentStep].field === 'toLocation'"
-          v-model="form.toLocation" label="移動先ロケーション" placeholder="スキャンまたは入力"
-          @scan="scanTo('toLocation')" />
-        <ScanInput v-if="steps[currentStep].field === 'itemCode'"
-          v-model="form.itemCode" label="品目コード" placeholder="スキャンまたは入力"
-          @scan="scanTo('itemCode')" />
+        <ion-item v-if="steps[currentStep].field === 'fromLocation'">
+          <ion-input v-model="form.fromLocation" label="移動元ロケーション" label-placement="stacked" placeholder="スキャンまたは入力" />
+        </ion-item>
+        <ion-item v-if="steps[currentStep].field === 'toLocation'">
+          <ion-input v-model="form.toLocation" label="移動先ロケーション" label-placement="stacked" placeholder="スキャンまたは入力" />
+        </ion-item>
+        <ion-item v-if="steps[currentStep].field === 'itemCode'">
+          <ion-input v-model="form.itemCode" label="品目コード" label-placement="stacked" placeholder="スキャンまたは入力" />
+        </ion-item>
         <NumberInput v-if="steps[currentStep].field === 'quantity'"
           v-model="form.quantity" label="数量" placeholder="数量を入力" :min="0" />
       </ion-list>
@@ -84,6 +95,14 @@
       </div>
     </template>
 
+    <ScanDialog
+      :is-open="showScanDialog"
+      :scan-value="scanResultValue"
+      @close="showScanDialog = false"
+      @scan="startScan"
+      @confirm="onScanConfirm"
+    />
+
     <LoadingOverlay :visible="loading && loadingMode === 'overlay'" message="登録中..." />
     <FeedbackToast :message="toastMessage" :color="toastColor" @dismiss="toastMessage = ''" />
   </PageLayout>
@@ -91,10 +110,11 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { IonList, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonButton, IonText, IonProgressBar } from '@ionic/vue';
+import { IonList, IonItem, IonInput, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonButton, IonIcon, IonText, IonProgressBar } from '@ionic/vue';
+import { scanOutline } from 'ionicons/icons';
 import PageLayout from '@/components/PageLayout.vue';
 import ScannerStatus from '@/components/ScannerStatus.vue';
-import ScanInput from '@/components/ScanInput.vue';
+import ScanDialog from '@/components/ScanDialog.vue';
 import NumberInput from '@/components/NumberInput.vue';
 import SubmitButton from '@/components/SubmitButton.vue';
 import FeedbackToast from '@/components/FeedbackToast.vue';
@@ -102,10 +122,9 @@ import LoadingOverlay from '@/components/LoadingOverlay.vue';
 import { useSP2Scanner } from '@/composables/useSP2Scanner';
 import { useApi } from '@/composables/useApi';
 import { useLoadingMode } from '@/composables/useLoadingMode';
-import type { RelocationItem, MenuAction } from '@/types';
+import type { RelocationItem, MenuAction, ParsedScanCode } from '@/types';
 
 type LayoutType = 'vertical' | 'grouped' | 'stepper';
-type ScannableField = 'fromLocation' | 'toLocation' | 'itemCode';
 
 const layout = ref<LayoutType>((localStorage.getItem('relocationLayout') as LayoutType) || 'vertical');
 const currentStep = ref(0);
@@ -120,8 +139,6 @@ const steps = [
 const { loadingMode, setMode } = useLoadingMode();
 
 const menuItems: MenuAction[] = [
-  { label: 'QRコード読み取り', action: 'qr' },
-  { label: 'バーコード読み取り', action: 'barcode' },
   { label: 'A) 縦並び表示', action: 'vertical' },
   { label: 'B) グループ表示', action: 'grouped' },
   { label: 'C) ステッパー表示', action: 'stepper' },
@@ -145,18 +162,27 @@ const { status, startScan, onScanResult } = useSP2Scanner();
 const { loading, post } = useApi();
 
 const form = reactive<RelocationItem>({ fromLocation: '', toLocation: '', itemCode: '', quantity: 1 });
-const activeField = ref<ScannableField>('fromLocation');
 const toastMessage = ref('');
 const toastColor = ref('success');
 
-const scanTo = async (field: ScannableField) => {
-  activeField.value = field;
-  await startScan();
+// スキャンダイアログ制御
+const showScanDialog = ref(false);
+const scanResultValue = ref('');
+
+const openScanDialog = () => {
+  scanResultValue.value = '';
+  showScanDialog.value = true;
 };
 
 onScanResult((result) => {
-  form[activeField.value] = result.value;
+  scanResultValue.value = result.value;
 });
+
+const onScanConfirm = (parsed: ParsedScanCode) => {
+  if (parsed.shelfCode) form.fromLocation = parsed.shelfCode;
+  if (parsed.itemCode) form.itemCode = parsed.itemCode;
+  showScanDialog.value = false;
+};
 
 const submit = async () => {
   const res = await post('/relocation', form);

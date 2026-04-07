@@ -7,6 +7,7 @@
 - [Web→HT画面検討チェックリスト設計書](../../superpowers/specs/2026-04-07-web-ht-screen-checklist-design.md)
 - [HT共通設計ガイドライン](../18-ht-common-design-guideline.md)
 - [画面設計シート テンプレート](../19-ht-screen-design-sheet-template.md)
+- [画面分解シート テンプレート](../20-ht-screen-decomposition-sheet-template.md)
 
 ## 命名規則
 

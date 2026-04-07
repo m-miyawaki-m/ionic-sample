@@ -371,6 +371,7 @@
 
 - [Web→HT画面検討チェックリスト設計書](../superpowers/specs/2026-04-07-web-ht-screen-checklist-design.md)
 - [画面設計シート テンプレート](19-ht-screen-design-sheet-template.md)
+- [画面分解シート テンプレート](20-ht-screen-decomposition-sheet-template.md)
 - [画面設計シート 保存ディレクトリ](ht-screen-design-sheets/README.md)
 - [11. SP2 AAR 統合](11-sp2-aar-integration.md)
 - [06. Android スキャンフィードバック](06-android-scan-feedback.md)

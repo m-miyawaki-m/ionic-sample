@@ -25,7 +25,7 @@
 
 (未決)
 
-### 1.3 バーコード/QRリーダとRFIDリーダの併用方針 (spec 6-2 補足)
+### 1.3 バーコード/QRリーダとRFIDリーダの併用方針 (spec 6-4)
 
 (未決)
 
@@ -201,6 +201,7 @@
 
 - [Web→HT画面検討チェックリスト設計書](../superpowers/specs/2026-04-07-web-ht-screen-checklist-design.md)
 - [画面設計シート テンプレート](19-ht-screen-design-sheet-template.md)
+- [画面設計シート 保存ディレクトリ](ht-screen-design-sheets/README.md)
 - [11. SP2 AAR 統合](11-sp2-aar-integration.md)
 - [06. Android スキャンフィードバック](06-android-scan-feedback.md)
 - [14. Android 機能適合チェックリスト](14-android-capability-checklist.md)

@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin-bottom ion-padding-horizontal" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <h2 class="ion-padding">Basic</h2>
       <p class="ion-padding-horizontal">ion-skeleton-text はコンテンツ読み込み中のプレースホルダー。幅を % で指定する。</p>
       <div class="ion-padding">
@@ -58,6 +61,28 @@
           <ion-skeleton-text :animated="true" style="width: 80%;" />
         </ion-card-content>
       </ion-card>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/skeleton-text" target="_blank" rel="noopener">ionicframework.com/docs/api/skeleton-text ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <div class="ion-padding">
+        <ion-skeleton-text :animated="true" style="width: 80%;" />
+        <ion-skeleton-text :animated="true" style="width: 100%;" />
+        <ion-skeleton-text :animated="true" style="width: 45%;" />
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-skeleton-text :animated="true" />
+          </ion-avatar>
+          <ion-label>
+            <h3><ion-skeleton-text :animated="true" style="width: 50%;" /></h3>
+            <p><ion-skeleton-text :animated="true" style="width: 80%;" /></p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -68,5 +93,6 @@ import {
   IonButtons, IonBackButton,
   IonSkeletonText, IonList, IonItem, IonLabel, IonAvatar,
   IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
+  IonNote,
 } from '@ionic/vue';
 </script>

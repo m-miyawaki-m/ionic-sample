@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin ion-padding" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <!-- Basic pull-to-refresh -->
       <ion-refresher slot="fixed" @ionRefresh="handleRefreshBasic">
         <ion-refresher-content />
@@ -66,6 +69,41 @@
           <ion-label>更新回数: {{ refreshCount }}</ion-label>
         </ion-item>
       </ion-list>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/refresher" target="_blank" rel="noopener">ionicframework.com/docs/api/refresher ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-card class="ion-margin">
+        <ion-card-header>
+          <ion-card-title>ion-refresher 基本構造</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <pre style="margin: 0; font-size: 12px; white-space: pre-wrap;">&lt;ion-content&gt;
+  &lt;ion-refresher slot="fixed" @ionRefresh="handleOfficialRefresh"&gt;
+    &lt;ion-refresher-content /&gt;
+  &lt;/ion-refresher&gt;
+
+  &lt;!-- カスタムテキスト --&gt;
+  &lt;ion-refresher slot="fixed" @ionRefresh="handleOfficialRefresh"&gt;
+    &lt;ion-refresher-content
+      pulling-text="引っ張って更新"
+      refreshing-text="更新中..."
+    /&gt;
+  &lt;/ion-refresher&gt;
+&lt;/ion-content&gt;
+
+&lt;script setup lang="ts"&gt;
+const handleOfficialRefresh = (event: CustomEvent) =&gt; {
+  setTimeout(() =&gt; {
+    // データ更新処理...
+    (event.target as HTMLIonRefresherElement).complete();
+  }, 2000);
+};
+&lt;/script&gt;</pre>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -77,6 +115,7 @@ import {
   IonButtons, IonBackButton, IonButton,
   IonList, IonListHeader, IonItem, IonLabel,
   IonRefresher, IonRefresherContent,
+  IonNote, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
 } from '@ionic/vue';
 
 const refreshCount = ref(0);

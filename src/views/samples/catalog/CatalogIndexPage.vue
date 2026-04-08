@@ -41,5 +41,6 @@ const components = [
   { name: 'Segment',     path: '/samples/catalog/segment',     description: 'タブ風の選択UI。横スクロール対応' },
   { name: 'Card',        path: '/samples/catalog/card',        description: 'コンテンツをまとめるカード。ヘッダー・タイトル・サブタイトル・ボタン配置など' },
   { name: 'Badge',       path: '/samples/catalog/badge',       description: '数値・ラベルを小さなバッジで表示。リスト末尾の未読数表示に便利' },
+  { name: 'Chip',        path: '/samples/catalog/chip',        description: 'タグ・フィルター表示に使うコンパクト要素。アイコン・アバター付き可' },
 ];
 </script>

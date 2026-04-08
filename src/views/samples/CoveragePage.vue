@@ -330,5 +330,25 @@ const components: Coverage[] = [
       'インライン配置のスタイル調整例',
     ],
   },
+  {
+    name: 'Chip',
+    catalogPath: '/samples/catalog/chip',
+    officialUrl: 'https://ionicframework.com/docs/api/chip',
+    implemented: [
+      'Basic',
+      'Color (8色)',
+      'Outline',
+      'With icon (ion-icon)',
+      'With avatar (ion-avatar)',
+      'Disabled',
+    ],
+    missingHigh: [
+      'クリックイベントで選択状態を切り替えるフィルターUI',
+      'chip 内の閉じるボタン (ionicons close アイコン + クリックで除去)',
+    ],
+    missingMedium: [
+      'chip の動的リスト生成 (v-for)',
+    ],
+  },
 ];
 </script>

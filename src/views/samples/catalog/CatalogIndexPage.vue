@@ -24,5 +24,7 @@ import {
   IonButtons, IonBackButton, IonList, IonItem, IonLabel,
 } from '@ionic/vue';
 
-const components: { name: string; path: string }[] = [];
+const components = [
+  { name: 'Button', path: '/samples/catalog/button' },
+];
 </script>

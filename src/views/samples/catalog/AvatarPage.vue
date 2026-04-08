@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic</h2>
       <p class="ion-padding-horizontal">ion-avatar は丸く切り抜いたプロフィール画像を表示する。img タグを内側に置く。</p>
       <div class="ion-padding" style="display:flex; gap:16px; align-items:center;">
@@ -73,6 +77,20 @@
           <ion-label>中村 あい</ion-label>
         </ion-chip>
       </div>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/avatar" target="_blank" rel="noopener">ionicframework.com/docs/api/avatar ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-list>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>Item Avatar</ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -81,6 +99,6 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
-  IonAvatar, IonList, IonItem, IonLabel, IonBadge, IonChip,
+  IonAvatar, IonList, IonItem, IonLabel, IonBadge, IonChip, IonNote,
 } from '@ionic/vue';
 </script>

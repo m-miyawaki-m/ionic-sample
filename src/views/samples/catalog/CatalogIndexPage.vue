@@ -61,5 +61,6 @@ const components = [
   { name: 'Grid',            path: '/samples/catalog/grid',            description: '12カラムグリッドレイアウト。レスポンシブ・Offset・Fixed・No Padding に対応' },
   { name: 'Tabs',        path: '/samples/catalog/tabs',        description: 'タブナビゲーション。子ルートで複数ページを切替' },
   { name: 'Menu',        path: '/samples/catalog/menu',        description: 'サイドドロワーメニュー。複数サブページを行き来できる' },
+  { name: 'Breadcrumbs', path: '/samples/catalog/breadcrumbs', description: '階層パンくずリスト。3階層のサンプルあり' },
 ];
 </script>

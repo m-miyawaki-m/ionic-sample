@@ -198,6 +198,18 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/menu/MenuSettingsPage.vue'),
   },
   {
+    path: '/samples/catalog/breadcrumbs',
+    component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel1Page.vue'),
+  },
+  {
+    path: '/samples/catalog/breadcrumbs/electronics',
+    component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel2Page.vue'),
+  },
+  {
+    path: '/samples/catalog/breadcrumbs/electronics/laptops',
+    component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel3Page.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

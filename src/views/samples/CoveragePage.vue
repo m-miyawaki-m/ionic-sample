@@ -730,5 +730,23 @@ const components: Coverage[] = [
       'menuController によるプログラマティック制御',
     ],
   },
+  {
+    name: 'Breadcrumbs',
+    catalogPath: '/samples/catalog/breadcrumbs',
+    officialUrl: 'https://ionicframework.com/docs/api/breadcrumbs',
+    implemented: [
+      '3階層パンくず (ion-breadcrumbs + ion-breadcrumb)',
+      'router-link によるジャンプ',
+      '実ルート遷移と連動',
+    ],
+    missingHigh: [
+      'カスタムセパレータ (slot="separator")',
+      'maxItems (省略表示)',
+    ],
+    missingMedium: [
+      'アイコン入りパンくず',
+      'カラー変更',
+    ],
+  },
 ];
 </script>

@@ -28,5 +28,6 @@ const components = [
   { name: 'Button', path: '/samples/catalog/button' },
   { name: 'Input',  path: '/samples/catalog/input'  },
   { name: 'List',   path: '/samples/catalog/list'   },
+  { name: 'Modal',  path: '/samples/catalog/modal'  },
 ];
 </script>

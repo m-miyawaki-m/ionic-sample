@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic</h2>
       <p class="ion-padding-horizontal">
         <code>ion-thumbnail</code> は正方形の画像コンテナ。
@@ -95,6 +99,20 @@
           <ion-label>大きいサムネイル (72px)</ion-label>
         </ion-item>
       </ion-list>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/thumbnail" target="_blank" rel="noopener">ionicframework.com/docs/api/thumbnail ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="thumbnail" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+          </ion-thumbnail>
+          <ion-label>Item Thumbnail</ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -103,6 +121,6 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
-  IonList, IonItem, IonLabel, IonThumbnail, IonImg,
+  IonList, IonItem, IonLabel, IonThumbnail, IonImg, IonNote,
 } from '@ionic/vue';
 </script>

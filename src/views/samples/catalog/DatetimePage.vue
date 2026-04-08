@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin-bottom ion-margin-horizontal" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Inline Datetime (date-time)</h2>
       <p class="ion-padding-horizontal">ion-datetime をページに直接埋め込んだフルサイズのカレンダー+時刻ピッカー。presentation="date-time" で日付と時刻を一度に選択できる。</p>
       <div class="ion-padding-horizontal">
@@ -57,6 +61,20 @@
       </div>
       <p class="ion-padding-horizontal">選択値: {{ buttonDatetimeValue }}</p>
 
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/datetime" target="_blank" rel="noopener">ionicframework.com/docs/api/datetime ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <div class="ion-padding-horizontal ion-padding-bottom">
+        <ion-datetime
+          presentation="date"
+          :prefer-wheel="false"
+          v-model="officialDate"
+        />
+        <p>選択値: {{ officialDate }}</p>
+      </div>
+
       <div class="ion-padding" />
     </ion-content>
   </ion-page>
@@ -66,7 +84,7 @@
 import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonDatetime, IonDatetimeButton, IonModal,
+  IonButtons, IonBackButton, IonDatetime, IonDatetimeButton, IonModal, IonNote,
 } from '@ionic/vue';
 
 const datetimeValue = ref('2025-06-15T10:30:00');
@@ -74,4 +92,5 @@ const dateOnlyValue = ref('2025-06-15');
 const timeOnlyValue = ref('10:30:00');
 const constrainedValue = ref('2025-06-15');
 const buttonDatetimeValue = ref('2025-06-15T10:30:00');
+const officialDate = ref('2025-01-15');
 </script>

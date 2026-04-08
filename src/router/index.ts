@@ -168,6 +168,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/RefresherPage.vue'),
   },
   {
+    path: '/samples/catalog/infinite-scroll',
+    component: () => import('@/views/samples/catalog/InfiniteScrollPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

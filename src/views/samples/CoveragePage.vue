@@ -649,5 +649,24 @@ const components: Coverage[] = [
       'pullFactor (引き下げ倍率)',
     ],
   },
+  {
+    name: 'Infinite Scroll',
+    catalogPath: '/samples/catalog/infinite-scroll',
+    officialUrl: 'https://ionicframework.com/docs/api/infinite-scroll',
+    implemented: [
+      'Basic infinite scroll (ionInfinite + complete())',
+      'Threshold指定 ("100px")',
+      ':disabled による自動無効化 (全件完了後)',
+      'loading-text / loading-spinner のカスタマイズ',
+      'Position / Disabled の説明',
+    ],
+    missingHigh: [
+      'position="top" の実動作デモ (チャット履歴遡り)',
+      'infinite-scroll の complete() 後の再有効化パターン',
+    ],
+    missingMedium: [
+      'ionInfiniteScroll の getScrollElement() 活用',
+    ],
+  },
 ];
 </script>

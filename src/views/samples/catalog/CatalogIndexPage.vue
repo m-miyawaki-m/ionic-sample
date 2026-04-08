@@ -56,5 +56,6 @@ const components = [
   { name: 'Item Sliding', path: '/samples/catalog/item-sliding', description: 'スワイプで出るアクションボタン。左右両サイドのオプションに対応' },
   { name: 'Reorder',     path: '/samples/catalog/reorder',     description: 'ドラッグで並び順を変更できるリスト。ハンドル位置・有効/無効の切替に対応' },
   { name: 'FAB',         path: '/samples/catalog/fab',         description: '画面に固定されるフローティングアクションボタン。FAB リスト・配置・Edge モードに対応' },
+  { name: 'Refresher',  path: '/samples/catalog/refresher',  description: '上に引っ張って更新するプルトゥリフレッシュ。カスタムテキスト・アイコン・有効/無効切替に対応' },
 ];
 </script>

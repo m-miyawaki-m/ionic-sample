@@ -628,5 +628,26 @@ const components: Coverage[] = [
       'ion-fab の close() メソッド呼び出し',
     ],
   },
+  {
+    name: 'Refresher',
+    catalogPath: '/samples/catalog/refresher',
+    officialUrl: 'https://ionicframework.com/docs/api/refresher',
+    implemented: [
+      'Basic pull-to-refresh (ionRefresh + complete())',
+      'リスト更新デモ (アイテム差し替え)',
+      '更新回数カウンター表示',
+      'disabled による有効/無効切替',
+      'pullingText / refreshingText の説明',
+    ],
+    missingHigh: [
+      'pullingText / refreshingText の実動作デモ',
+      'pullingIcon カスタムアイコンデモ',
+      '複数 ion-content 内での refresher 使用',
+    ],
+    missingMedium: [
+      'closeDuration / snapbackDuration の調整',
+      'pullFactor (引き下げ倍率)',
+    ],
+  },
 ];
 </script>

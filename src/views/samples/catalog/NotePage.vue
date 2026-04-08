@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin ion-padding" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic</h2>
       <p class="ion-padding-horizontal">
         <code>ion-note</code> は補足情報を小さめ・薄めのテキストで表示するインライン要素。
@@ -98,6 +102,25 @@
           </ion-label>
         </ion-item>
       </ion-list>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/note" target="_blank" rel="noopener">ionicframework.com/docs/api/note ↗</a>
+      </p>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h2>Item Label</h2>
+            <p>
+              <ion-note>This is a note under the label</ion-note>
+            </p>
+          </ion-label>
+          <ion-note slot="end">Note</ion-note>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding-horizontal">
+        <ion-note>Standalone note outside a list item.</ion-note>
+      </div>
     </ion-content>
   </ion-page>
 </template>

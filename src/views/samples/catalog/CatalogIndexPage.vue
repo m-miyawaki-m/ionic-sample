@@ -69,5 +69,11 @@ const components = [
   { name: 'Footer',     path: '/samples/catalog/footer',     description: 'ページ下部固定ツールバー。確定/キャンセル等のアクション配置' },
   { name: 'Nav',        path: '/samples/catalog/nav',        description: 'スタック型ナビゲーション。vue-router の代替で push/pop 操作' },
   { name: 'Backdrop',   path: '/samples/catalog/backdrop',   description: '画面を暗くするオーバーレイ。modal/alert の背景として内部使用される基本要素' },
+  { name: 'Note',          path: '/samples/catalog/note',          description: '補足テキスト要素。リスト項目の slot="end" でカウント・ラベル表示に' },
+  { name: 'Img',           path: '/samples/catalog/img',           description: '遅延読込画像。スクロールされたタイミングで読み込む' },
+  { name: 'Thumbnail',     path: '/samples/catalog/thumbnail',     description: '正方形画像コンテナ。リストの商品・ユーザサムネイルに' },
+  { name: 'Text',          path: '/samples/catalog/text',          description: 'インラインテキストの色・タイポグラフィ調整ラッパ' },
+  { name: 'Ripple Effect', path: '/samples/catalog/ripple-effect', description: 'Material Design 風の波紋アニメーション。タップ時に表示' },
+  { name: 'Item Divider',  path: '/samples/catalog/item-divider',  description: 'リスト内の視覚的区切り。item-group とセットでセクション分けに' },
 ];
 </script>

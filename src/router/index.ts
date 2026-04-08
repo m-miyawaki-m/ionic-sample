@@ -238,6 +238,30 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/BackdropPage.vue'),
   },
   {
+    path: '/samples/catalog/note',
+    component: () => import('@/views/samples/catalog/NotePage.vue'),
+  },
+  {
+    path: '/samples/catalog/img',
+    component: () => import('@/views/samples/catalog/ImgPage.vue'),
+  },
+  {
+    path: '/samples/catalog/thumbnail',
+    component: () => import('@/views/samples/catalog/ThumbnailPage.vue'),
+  },
+  {
+    path: '/samples/catalog/text',
+    component: () => import('@/views/samples/catalog/TextPage.vue'),
+  },
+  {
+    path: '/samples/catalog/ripple-effect',
+    component: () => import('@/views/samples/catalog/RippleEffectPage.vue'),
+  },
+  {
+    path: '/samples/catalog/item-divider',
+    component: () => import('@/views/samples/catalog/ItemDividerPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

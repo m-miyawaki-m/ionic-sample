@@ -11,6 +11,7 @@
 
     <ion-content class="ion-padding">
       <h2>Basic Modal</h2>
+      <p>フルスクリーンのモーダル。ヘッダー + Close ボタン構成。背景タップでも閉じる。</p>
       <ion-button @click="basicOpen = true">Open Basic Modal</ion-button>
 
       <ion-modal :is-open="basicOpen" @did-dismiss="basicOpen = false">
@@ -28,6 +29,7 @@
       </ion-modal>
 
       <h2>Sheet Modal (Breakpoints)</h2>
+      <p>下から出るシート型モーダル。breakpoints で停止位置を複数指定でき、ドラッグで上下に動かせる。配列に 0 を含めるとドラッグだけで閉じれる。</p>
       <ion-button @click="sheetOpen = true">Open Sheet Modal</ion-button>
 
       <ion-modal

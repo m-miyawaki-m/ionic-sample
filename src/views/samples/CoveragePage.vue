@@ -314,5 +314,21 @@ const components: Coverage[] = [
       'card の ion-ripple-effect',
     ],
   },
+  {
+    name: 'Badge',
+    catalogPath: '/samples/catalog/badge',
+    officialUrl: 'https://ionicframework.com/docs/api/badge',
+    implemented: [
+      'Basic (数値・文字列)',
+      'Color (8色)',
+      'In list item (slot="end")',
+    ],
+    missingHigh: [
+      'ion-tab-button と組み合わせたタブバッジ',
+    ],
+    missingMedium: [
+      'インライン配置のスタイル調整例',
+    ],
+  },
 ];
 </script>

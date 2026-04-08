@@ -40,5 +40,6 @@ const components = [
   { name: 'Searchbar',   path: '/samples/catalog/searchbar',   description: '検索用入力欄。虫眼鏡アイコン・キャンセルボタン・debounce 付き' },
   { name: 'Segment',     path: '/samples/catalog/segment',     description: 'タブ風の選択UI。横スクロール対応' },
   { name: 'Card',        path: '/samples/catalog/card',        description: 'コンテンツをまとめるカード。ヘッダー・タイトル・サブタイトル・ボタン配置など' },
+  { name: 'Badge',       path: '/samples/catalog/badge',       description: '数値・ラベルを小さなバッジで表示。リスト末尾の未読数表示に便利' },
 ];
 </script>

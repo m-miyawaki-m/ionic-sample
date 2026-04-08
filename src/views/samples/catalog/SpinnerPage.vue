@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <h2>Basic</h2>
       <p>ion-spinner はローディング中を表すアニメーション。デフォルトはプラットフォームに応じて自動選択される。</p>
       <ion-spinner />
@@ -60,6 +63,20 @@
       <p>paused プロパティでアニメーションを停止できる。</p>
       <ion-spinner paused />
       <ion-spinner name="dots" paused color="primary" />
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/spinner" target="_blank" rel="noopener">ionicframework.com/docs/api/spinner ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-spinner />
+      <ion-spinner name="bubbles" />
+      <ion-spinner name="circles" />
+      <ion-spinner name="crescent" />
+      <ion-spinner name="dots" />
+      <ion-spinner name="lines" />
+      <ion-spinner name="lines-small" />
+      <ion-spinner name="lines-sharp" />
     </ion-content>
   </ion-page>
 </template>
@@ -67,6 +84,6 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonSpinner,
+  IonButtons, IonBackButton, IonSpinner, IonNote,
 } from '@ionic/vue';
 </script>

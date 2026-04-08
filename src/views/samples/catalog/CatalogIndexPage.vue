@@ -30,5 +30,6 @@ const components = [
   { name: 'List',   path: '/samples/catalog/list'   },
   { name: 'Modal',  path: '/samples/catalog/modal'  },
   { name: 'Toast',  path: '/samples/catalog/toast'  },
+  { name: 'Radio Group', path: '/samples/catalog/radio-group' },
 ];
 </script>

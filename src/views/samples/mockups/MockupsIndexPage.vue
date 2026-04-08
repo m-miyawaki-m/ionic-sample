@@ -24,5 +24,10 @@ import {
   IonButtons, IonBackButton, IonList, IonItem, IonLabel,
 } from '@ionic/vue';
 
-const mockups: { name: string; path: string }[] = [];
+const mockups = [
+  { name: 'コンポーネント一覧',     path: '/samples/mockups/components' },
+  { name: 'スキャン入力デモ',       path: '/samples/mockups/scan-demo' },
+  { name: 'スキャンフィードバック', path: '/samples/mockups/feedback' },
+  { name: 'ダイアログデモ',         path: '/samples/mockups/dialog-demo' },
+];
 </script>

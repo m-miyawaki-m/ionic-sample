@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <h2>Determinate</h2>
       <p>type="determinate" (デフォルト) で value (0〜1) に応じた進捗を表示する。</p>
       <ion-progress-bar :value="0.1" />
@@ -38,6 +41,15 @@
       <p>reversed プロパティを付けると進行方向が右から左になる。</p>
       <ion-progress-bar :value="0.6" reversed />
       <ion-progress-bar type="indeterminate" reversed />
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/progress-bar" target="_blank" rel="noopener">ionicframework.com/docs/api/progress-bar ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-progress-bar :value="0.5" />
+      <ion-progress-bar type="indeterminate" />
+      <ion-progress-bar :value="0.25" :buffer="0.5" />
     </ion-content>
   </ion-page>
 </template>
@@ -45,6 +57,6 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonProgressBar,
+  IonButtons, IonBackButton, IonProgressBar, IonNote,
 } from '@ionic/vue';
 </script>

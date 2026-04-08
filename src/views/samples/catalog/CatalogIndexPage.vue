@@ -33,5 +33,6 @@ const components = [
   { name: 'Radio Group', path: '/samples/catalog/radio-group' },
   { name: 'Checkbox', path: '/samples/catalog/checkbox' },
   { name: 'Toggle', path: '/samples/catalog/toggle' },
+  { name: 'Select', path: '/samples/catalog/select' },
 ];
 </script>

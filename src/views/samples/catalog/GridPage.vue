@@ -154,7 +154,7 @@
         <ion-row>
           <ion-col size="4" class="ion-no-padding" v-for="n in 3" :key="`noPad-${n}`">
             <ion-card style="margin: 2px;">
-              <ion-card-content class="ion-text-center ion-no-padding" style="padding: 8px;">パディングなし {{ n }}</ion-card-content>
+              <ion-card-content class="ion-text-center ion-no-padding">パディングなし {{ n }}</ion-card-content>
             </ion-card>
           </ion-col>
         </ion-row>

@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>シンプルなスライダー。デフォルトは 0〜100 で連続値を選択できる。</p>
       <ion-range v-model="basicValue" />
@@ -45,6 +49,23 @@
       <ion-range color="success" :value="70" />
       <ion-range color="warning" :value="50" />
       <ion-range color="danger" :value="30" />
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/range" target="_blank" rel="noopener">ionicframework.com/docs/api/range ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-range
+        aria-label="Volume"
+        :min="0"
+        :max="100"
+        :pin="true"
+        v-model="officialRangeValue"
+      >
+        <ion-icon slot="start" name="volume-low-outline" />
+        <ion-icon slot="end" name="volume-high-outline" />
+      </ion-range>
+      <p>値: {{ officialRangeValue }}</p>
     </ion-content>
   </ion-page>
 </template>
@@ -53,7 +74,7 @@
 import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonRange,
+  IonButtons, IonBackButton, IonRange, IonNote, IonIcon,
 } from '@ionic/vue';
 
 const basicValue = ref(50);
@@ -62,4 +83,5 @@ const stepValue = ref(25);
 const snapsValue = ref(3);
 const pinValue = ref(40);
 const dualValue = ref({ lower: 20, upper: 80 });
+const officialRangeValue = ref(50);
 </script>

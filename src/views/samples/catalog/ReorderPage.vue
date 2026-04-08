@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin ion-padding" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic (ドラッグハンドル右端)</h2>
       <p class="ion-padding-horizontal">ion-reorder-group 内の各 ion-item に ion-reorder を置くとドラッグハンドルが表示される。ハンドルをドラッグして順番を変更し、完了後に @ionReorder で配列を更新する。</p>
       <ion-list>
@@ -49,6 +53,19 @@
           </ion-item>
         </ion-reorder-group>
       </ion-list>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/reorder" target="_blank" rel="noopener">ionicframework.com/docs/api/reorder ↗</a>
+      </p>
+      <ion-list>
+        <ion-reorder-group :disabled="false" @ionReorder="handleReorderOfficial">
+          <ion-item v-for="item in officialItems" :key="item">
+            <ion-label>{{ item }}</ion-label>
+            <ion-reorder slot="end" />
+          </ion-item>
+        </ion-reorder-group>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -58,7 +75,7 @@ import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonButton,
-  IonList, IonItem, IonLabel,
+  IonList, IonItem, IonLabel, IonNote,
   IonReorderGroup, IonReorder,
 } from '@ionic/vue';
 
@@ -95,5 +112,11 @@ const handleReorderStart = (event: CustomEvent) => {
 
 const handleReorderToggle = (event: CustomEvent) => {
   toggleItems.value = event.detail.complete(toggleItems.value);
+};
+
+const officialItems = ref(['Item 1', 'Item 2', 'Item 3']);
+
+const handleReorderOfficial = (event: CustomEvent) => {
+  officialItems.value = event.detail.complete(officialItems.value);
 };
 </script>

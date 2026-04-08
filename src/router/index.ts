@@ -210,6 +210,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel3Page.vue'),
   },
   {
+    path: '/samples/catalog/textarea',
+    component: () => import('@/views/samples/catalog/TextareaPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

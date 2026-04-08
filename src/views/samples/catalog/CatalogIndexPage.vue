@@ -62,5 +62,6 @@ const components = [
   { name: 'Tabs',        path: '/samples/catalog/tabs',        description: 'タブナビゲーション。子ルートで複数ページを切替' },
   { name: 'Menu',        path: '/samples/catalog/menu',        description: 'サイドドロワーメニュー。複数サブページを行き来できる' },
   { name: 'Breadcrumbs', path: '/samples/catalog/breadcrumbs', description: '階層パンくずリスト。3階層のサンプルあり' },
+  { name: 'Textarea',  path: '/samples/catalog/textarea',  description: '複数行テキスト入力。auto-grow で行数自動拡張。備考・メモ入力に' },
 ];
 </script>

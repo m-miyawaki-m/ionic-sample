@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>loadingController.create() → present() で全画面ローディングを表示。duration を指定すると自動で閉じる。</p>
       <ion-button @click="showBasic">Basic Loading (2秒)</ion-button>
@@ -32,6 +36,13 @@
       <h2>Translucent</h2>
       <p>translucent プロパティを有効にすると、iOS でガラス調の半透明スタイルになる。</p>
       <ion-button @click="showTranslucent">Translucent (2秒)</ion-button>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/loading" target="_blank" rel="noopener">ionicframework.com/docs/api/loading ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-button @click="presentOfficialLoading">Show Official Loading</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -39,7 +50,7 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonButton,
+  IonButtons, IonBackButton, IonButton, IonNote,
   loadingController,
 } from '@ionic/vue';
 
@@ -82,5 +93,13 @@ const showTranslucent = async () => {
     duration: 2000,
   });
   await loading.present();
+};
+
+const presentOfficialLoading = async () => {
+  const officialLoading = await loadingController.create({
+    message: 'Please wait...',
+    duration: 2000,
+  });
+  await officialLoading.present();
 };
 </script>

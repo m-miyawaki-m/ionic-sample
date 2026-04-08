@@ -46,5 +46,9 @@ const components = [
   { name: 'Spinner',     path: '/samples/catalog/spinner',     description: 'ローディング中を示すアニメーション。8種類の形状と色指定に対応' },
   { name: 'Skeleton Text', path: '/samples/catalog/skeleton-text', description: 'データ読み込み中のプレースホルダー。animated でウェーブアニメーション付き' },
   { name: 'Progress Bar', path: '/samples/catalog/progress-bar', description: '進捗バー。determinate / indeterminate / buffer の3モードあり' },
+  { name: 'Alert',        path: '/samples/catalog/alert',        description: 'ダイアログ型の確認・入力オーバーレイ。buttons/inputs/header など柔軟に構成可' },
+  { name: 'Action Sheet', path: '/samples/catalog/action-sheet', description: '下から出るボタン群オーバーレイ。アイコン/destructive/cancel など複数ロールに対応' },
+  { name: 'Loading',      path: '/samples/catalog/loading',      description: '全画面ローディングオーバーレイ。メッセージ・スピナー種別・duration 指定可' },
+  { name: 'Popover',      path: '/samples/catalog/popover',      description: '要素にアンカーするポップオーバー。trigger 属性または is-open で制御可' },
 ];
 </script>

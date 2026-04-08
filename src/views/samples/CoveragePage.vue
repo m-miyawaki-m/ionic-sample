@@ -422,5 +422,86 @@ const components: Coverage[] = [
       'カスタム高さ (CSS変数 --height)',
     ],
   },
+  {
+    name: 'Alert',
+    catalogPath: '/samples/catalog/alert',
+    officialUrl: 'https://ionicframework.com/docs/api/alert',
+    implemented: [
+      'Basic (message + OK ボタン)',
+      'With buttons (OK / Cancel)',
+      'With inputs (テキスト入力欄)',
+      'Multiple buttons (3択以上)',
+      'Header + Subheader',
+    ],
+    missingHigh: [
+      'inputs で select / radio / checkbox 型',
+      'ボタン handler で入力値を取得するパターン',
+      'cssClass でのカスタムスタイリング',
+    ],
+    missingMedium: [
+      'backdropDismiss="false"',
+      'animated="false"',
+    ],
+  },
+  {
+    name: 'Action Sheet',
+    catalogPath: '/samples/catalog/action-sheet',
+    officialUrl: 'https://ionicframework.com/docs/api/action-sheet',
+    implemented: [
+      'Basic',
+      'With Header + Subheader',
+      'With icons (ionicons 使用)',
+      'Destructive button (role: destructive)',
+      'Cancel button (role: cancel)',
+    ],
+    missingHigh: [
+      'インライン <ion-action-sheet :is-open="..."> 記法',
+      'handler でボタンの選択値を取得するパターン',
+    ],
+    missingMedium: [
+      'cssClass でのカスタムスタイリング',
+      'backdropDismiss="false"',
+    ],
+  },
+  {
+    name: 'Loading',
+    catalogPath: '/samples/catalog/loading',
+    officialUrl: 'https://ionicframework.com/docs/api/loading',
+    implemented: [
+      'Basic (duration で自動閉じ)',
+      'With message',
+      'Spinner variants (crescent/bubbles/dots)',
+      'Custom duration (1秒/3秒)',
+      'Translucent',
+    ],
+    missingHigh: [
+      'async 処理完了後に dismiss() で明示的に閉じるパターン',
+      'インライン <ion-loading :is-open="..."> 記法',
+    ],
+    missingMedium: [
+      'cssClass でのカスタムスタイリング',
+      'showBackdrop="false"',
+    ],
+  },
+  {
+    name: 'Popover',
+    catalogPath: '/samples/catalog/popover',
+    officialUrl: 'https://ionicframework.com/docs/api/popover',
+    implemented: [
+      'Basic (trigger プロパティ + dismiss-on-select)',
+      'Manual control (is-open + event アンカー)',
+      'Side (top/bottom 切替)',
+      'Translucent',
+    ],
+    missingHigh: [
+      'popoverController による動的生成',
+      'ネストされた Popover (サブメニュー)',
+    ],
+    missingMedium: [
+      'alignment (center/start)',
+      'keepContentsMounted',
+      'reference="trigger" / "event" の違い',
+    ],
+  },
 ];
 </script>

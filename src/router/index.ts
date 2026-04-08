@@ -124,6 +124,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/ProgressBarPage.vue'),
   },
   {
+    path: '/samples/catalog/alert',
+    component: () => import('@/views/samples/catalog/AlertPage.vue'),
+  },
+  {
+    path: '/samples/catalog/action-sheet',
+    component: () => import('@/views/samples/catalog/ActionSheetPage.vue'),
+  },
+  {
+    path: '/samples/catalog/loading',
+    component: () => import('@/views/samples/catalog/LoadingPage.vue'),
+  },
+  {
+    path: '/samples/catalog/popover',
+    component: () => import('@/views/samples/catalog/PopoverPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

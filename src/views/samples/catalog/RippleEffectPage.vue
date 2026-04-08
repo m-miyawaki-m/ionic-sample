@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <h2>Basic (Bounded)</h2>
       <p>
         <code>ion-ripple-effect</code> は Material Design 風の波紋アニメーション。
@@ -94,6 +97,24 @@
           <ion-label>もう一つのアイテム</ion-label>
         </ion-item>
       </ion-list>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/ripple-effect" target="_blank" rel="noopener">ionicframework.com/docs/api/ripple-effect ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <div
+        class="ion-activatable"
+        style="
+          position: relative; overflow: hidden;
+          padding: 16px; border-radius: 8px;
+          background: var(--ion-color-light);
+          text-align: center; cursor: pointer;
+        "
+      >
+        タップして波紋を確認 (bounded)
+        <ion-ripple-effect />
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -102,6 +123,6 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonRippleEffect,
-  IonList, IonItem, IonLabel,
+  IonList, IonItem, IonLabel, IonNote,
 } from '@ionic/vue';
 </script>

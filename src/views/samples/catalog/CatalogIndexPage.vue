@@ -29,5 +29,6 @@ const components = [
   { name: 'Input',  path: '/samples/catalog/input'  },
   { name: 'List',   path: '/samples/catalog/list'   },
   { name: 'Modal',  path: '/samples/catalog/modal'  },
+  { name: 'Toast',  path: '/samples/catalog/toast'  },
 ];
 </script>

@@ -22,6 +22,12 @@
             <p>業務画面のレイアウト・操作感の検討用</p>
           </ion-label>
         </ion-item>
+        <ion-item router-link="/samples/coverage" detail>
+          <ion-label>
+            <h2>カバレッジ</h2>
+            <p>公式ドキュメントとカタログ実装状況の対応表</p>
+          </ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-page>

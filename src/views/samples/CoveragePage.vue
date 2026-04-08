@@ -549,5 +549,25 @@ const components: Coverage[] = [
       'color 動的切替デモ',
     ],
   },
+  {
+    name: 'Accordion',
+    catalogPath: '/samples/catalog/accordion',
+    officialUrl: 'https://ionicframework.com/docs/api/accordion',
+    implemented: [
+      'Basic (シングル展開 + value)',
+      'Multiple (複数同時展開 :multiple="true")',
+      'Inset (:inset="true" カード型)',
+      'Disabled accordion (:disabled="true")',
+      'デフォルト展開状態 (value プロパティ)',
+    ],
+    missingHigh: [
+      'ionChange イベントで展開状態を取得',
+      'expand="inset" の動的切替',
+    ],
+    missingMedium: [
+      'header slot のカスタムコンテンツ (アイコン付き)',
+      'readonly (読み取り専用)',
+    ],
+  },
 ];
 </script>

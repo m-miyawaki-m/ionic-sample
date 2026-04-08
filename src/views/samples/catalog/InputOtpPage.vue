@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
 
       <h2>Basic</h2>
       <p>デフォルトは4桁。1文字入力するごとに次のセルへ自動フォーカスが移る。スロットに再送リンクなどを配置可能。</p>
@@ -38,6 +41,14 @@
       <ion-input-otp :disabled="true" value="1234">Disabled</ion-input-otp>
       <ion-input-otp :readonly="true" value="1234">Readonly</ion-input-otp>
 
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/input-otp" target="_blank" rel="noopener">ionicframework.com/docs/api/input-otp ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプルをそのまま実装 -->
+      <ion-input-otp>Didn't get a code? <a href="#">Resend the code</a></ion-input-otp>
+      <ion-input-otp :length="6">Didn't get a code? <a href="#">Resend the code</a></ion-input-otp>
+
     </ion-content>
   </ion-page>
 </template>
@@ -46,5 +57,6 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonInputOtp,
+  IonNote,
 } from '@ionic/vue';
 </script>

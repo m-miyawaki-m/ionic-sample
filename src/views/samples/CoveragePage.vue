@@ -350,5 +350,22 @@ const components: Coverage[] = [
       'chip の動的リスト生成 (v-for)',
     ],
   },
+  {
+    name: 'Avatar',
+    catalogPath: '/samples/catalog/avatar',
+    officialUrl: 'https://ionicframework.com/docs/api/avatar',
+    implemented: [
+      'Basic (img を内包した丸型アバター)',
+      'In list item (slot="start")',
+      'In chip (ion-chip 内)',
+    ],
+    missingHigh: [
+      '画像読み込み失敗時のフォールバック表示',
+      'ion-icon をアバター代わりに使うパターン',
+    ],
+    missingMedium: [
+      'カスタムサイズ (CSS変数 --size)',
+    ],
+  },
 ];
 </script>

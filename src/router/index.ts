@@ -83,6 +83,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/SelectPage.vue'),
   },
   {
+    path: '/samples/catalog/searchbar',
+    component: () => import('@/views/samples/catalog/SearchbarPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

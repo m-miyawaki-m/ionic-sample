@@ -34,5 +34,6 @@ const components = [
   { name: 'Checkbox', path: '/samples/catalog/checkbox' },
   { name: 'Toggle', path: '/samples/catalog/toggle' },
   { name: 'Select', path: '/samples/catalog/select' },
+  { name: 'Searchbar', path: '/samples/catalog/searchbar' },
 ];
 </script>

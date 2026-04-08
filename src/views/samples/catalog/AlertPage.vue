@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>alertController.create() → present() の2ステップ。メッセージのみのシンプルな確認ダイアログ。</p>
       <ion-button @click="showBasic">Basic Alert</ion-button>
@@ -29,6 +33,13 @@
       <h2>Header + Subheader</h2>
       <p>header でタイトル、subHeader でサブタイトルを設定してより情報量の多いダイアログにする。</p>
       <ion-button @click="showHeaders">Header + Subheader Alert</ion-button>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/alert" target="_blank" rel="noopener">ionicframework.com/docs/api/alert ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-button @click="presentOfficialAlert">Show Official Alert</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -36,7 +47,7 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonButton,
+  IonButtons, IonBackButton, IonButton, IonNote,
   alertController,
 } from '@ionic/vue';
 
@@ -99,5 +110,15 @@ const showHeaders = async () => {
     buttons: ['閉じる'],
   });
   await alert.present();
+};
+
+const presentOfficialAlert = async () => {
+  const officialAlert = await alertController.create({
+    header: 'Alert',
+    subHeader: 'Important message',
+    message: 'This is an alert message.',
+    buttons: ['OK'],
+  });
+  await officialAlert.present();
 };
 </script>

@@ -45,6 +45,36 @@
         <code>nav.push(Component, { key: value })</code> の第2引数でパラメータを渡せる。
         遷移先コンポーネントは defineProps で受け取る。
       </p>
+
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/nav" target="_blank" rel="noopener">ionicframework.com/docs/api/nav ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>ion-nav 基本構造</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <pre style="margin: 0; font-size: 12px; white-space: pre-wrap;">&lt;!-- ParentPage.vue --&gt;
+&lt;template&gt;
+  &lt;ion-nav :root="RootComponent" /&gt;
+&lt;/template&gt;
+
+&lt;script setup lang="ts"&gt;
+import { IonNav } from '@ionic/vue';
+import RootComponent from './RootComponent.vue';
+&lt;/script&gt;
+
+&lt;!-- RootComponent.vue: inject navRef して push/pop --&gt;
+&lt;!-- nav.value.$el.push(NextPage, { params }) --&gt;
+&lt;!-- nav.value.$el.pop() --&gt;</pre>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -53,6 +83,7 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonButton, IonNavLink,
+  IonNote, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
   useIonRouter,
 } from '@ionic/vue';
 import { inject, markRaw } from 'vue';

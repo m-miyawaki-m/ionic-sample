@@ -65,5 +65,9 @@ const components = [
   { name: 'Textarea',  path: '/samples/catalog/textarea',  description: '複数行テキスト入力。auto-grow で行数自動拡張。備考・メモ入力に' },
   { name: 'Picker',    path: '/samples/catalog/picker',    description: '複数列のホイール選択。時刻・カスタム値の入力に' },
   { name: 'Input OTP', path: '/samples/catalog/input-otp', description: 'OTP/認証コード入力。1文字ごとに自動フォーカス遷移' },
+  { name: 'Split Pane', path: '/samples/catalog/split-pane', description: 'レスポンシブな2ペイン layout。タブレットで side menu 常時表示' },
+  { name: 'Footer',     path: '/samples/catalog/footer',     description: 'ページ下部固定ツールバー。確定/キャンセル等のアクション配置' },
+  { name: 'Nav',        path: '/samples/catalog/nav',        description: 'スタック型ナビゲーション。vue-router の代替で push/pop 操作' },
+  { name: 'Backdrop',   path: '/samples/catalog/backdrop',   description: '画面を暗くするオーバーレイ。modal/alert の背景として内部使用される基本要素' },
 ];
 </script>

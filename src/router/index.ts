@@ -222,6 +222,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/InputOtpPage.vue'),
   },
   {
+    path: '/samples/catalog/split-pane',
+    component: () => import('@/views/samples/catalog/SplitPanePage.vue'),
+  },
+  {
+    path: '/samples/catalog/footer',
+    component: () => import('@/views/samples/catalog/FooterPage.vue'),
+  },
+  {
+    path: '/samples/catalog/nav',
+    component: () => import('@/views/samples/catalog/nav/NavPage.vue'),
+  },
+  {
+    path: '/samples/catalog/backdrop',
+    component: () => import('@/views/samples/catalog/BackdropPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

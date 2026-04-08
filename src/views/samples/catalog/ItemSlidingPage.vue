@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin ion-padding" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic (左スワイプで削除)</h2>
       <p class="ion-padding-horizontal">各アイテムを左にスワイプするとアクションボタンが現れる。ion-item-options の side="end" (デフォルト) が右側のオプション領域。</p>
       <ion-list>
@@ -92,6 +96,33 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/item-sliding" target="_blank" rel="noopener">ionicframework.com/docs/api/item-sliding ↗</a>
+      </p>
+      <ion-list>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label>Item</ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option>Favorite</ion-item-option>
+            <ion-item-option color="danger">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+        <ion-item-sliding>
+          <ion-item-options side="start">
+            <ion-item-option color="success">Archive</ion-item-option>
+          </ion-item-options>
+          <ion-item>
+            <ion-label>Item (両サイド)</ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="danger">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -101,7 +132,7 @@ import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
-  IonList, IonItem, IonLabel, IonIcon,
+  IonList, IonItem, IonLabel, IonIcon, IonNote,
   IonItemSliding, IonItemOptions, IonItemOption,
 } from '@ionic/vue';
 import { trashOutline, archiveOutline, mailOutline, starOutline } from 'ionicons/icons';

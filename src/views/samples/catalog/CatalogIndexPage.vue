@@ -35,5 +35,6 @@ const components = [
   { name: 'Toggle', path: '/samples/catalog/toggle' },
   { name: 'Select', path: '/samples/catalog/select' },
   { name: 'Searchbar', path: '/samples/catalog/searchbar' },
+  { name: 'Segment', path: '/samples/catalog/segment' },
 ];
 </script>

@@ -51,5 +51,6 @@ const components = [
   { name: 'Loading',      path: '/samples/catalog/loading',      description: '全画面ローディングオーバーレイ。メッセージ・スピナー種別・duration 指定可' },
   { name: 'Popover',      path: '/samples/catalog/popover',      description: '要素にアンカーするポップオーバー。trigger 属性または is-open で制御可' },
   { name: 'Datetime',    path: '/samples/catalog/datetime',    description: '日付・時刻ピッカー。インライン表示とボタン+モーダル形式の両方に対応' },
+  { name: 'Range',       path: '/samples/catalog/range',       description: 'スライダー型の数値入力。デュアルノブ・スナップ・ピン表示など多機能' },
 ];
 </script>

@@ -526,5 +526,28 @@ const components: Coverage[] = [
       'show-default-buttons (確認/キャンセルボタン)',
     ],
   },
+  {
+    name: 'Range',
+    catalogPath: '/samples/catalog/range',
+    officialUrl: 'https://ionicframework.com/docs/api/range',
+    implemented: [
+      'Basic (デフォルト 0〜100)',
+      'With label (label プロパティ)',
+      'Min / Max / Step (カスタム範囲・刻み)',
+      'Snaps + Ticks (スナップ+目盛り)',
+      'Pin (ドラッグ中の値バブル)',
+      'Dual Knobs (範囲選択)',
+      'Color (success/warning/danger)',
+    ],
+    missingHigh: [
+      'ionKnobMoveStart / ionKnobMoveEnd イベント',
+      'start/end スロット (アイコン・ラベル装飾)',
+    ],
+    missingMedium: [
+      'activeBarStart (バー開始位置のカスタム)',
+      'disabled',
+      'color 動的切替デモ',
+    ],
+  },
 ];
 </script>

@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>ion-chip はタグ・フィルター・選択状態などを表すコンパクトなUI要素。</p>
       <ion-chip>Default</ion-chip>
@@ -67,6 +71,22 @@
       <p>disabled プロパティで操作不可にする。</p>
       <ion-chip disabled>Disabled chip</ion-chip>
       <ion-chip disabled color="primary">Disabled primary</ion-chip>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/chip" target="_blank" rel="noopener">ionicframework.com/docs/api/chip ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-chip>
+        <ion-label>Default</ion-label>
+      </ion-chip>
+      <ion-chip color="primary">
+        <ion-icon :icon="personCircle" />
+        <ion-label>Primary</ion-label>
+      </ion-chip>
+      <ion-chip outline color="secondary">
+        <ion-label>Secondary Outline</ion-label>
+      </ion-chip>
     </ion-content>
   </ion-page>
 </template>
@@ -75,7 +95,7 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
-  IonChip, IonLabel, IonIcon, IonAvatar,
+  IonChip, IonLabel, IonIcon, IonAvatar, IonNote,
 } from '@ionic/vue';
 import { personCircle, checkmarkCircle, closeCircle } from 'ionicons/icons';
 </script>

@@ -54,9 +54,11 @@ src/views/
         ├── ComponentsPage.vue      【移動】 中身そのまま
         ├── ScanDemoPage.vue        【移動】 中身そのまま
         ├── FeedbackPage.vue        【移動】 中身そのまま
-        ├── DialogDemoPage.vue      【移動】 中身そのまま
+        ├── DialogDemoPage.vue      【移動】 import パスのみ修正
         └── dialogs/
-            └── ScanParsePage.vue   【移動】 中身そのまま
+            ├── ScanParsePage.vue        【移動】 中身そのまま
+            ├── ScanParseModal.vue       【移動】 中身そのまま
+            └── ScanParseFullscreen.vue  【移動】 中身そのまま
 ```
 
 ## 4. ルーティング (`src/router/index.ts`)
@@ -239,7 +241,7 @@ const mockups = [
 
 ## 9. 既存ファイルの物理移動
 
-以下のファイルを移動する。**中身は1行も変更しない。**
+以下のファイルを移動する。原則として中身は変更しないが、`DialogDemoPage.vue` のみ後述の理由で2行修正する。
 
 | 移動元 | 移動先 |
 |---|---|
@@ -248,8 +250,26 @@ const mockups = [
 | `src/views/samples/FeedbackPage.vue` | `src/views/samples/mockups/FeedbackPage.vue` |
 | `src/views/samples/DialogDemoPage.vue` | `src/views/samples/mockups/DialogDemoPage.vue` |
 | `src/views/samples/dialogs/ScanParsePage.vue` | `src/views/samples/mockups/dialogs/ScanParsePage.vue` |
+| `src/views/samples/dialogs/ScanParseModal.vue` | `src/views/samples/mockups/dialogs/ScanParseModal.vue` |
+| `src/views/samples/dialogs/ScanParseFullscreen.vue` | `src/views/samples/mockups/dialogs/ScanParseFullscreen.vue` |
 
 旧 `src/views/samples/dialogs/` は空になるので削除する。
+
+### `DialogDemoPage.vue` の例外修正
+
+`DialogDemoPage.vue` は `ScanParseModal.vue` と `ScanParseFullscreen.vue` を絶対パスで import しているため、移動先に合わせて以下の2行を修正する。
+
+```ts
+// 修正前
+import ScanParseModal from '@/views/samples/dialogs/ScanParseModal.vue';
+import ScanParseFullscreen from '@/views/samples/dialogs/ScanParseFullscreen.vue';
+
+// 修正後
+import ScanParseModal from '@/views/samples/mockups/dialogs/ScanParseModal.vue';
+import ScanParseFullscreen from '@/views/samples/mockups/dialogs/ScanParseFullscreen.vue';
+```
+
+これ以外の改修 (ロジック・テンプレ・スタイル) は行わない。
 
 ## 10. 検証方法
 
@@ -269,5 +289,6 @@ const mockups = [
 | 種別 | ファイル数 |
 |---|---|
 | 新規作成 | 8ファイル (Index 3 + Catalog 5) |
-| 物理移動 (中身変更なし) | 5ファイル |
+| 物理移動 (中身変更なし) | 6ファイル |
+| 物理移動 + import パス修正 | 1ファイル (`DialogDemoPage.vue`) |
 | 編集 | 2ファイル (`src/router/index.ts`, `src/views/HomePage.vue`) |

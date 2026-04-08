@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
 
       <h2>Basic Footer (このページ下部)</h2>
       <p>
@@ -97,6 +100,40 @@
         ↓ スクロールしてもフッターは下部に固定されている
       </div>
 
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/footer" target="_blank" rel="noopener">ionicframework.com/docs/api/footer ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>ion-footer 基本構造</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <pre style="margin: 0; font-size: 12px; white-space: pre-wrap;">&lt;ion-page&gt;
+  &lt;ion-header&gt;
+    &lt;ion-toolbar&gt;
+      &lt;ion-title&gt;My Page&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-content&gt;...&lt;/ion-content&gt;
+
+  &lt;ion-footer&gt;
+    &lt;ion-toolbar&gt;
+      &lt;ion-title&gt;Footer&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-footer&gt;
+&lt;/ion-page&gt;
+
+&lt;!-- translucent: iOS でフッターを半透明にする --&gt;
+&lt;ion-footer :translucent="true"&gt;...&lt;/ion-footer&gt;
+
+&lt;!-- collapse="fade": スクロール時にフェードアウト --&gt;
+&lt;ion-footer collapse="fade"&gt;...&lt;/ion-footer&gt;</pre>
+        </ion-card-content>
+      </ion-card>
+
     </ion-content>
 
     <!-- このページ自体のフッターデモ -->
@@ -119,7 +156,7 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonButton, IonFooter,
   IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-  IonList, IonItem, IonIcon, IonLabel,
+  IonList, IonItem, IonIcon, IonLabel, IonNote,
 } from '@ionic/vue';
 import {
   checkmarkCircleOutline, sendOutline, searchOutline, informationCircleOutline,

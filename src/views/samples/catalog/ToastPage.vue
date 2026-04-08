@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>↓ボタンタップで2秒間トーストが表示される。toastController.create() → present() の2ステップ。</p>
       <ion-button @click="showBasic">Show Basic Toast</ion-button>
@@ -29,6 +33,13 @@
       <h2>With Button</h2>
       <p>buttons オプションで Close ボタン等を付けられる。duration を省くと自動で消えなくなる。</p>
       <ion-button @click="showWithButton">Show with Close Button</ion-button>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/toast" target="_blank" rel="noopener">ionicframework.com/docs/api/toast ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-button @click="presentOfficialToast">Show Official Toast</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -36,7 +47,7 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonButton,
+  IonButtons, IonBackButton, IonButton, IonNote,
   toastController,
 } from '@ionic/vue';
 
@@ -72,5 +83,14 @@ const showWithButton = async () => {
     buttons: [{ text: 'Close', role: 'cancel' }],
   });
   await toast.present();
+};
+
+const presentOfficialToast = async () => {
+  const officialToast = await toastController.create({
+    message: 'Hello World!',
+    duration: 1500,
+    position: 'bottom',
+  });
+  await officialToast.present();
 };
 </script>

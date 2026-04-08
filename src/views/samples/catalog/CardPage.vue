@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic</h2>
       <p class="ion-padding-horizontal">シンプルな ion-card。テキストを ion-card-content で包む。</p>
       <ion-card>
@@ -74,6 +78,21 @@
         </ion-card-header>
         <ion-card-content>このカードは操作できません。</ion-card-content>
       </ion-card>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/card" target="_blank" rel="noopener">ionicframework.com/docs/api/card ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Here's a small text description for the card content. Nothing more, nothing less.
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -83,6 +102,6 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
   IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
-  IonButton,
+  IonButton, IonNote,
 } from '@ionic/vue';
 </script>

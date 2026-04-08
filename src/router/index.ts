@@ -186,6 +186,18 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/samples/catalog/menu',
+    component: () => import('@/views/samples/catalog/menu/MenuHomePage.vue'),
+  },
+  {
+    path: '/samples/catalog/menu/about',
+    component: () => import('@/views/samples/catalog/menu/MenuAboutPage.vue'),
+  },
+  {
+    path: '/samples/catalog/menu/settings',
+    component: () => import('@/views/samples/catalog/menu/MenuSettingsPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

@@ -709,5 +709,26 @@ const components: Coverage[] = [
       'タブごとの履歴管理',
     ],
   },
+  {
+    name: 'Menu',
+    catalogPath: '/samples/catalog/menu',
+    officialUrl: 'https://ionicframework.com/docs/api/menu',
+    implemented: [
+      'ion-menu (side drawer)',
+      'ion-menu-toggle (タップで自動閉じる)',
+      'ion-menu-button (ハンバーガー)',
+      '複数サブページ間の遷移',
+      '再利用可能なメニューコンポーネント',
+    ],
+    missingHigh: [
+      'ion-split-pane (タブレットでメニュー常時表示)',
+      'side="end" (右側ドロワー)',
+      'menu type (overlay/reveal/push)',
+    ],
+    missingMedium: [
+      '動的にメニュー項目を生成',
+      'menuController によるプログラマティック制御',
+    ],
+  },
 ];
 </script>

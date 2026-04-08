@@ -43,6 +43,12 @@
       <h2>Counter</h2>
       <p>↓文字を打つと下に文字数カウンタ (例: 5/20) が表示される。</p>
       <ion-input label="Max 20" :counter="true" :maxlength="20" />
+
+      <h2>Password Toggle</h2>
+      <p>type="password" の ion-input に ion-input-password-toggle を slot="end" に入れると、目アイコンで表示/非表示を切り替えられる。</p>
+      <ion-input label="Password" type="password" value="secret123">
+        <ion-input-password-toggle slot="end" />
+      </ion-input>
     </ion-content>
   </ion-page>
 </template>
@@ -50,6 +56,6 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonInput,
+  IonButtons, IonBackButton, IonInput, IonInputPasswordToggle,
 } from '@ionic/vue';
 </script>

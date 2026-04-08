@@ -45,5 +45,6 @@ const components = [
   { name: 'Avatar',      path: '/samples/catalog/avatar',      description: '丸型のプロフィール画像。リストや chip と組み合わせて使う' },
   { name: 'Spinner',     path: '/samples/catalog/spinner',     description: 'ローディング中を示すアニメーション。8種類の形状と色指定に対応' },
   { name: 'Skeleton Text', path: '/samples/catalog/skeleton-text', description: 'データ読み込み中のプレースホルダー。animated でウェーブアニメーション付き' },
+  { name: 'Progress Bar', path: '/samples/catalog/progress-bar', description: '進捗バー。determinate / indeterminate / buffer の3モードあり' },
 ];
 </script>

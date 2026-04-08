@@ -403,5 +403,24 @@ const components: Coverage[] = [
       'カスタム高さ・角丸指定',
     ],
   },
+  {
+    name: 'Progress Bar',
+    catalogPath: '/samples/catalog/progress-bar',
+    officialUrl: 'https://ionicframework.com/docs/api/progress-bar',
+    implemented: [
+      'Determinate (value 0〜1)',
+      'Indeterminate',
+      'Buffer (buffer プロパティ)',
+      'Color (5色)',
+      'Reversed',
+    ],
+    missingHigh: [
+      'v-model で value を動的に変化させるアニメーション例',
+      'ツールバー内への配置 (ページ読み込みバー)',
+    ],
+    missingMedium: [
+      'カスタム高さ (CSS変数 --height)',
+    ],
+  },
 ];
 </script>

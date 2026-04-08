@@ -120,6 +120,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/SkeletonTextPage.vue'),
   },
   {
+    path: '/samples/catalog/progress-bar',
+    component: () => import('@/views/samples/catalog/ProgressBarPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

@@ -607,5 +607,26 @@ const components: Coverage[] = [
       'ionItemReorder イベントの詳細情報活用 (from/to インデックス)',
     ],
   },
+  {
+    name: 'FAB',
+    catalogPath: '/samples/catalog/fab',
+    officialUrl: 'https://ionicframework.com/docs/api/fab',
+    implemented: [
+      'Basic (slot="fixed" による固定表示)',
+      'FAB List (サブボタン展開 side="top")',
+      'トグル制御 (@click で fabOpen 管理)',
+      'Positions (vertical/horizontal バリエーション説明)',
+      'Color Variants (7色の小型 FAB)',
+      'Edge mode の説明',
+    ],
+    missingHigh: [
+      'Edge mode の実動作デモ (vertical="top" + edge)',
+      'FAB List の side="start"/"end"/"bottom" バリエーション',
+    ],
+    missingMedium: [
+      'activated プロパティによる展開状態の外部制御',
+      'ion-fab の close() メソッド呼び出し',
+    ],
+  },
 ];
 </script>

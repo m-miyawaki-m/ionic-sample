@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>
         <code>ion-img</code> は遅延読込 (Lazy Load) をサポートする画像コンテナ。
@@ -76,6 +80,16 @@
         alt="Ionic Framework ロゴ"
         style="max-width: 200px; border-radius: 8px; background: #3880ff; padding: 16px;"
       />
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/img" target="_blank" rel="noopener">ionicframework.com/docs/api/img ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-img
+        src="https://ionicframework.com/docs/img/demos/card-media.png"
+        alt="Sunset over a lake"
+      />
     </ion-content>
   </ion-page>
 </template>
@@ -83,7 +97,7 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonImg,
+  IonButtons, IonBackButton, IonImg, IonNote,
 } from '@ionic/vue';
 import { ref } from 'vue';
 

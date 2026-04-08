@@ -37,6 +37,21 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/RelocationPage.vue'),
   },
   {
+    path: '/samples',
+    name: 'SamplesIndex',
+    component: () => import('@/views/samples/SamplesIndexPage.vue'),
+  },
+  {
+    path: '/samples/catalog',
+    name: 'CatalogIndex',
+    component: () => import('@/views/samples/catalog/CatalogIndexPage.vue'),
+  },
+  {
+    path: '/samples/mockups',
+    name: 'MockupsIndex',
+    component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),
+  },
+  {
     path: '/samples/components',
     name: 'SampleComponents',
     component: () => import('@/views/samples/ComponentsPage.vue'),

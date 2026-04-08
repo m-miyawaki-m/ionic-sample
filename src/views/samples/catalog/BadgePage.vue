@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>ion-badge はインライン要素として数値やラベルを小さなバッジで表示する。</p>
       <ion-badge>1</ion-badge>
@@ -39,7 +43,6 @@
       <h2>In list item (slot="end")</h2>
       <p>ion-item の end スロットに置くと、リスト右端に未読数などを表示できる。</p>
     </ion-content>
-
     <ion-list>
       <ion-item>
         <ion-label>受信トレイ</ion-label>
@@ -58,6 +61,18 @@
         <ion-badge slot="end" color="success">✓</ion-badge>
       </ion-item>
     </ion-list>
+
+    <div class="ion-padding">
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/badge" target="_blank" rel="noopener">ionicframework.com/docs/api/badge ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-item>
+        <ion-label>Notifications</ion-label>
+        <ion-badge slot="end">5</ion-badge>
+      </ion-item>
+    </div>
   </ion-page>
 </template>
 
@@ -65,6 +80,6 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
-  IonBadge, IonList, IonItem, IonLabel,
+  IonBadge, IonList, IonItem, IonLabel, IonNote,
 } from '@ionic/vue';
 </script>

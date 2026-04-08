@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>actionSheetController.create() → present() でシートを表示。背景タップでも閉じられる。</p>
       <ion-button @click="showBasic">Basic Action Sheet</ion-button>
@@ -29,6 +33,13 @@
       <h2>Cancel Button</h2>
       <p>role: 'cancel' を指定すると Cancel ボタンが一番下に別表示される。タップ時と背景タップ時は自動で閉じる。</p>
       <ion-button @click="showCancel">With Cancel Button</ion-button>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/action-sheet" target="_blank" rel="noopener">ionicframework.com/docs/api/action-sheet ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-button @click="presentOfficialActionSheet">Show Official Action Sheet</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -36,7 +47,7 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonButton,
+  IonButtons, IonBackButton, IonButton, IonNote,
   actionSheetController,
 } from '@ionic/vue';
 import { trash, share, heart, create, close } from 'ionicons/icons';
@@ -98,5 +109,27 @@ const showCancel = async () => {
     ],
   });
   await actionSheet.present();
+};
+
+const presentOfficialActionSheet = async () => {
+  const officialSheet = await actionSheetController.create({
+    header: 'Actions',
+    buttons: [
+      {
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => { console.log('Delete clicked'); },
+      },
+      {
+        text: 'Share',
+        handler: () => { console.log('Share clicked'); },
+      },
+      {
+        text: 'Cancel',
+        role: 'cancel',
+      },
+    ],
+  });
+  await officialSheet.present();
 };
 </script>

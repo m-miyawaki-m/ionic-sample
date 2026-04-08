@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <!-- Fixed FAB (list) anchored to content -->
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button @click="fabOpen = !fabOpen" :color="fabOpen ? 'danger' : 'primary'">
@@ -106,6 +109,29 @@
           <ion-icon :icon="add" />
         </ion-fab-button>
       </div>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/fab" target="_blank" rel="noopener">ionicframework.com/docs/api/fab ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <!-- NOTE: slot="fixed" を重ねると既存FABと重複するため、ion-card 内にコード例として掲示 -->
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>公式の基本構造 (slot="fixed" は右下FABを参照)</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <pre style="font-size: 0.8em; white-space: pre-wrap; word-break: break-all;">&lt;!-- ion-content 内に配置 --&gt;
+&lt;ion-fab slot="fixed" vertical="bottom" horizontal="end"&gt;
+  &lt;ion-fab-button&gt;
+    &lt;ion-icon :icon="add" /&gt;
+  &lt;/ion-fab-button&gt;
+&lt;/ion-fab&gt;</pre>
+          <p style="font-size: 0.85em; color: var(--ion-color-medium);">
+            ※ このページ右下の FAB ボタンが上記コードの実装例です。
+          </p>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -116,8 +142,8 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
   IonFab, IonFabButton, IonFabList,
-  IonCard, IonCardContent,
-  IonList, IonItem, IonLabel, IonIcon,
+  IonCard, IonCardHeader, IonCardTitle, IonCardContent,
+  IonList, IonItem, IonLabel, IonIcon, IonNote,
 } from '@ionic/vue';
 import { add, close, share, mail, copy } from 'ionicons/icons';
 

@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic (trigger)</h2>
       <p>trigger プロパティにボタンの id を指定するだけで、そのボタンにアンカーした Popover が開く。最もシンプルな使い方。</p>
       <ion-button id="trigger-basic">Open Basic Popover</ion-button>
@@ -55,6 +59,22 @@
           <p>Translucent スタイルのポップオーバー。iOS で特に効果的。</p>
         </ion-content>
       </ion-popover>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/popover" target="_blank" rel="noopener">ionicframework.com/docs/api/popover ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-button id="official-popover-trigger">Open Official Popover</ion-button>
+      <ion-popover trigger="official-popover-trigger" :dismiss-on-select="true">
+        <ion-content class="ion-padding">
+          <ion-list lines="none">
+            <ion-item button :detail="false">Option 1</ion-item>
+            <ion-item button :detail="false">Option 2</ion-item>
+            <ion-item button :detail="false">Option 3</ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-popover>
     </ion-content>
   </ion-page>
 </template>
@@ -64,7 +84,7 @@ import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonButton, IonPopover,
-  IonList, IonItem,
+  IonList, IonItem, IonNote,
 } from '@ionic/vue';
 
 const manualOpen = ref(false);

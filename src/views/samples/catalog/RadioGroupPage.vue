@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-padding ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic</h2>
       <p class="ion-padding-horizontal">ion-radio-group の中に ion-radio を入れる。1つだけ選択できる。v-model で選択中の値を保持する。</p>
       <ion-radio-group v-model="basicValue">
@@ -58,6 +62,20 @@
           </ion-item>
         </ion-list>
       </ion-radio-group>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/radio-group" target="_blank" rel="noopener">ionicframework.com/docs/api/radio-group ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプルをそのまま実装 -->
+      <div class="ion-padding-horizontal">
+        <ion-radio-group value="strawberries">
+          <ion-radio value="grapes">Grapes</ion-radio><br />
+          <ion-radio value="strawberries">Strawberries</ion-radio><br />
+          <ion-radio value="pineapple">Pineapple</ion-radio><br />
+          <ion-radio value="cherries">Cherries</ion-radio>
+        </ion-radio-group>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -68,6 +86,7 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
   IonList, IonItem, IonRadioGroup, IonRadio,
+  IonNote,
 } from '@ionic/vue';
 
 const basicValue = ref<string>('apple');

@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>ion-segment はタブ風の選択UI。子要素に ion-segment-button を並べる。1つだけ選べる。v-model で選択値を保持。</p>
       <ion-segment v-model="basicValue">
@@ -72,6 +76,21 @@
         <ion-segment-content id="second">Second の内容</ion-segment-content>
         <ion-segment-content id="third">Third の内容</ion-segment-content>
       </ion-segment-view>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/segment" target="_blank" rel="noopener">ionicframework.com/docs/api/segment ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-segment v-model="officialSegmentValue">
+        <ion-segment-button value="friends">
+          <ion-label>Friends</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="enemies">
+          <ion-label>Enemies</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <p>選択中: {{ officialSegmentValue }}</p>
     </ion-content>
   </ion-page>
 </template>
@@ -80,9 +99,10 @@
 import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonLabel,
+  IonButtons, IonBackButton, IonLabel, IonNote,
   IonSegment, IonSegmentButton, IonSegmentView, IonSegmentContent,
 } from '@ionic/vue';
 
 const basicValue = ref<string>('all');
+const officialSegmentValue = ref<string>('friends');
 </script>

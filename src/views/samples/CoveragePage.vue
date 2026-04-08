@@ -367,5 +367,23 @@ const components: Coverage[] = [
       'カスタムサイズ (CSS変数 --size)',
     ],
   },
+  {
+    name: 'Spinner',
+    catalogPath: '/samples/catalog/spinner',
+    officialUrl: 'https://ionicframework.com/docs/api/spinner',
+    implemented: [
+      'Basic (デフォルト)',
+      'Variants 全8種 (bubbles/circles/crescent/dots/lines/lines-small/lines-sharp/lines-sharp-small)',
+      'Color (8色)',
+      'Paused',
+    ],
+    missingHigh: [
+      'ion-loading と組み合わせたフルスクリーンローディング',
+      'コンテンツ上に重ねる半透明オーバーレイパターン',
+    ],
+    missingMedium: [
+      'カスタムサイズ指定',
+    ],
+  },
 ];
 </script>

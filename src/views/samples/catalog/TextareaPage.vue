@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
 
       <h2>Basic</h2>
       <p>通常・読み取り専用・無効化の3パターン。ion-item 内に配置する。</p>
@@ -103,6 +106,23 @@
         </ion-item>
       </ion-list>
 
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/textarea" target="_blank" rel="noopener">ionicframework.com/docs/api/textarea ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプルをそのまま実装 -->
+      <ion-list>
+        <ion-item>
+          <ion-textarea label="Regular textarea" placeholder="Type something here"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-textarea :readonly="true" label="Readonly textarea" placeholder="Can't edit this"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-textarea :disabled="true" label="Disabled textarea" placeholder="Can't type here"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
     </ion-content>
   </ion-page>
 </template>
@@ -111,6 +131,7 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonList, IonItem, IonTextarea,
+  IonNote,
 } from '@ionic/vue';
 
 const customFormatter = (inputLength: number, maxLength: number) => {

@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin-bottom ion-margin-horizontal" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic (シングル展開)</h2>
       <p class="ion-padding-horizontal">ion-accordion-group 内の ion-accordion は、デフォルトで一度に1つだけ開く。ヘッダータップで開閉できる。</p>
       <ion-accordion-group>
@@ -110,6 +114,38 @@
         </ion-accordion>
       </ion-accordion-group>
 
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/accordion" target="_blank" rel="noopener">ionicframework.com/docs/api/accordion ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-accordion-group>
+        <ion-accordion value="colors">
+          <ion-item slot="header" color="light">
+            <ion-label>Colors</ion-label>
+          </ion-item>
+          <div slot="content" class="ion-padding">
+            Red, Orange, Yellow are warm colors.
+          </div>
+        </ion-accordion>
+        <ion-accordion value="shapes">
+          <ion-item slot="header" color="light">
+            <ion-label>Shapes</ion-label>
+          </ion-item>
+          <div slot="content" class="ion-padding">
+            Triangles, Squares, Circles are fundamental shapes.
+          </div>
+        </ion-accordion>
+        <ion-accordion value="lines">
+          <ion-item slot="header" color="light">
+            <ion-label>Lines</ion-label>
+          </ion-item>
+          <div slot="content" class="ion-padding">
+            Curved, Straight, Diagonal are types of lines.
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+
       <div class="ion-padding" />
     </ion-content>
   </ion-page>
@@ -118,7 +154,7 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton,
+  IonButtons, IonBackButton, IonNote,
   IonAccordionGroup, IonAccordion, IonItem, IonLabel,
 } from '@ionic/vue';
 </script>

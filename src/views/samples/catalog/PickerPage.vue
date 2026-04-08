@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
 
       <h2>Basic (単一列)</h2>
       <p>ion-picker 内に ion-picker-column を1列配置。ion-picker-column-option が各選択肢。value で初期値を指定する。</p>
@@ -81,6 +84,25 @@
       </ion-modal>
       <p v-if="confirmedValue" style="margin-top: 8px;">確定値: {{ confirmedValue }}</p>
 
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/picker" target="_blank" rel="noopener">ionicframework.com/docs/api/picker ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-picker>
+        <ion-picker-column
+          :value="officialPickerValue"
+          @ionChange="(e: CustomEvent) => officialPickerValue = e.detail.value"
+        >
+          <ion-picker-column-option value="apple">Apple</ion-picker-column-option>
+          <ion-picker-column-option value="banana">Banana</ion-picker-column-option>
+          <ion-picker-column-option value="cherry">Cherry</ion-picker-column-option>
+          <ion-picker-column-option value="grape">Grape</ion-picker-column-option>
+          <ion-picker-column-option value="mango">Mango</ion-picker-column-option>
+        </ion-picker-column>
+      </ion-picker>
+      <p style="margin-top: 8px;">選択中: {{ officialPickerValue }}</p>
+
     </ion-content>
   </ion-page>
 </template>
@@ -90,7 +112,7 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonButton,
   IonPicker, IonPickerColumn, IonPickerColumnOption,
-  IonModal,
+  IonModal, IonNote,
 } from '@ionic/vue';
 import { ref } from 'vue';
 
@@ -116,4 +138,7 @@ const onModalDismiss = (e: CustomEvent) => {
     confirmedValue.value = e.detail.data;
   }
 };
+
+// 公式サンプル
+const officialPickerValue = ref('banana');
 </script>

@@ -503,5 +503,28 @@ const components: Coverage[] = [
       'reference="trigger" / "event" の違い',
     ],
   },
+  {
+    name: 'Datetime',
+    catalogPath: '/samples/catalog/datetime',
+    officialUrl: 'https://ionicframework.com/docs/api/datetime',
+    implemented: [
+      'Inline datetime (presentation="date-time")',
+      'Date only (presentation="date")',
+      'Time only (presentation="time")',
+      'Min / Max 制約 (min/max プロパティ)',
+      'Datetime Button + Modal (ion-datetime-button)',
+      'v-model によるバインディング',
+    ],
+    missingHigh: [
+      'prefer-wheel (スクロール式ホイール表示)',
+      'highlighted-dates (特定日付のハイライト)',
+      'multiple (複数日付選択)',
+    ],
+    missingMedium: [
+      'locale (ロケール指定)',
+      'first-day-of-week (週の始まり)',
+      'show-default-buttons (確認/キャンセルボタン)',
+    ],
+  },
 ];
 </script>

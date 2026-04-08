@@ -50,5 +50,6 @@ const components = [
   { name: 'Action Sheet', path: '/samples/catalog/action-sheet', description: '下から出るボタン群オーバーレイ。アイコン/destructive/cancel など複数ロールに対応' },
   { name: 'Loading',      path: '/samples/catalog/loading',      description: '全画面ローディングオーバーレイ。メッセージ・スピナー種別・duration 指定可' },
   { name: 'Popover',      path: '/samples/catalog/popover',      description: '要素にアンカーするポップオーバー。trigger 属性または is-open で制御可' },
+  { name: 'Datetime',    path: '/samples/catalog/datetime',    description: '日付・時刻ピッカー。インライン表示とボタン+モーダル形式の両方に対応' },
 ];
 </script>

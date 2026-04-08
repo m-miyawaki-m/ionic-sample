@@ -140,6 +140,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/PopoverPage.vue'),
   },
   {
+    path: '/samples/catalog/datetime',
+    component: () => import('@/views/samples/catalog/DatetimePage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

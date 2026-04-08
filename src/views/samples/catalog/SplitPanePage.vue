@@ -36,6 +36,9 @@
       </ion-header>
 
       <ion-content class="ion-padding">
+        <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+          📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+        </ion-note>
         <h2>Split Pane とは</h2>
         <p>
           <code>ion-split-pane</code> はレスポンシブな2ペインレイアウトを実現するコンポーネント。
@@ -75,6 +78,41 @@
           <code>ion-menu</code> の <code>content-id</code> も同じ値を指定することで、
           狭い画面でのドロワー開閉が正しく動作する。
         </p>
+
+        <h2>公式サンプル (Ionic Docs)</h2>
+        <p>
+          公式: <a href="https://ionicframework.com/docs/api/split-pane" target="_blank" rel="noopener">ionicframework.com/docs/api/split-pane ↗</a>
+        </p>
+        <!-- 公式ドキュメントの基本サンプル -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>ion-split-pane 基本構造</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <pre style="margin: 0; font-size: 12px; white-space: pre-wrap;">&lt;ion-split-pane content-id="main"&gt;
+  &lt;ion-menu content-id="main"&gt;
+    &lt;ion-header&gt;
+      &lt;ion-toolbar&gt;
+        &lt;ion-title&gt;Menu&lt;/ion-title&gt;
+      &lt;/ion-toolbar&gt;
+    &lt;/ion-header&gt;
+    &lt;ion-content&gt;...&lt;/ion-content&gt;
+  &lt;/ion-menu&gt;
+
+  &lt;ion-page id="main"&gt;
+    &lt;ion-header&gt;
+      &lt;ion-toolbar&gt;
+        &lt;ion-buttons slot="start"&gt;
+          &lt;ion-menu-button /&gt;
+        &lt;/ion-buttons&gt;
+        &lt;ion-title&gt;Main&lt;/ion-title&gt;
+      &lt;/ion-toolbar&gt;
+    &lt;/ion-header&gt;
+    &lt;ion-content&gt;...&lt;/ion-content&gt;
+  &lt;/ion-page&gt;
+&lt;/ion-split-pane&gt;</pre>
+          </ion-card-content>
+        </ion-card>
       </ion-content>
     </ion-page>
   </ion-split-pane>
@@ -85,6 +123,7 @@ import {
   IonSplitPane, IonMenu, IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonMenuButton,
   IonList, IonItem, IonIcon, IonLabel,
+  IonNote, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
 } from '@ionic/vue';
 import { homeOutline, settingsOutline, barChartOutline, peopleOutline } from 'ionicons/icons';
 import { ref, computed } from 'vue';

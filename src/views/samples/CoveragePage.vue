@@ -385,5 +385,23 @@ const components: Coverage[] = [
       'カスタムサイズ指定',
     ],
   },
+  {
+    name: 'Skeleton Text',
+    catalogPath: '/samples/catalog/skeleton-text',
+    officialUrl: 'https://ionicframework.com/docs/api/skeleton-text',
+    implemented: [
+      'Basic (幅指定のプレースホルダー)',
+      'Animated (ウェーブアニメーション)',
+      'In list item (avatar + label スケルトン)',
+      'In card (header + content スケルトン)',
+    ],
+    missingHigh: [
+      'v-if で実データとスケルトンを切り替えるパターン',
+      'ion-thumbnail を使ったサムネイルスケルトン',
+    ],
+    missingMedium: [
+      'カスタム高さ・角丸指定',
+    ],
+  },
 ];
 </script>

@@ -44,5 +44,6 @@ const components = [
   { name: 'Chip',        path: '/samples/catalog/chip',        description: 'タグ・フィルター表示に使うコンパクト要素。アイコン・アバター付き可' },
   { name: 'Avatar',      path: '/samples/catalog/avatar',      description: '丸型のプロフィール画像。リストや chip と組み合わせて使う' },
   { name: 'Spinner',     path: '/samples/catalog/spinner',     description: 'ローディング中を示すアニメーション。8種類の形状と色指定に対応' },
+  { name: 'Skeleton Text', path: '/samples/catalog/skeleton-text', description: 'データ読み込み中のプレースホルダー。animated でウェーブアニメーション付き' },
 ];
 </script>

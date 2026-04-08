@@ -116,6 +116,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/SpinnerPage.vue'),
   },
   {
+    path: '/samples/catalog/skeleton-text',
+    component: () => import('@/views/samples/catalog/SkeletonTextPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

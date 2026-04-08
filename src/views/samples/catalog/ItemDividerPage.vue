@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content>
+      <ion-note color="medium" class="ion-margin ion-padding" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2 class="ion-padding">Basic (アルファベット順グループ)</h2>
       <p class="ion-padding-horizontal">
         <code>ion-item-divider</code> はリスト内の視覚的な区切り。
@@ -132,6 +136,28 @@
             </ion-label>
             <ion-note slot="end">85 件</ion-note>
           </ion-item>
+        </ion-item-group>
+      </ion-list>
+
+      <h2 class="ion-padding">公式サンプル (Ionic Docs)</h2>
+      <p class="ion-padding-horizontal">
+        公式: <a href="https://ionicframework.com/docs/api/item-divider" target="_blank" rel="noopener">ionicframework.com/docs/api/item-divider ↗</a>
+      </p>
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Section A</ion-label>
+          </ion-item-divider>
+          <ion-item><ion-label>Item 1</ion-label></ion-item>
+          <ion-item><ion-label>Item 2</ion-label></ion-item>
+          <ion-item><ion-label>Item 3</ion-label></ion-item>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Section B</ion-label>
+          </ion-item-divider>
+          <ion-item><ion-label>Item 1</ion-label></ion-item>
+          <ion-item><ion-label>Item 2</ion-label></ion-item>
         </ion-item-group>
       </ion-list>
     </ion-content>

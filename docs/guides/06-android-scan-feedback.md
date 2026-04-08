@@ -298,7 +298,7 @@ const submitReceiving = async () => {
 
 ### FeedbackPage サンプルでの4パターン比較
 
-`src/views/samples/FeedbackPage.vue` で4つのフィードバックパターンを実機で試せる。
+`src/views/samples/mockups/FeedbackPage.vue` で4つのフィードバックパターンを実機で試せる。
 
 #### 画面構成
 

@@ -100,9 +100,14 @@ Vueアプリケーションを生成し、IonicVueプラグインとルーター
 | `/stocktaking` | 棚卸し |
 | `/inventory` | 在庫照会 |
 | `/relocation` | ロケーション移動 |
-| `/samples/components` | コンポーネントデモ |
-| `/samples/scan-demo` | スキャンデモ |
-| `/samples/feedback` | フィードバックデモ |
+| `/samples` | サンプル一覧 (カタログ・モック振り分け) |
+| `/samples/catalog` | コンポーネントカタログ一覧 |
+| `/samples/catalog/{button,input,list,modal,toast}` | 各 Ionic コンポーネントの素のサンプル |
+| `/samples/mockups` | 画面モック一覧 |
+| `/samples/mockups/components` | コンポーネントデモ |
+| `/samples/mockups/scan-demo` | スキャンデモ |
+| `/samples/mockups/feedback` | フィードバックデモ |
+| `/samples/mockups/dialog-demo` | ダイアログデモ |
 
 ### `src/components/` — 共通UIコンポーネント
 

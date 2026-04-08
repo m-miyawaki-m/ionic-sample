@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
 
       <h2>Basic (タップで消える)</h2>
       <p>
@@ -56,6 +59,13 @@
         直接使うケースは少ないが、カスタムオーバーレイを自作する際に役立つ。
       </p>
 
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/backdrop" target="_blank" rel="noopener">ionicframework.com/docs/api/backdrop ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-button @click="officialBackdropVisible = true">Show Official Backdrop</ion-button>
+
     </ion-content>
 
     <!-- Basic backdrop: tappable=true (default) -->
@@ -90,13 +100,19 @@
       @ionBackdropTap="showCustom = false"
     />
 
+    <!-- Official sample backdrop -->
+    <ion-backdrop
+      :visible="officialBackdropVisible"
+      @ionBackdropTap="officialBackdropVisible = false"
+    />
+
   </ion-page>
 </template>
 
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonButton, IonBackdrop,
+  IonButtons, IonBackButton, IonButton, IonBackdrop, IonNote,
 } from '@ionic/vue';
 import { ref } from 'vue';
 
@@ -104,6 +120,7 @@ const showBasic = ref(false);
 const showNonTappableVisible = ref(false);
 const showClickThrough = ref(false);
 const showCustom = ref(false);
+const officialBackdropVisible = ref(false);
 
 const showNonTappable = () => {
   showNonTappableVisible.value = true;

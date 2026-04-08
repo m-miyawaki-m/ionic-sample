@@ -156,6 +156,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/ItemSlidingPage.vue'),
   },
   {
+    path: '/samples/catalog/reorder',
+    component: () => import('@/views/samples/catalog/ReorderPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

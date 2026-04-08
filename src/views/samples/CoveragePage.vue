@@ -589,5 +589,23 @@ const components: Coverage[] = [
       'disabled での無効化',
     ],
   },
+  {
+    name: 'Reorder',
+    catalogPath: '/samples/catalog/reorder',
+    officialUrl: 'https://ionicframework.com/docs/api/reorder-group',
+    implemented: [
+      'Basic (ハンドル右端 slot="end")',
+      'ハンドル左端 (slot="start")',
+      'disabled による動的有効/無効切替',
+      '@ionReorder + event.detail.complete() で配列更新',
+    ],
+    missingHigh: [
+      'カスタムドラッグハンドルアイコン (ion-icon 使用)',
+      'ion-item-sliding との組み合わせ',
+    ],
+    missingMedium: [
+      'ionItemReorder イベントの詳細情報活用 (from/to インデックス)',
+    ],
+  },
 ];
 </script>

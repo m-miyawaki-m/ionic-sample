@@ -54,5 +54,6 @@ const components = [
   { name: 'Range',       path: '/samples/catalog/range',       description: 'スライダー型の数値入力。デュアルノブ・スナップ・ピン表示など多機能' },
   { name: 'Accordion',   path: '/samples/catalog/accordion',   description: '折り畳みコンテンツ。複数同時展開・inset・disabled に対応' },
   { name: 'Item Sliding', path: '/samples/catalog/item-sliding', description: 'スワイプで出るアクションボタン。左右両サイドのオプションに対応' },
+  { name: 'Reorder',     path: '/samples/catalog/reorder',     description: 'ドラッグで並び順を変更できるリスト。ハンドル位置・有効/無効の切替に対応' },
 ];
 </script>

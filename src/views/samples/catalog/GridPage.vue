@@ -10,6 +10,9 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
       <h2>Basic Grid (2・3・4カラム)</h2>
       <p>ion-grid → ion-row → ion-col の3層構造で12カラムグリッドを構成する。size プロパティで各カラムの幅を指定する (全体12分割)。</p>
 
@@ -159,6 +162,24 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/grid" target="_blank" rel="noopener">ionicframework.com/docs/api/grid ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>ion-col</ion-col>
+          <ion-col>ion-col</ion-col>
+          <ion-col>ion-col</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">size=6</ion-col>
+          <ion-col size="3">size=3</ion-col>
+          <ion-col size="3">size=3</ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-content>
   </ion-page>
 </template>
@@ -168,6 +189,6 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton,
   IonGrid, IonRow, IonCol,
-  IonCard, IonCardContent,
+  IonCard, IonCardContent, IonNote,
 } from '@ionic/vue';
 </script>

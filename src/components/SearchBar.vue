@@ -5,7 +5,7 @@
       :label="label"
       label-placement="stacked"
       :placeholder="placeholder"
-      @ion-input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      @ion-input="emit('update:modelValue', ($event.target as unknown as HTMLInputElement).value)"
       @keyup.enter="emit('search')"
     />
     <ion-button slot="end" fill="clear" @click="emit('scan')">

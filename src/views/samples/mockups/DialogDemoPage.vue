@@ -103,8 +103,8 @@ import {
 } from '@ionic/vue';
 import PageLayout from '@/components/PageLayout.vue';
 import ResultCard from '@/components/ResultCard.vue';
-import ScanParseModal from '@/views/samples/dialogs/ScanParseModal.vue';
-import ScanParseFullscreen from '@/views/samples/dialogs/ScanParseFullscreen.vue';
+import ScanParseModal from '@/views/samples/mockups/dialogs/ScanParseModal.vue';
+import ScanParseFullscreen from '@/views/samples/mockups/dialogs/ScanParseFullscreen.vue';
 import { useScanTransfer } from '@/composables/useScanTransfer';
 import type { ParsedScanCode } from '@/types';
 
@@ -134,7 +134,7 @@ const onConfirm = (pattern: string, value: ParsedScanCode) => {
 };
 
 const goToScanPage = () => {
-  router.push('/samples/dialog-demo/scan');
+  router.push('/samples/mockups/dialog-demo/scan');
 };
 
 // ページ遷移から戻ってきた時に composable から値を受け取る

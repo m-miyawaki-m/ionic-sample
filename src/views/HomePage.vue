@@ -62,14 +62,9 @@
       <ion-label>サンプル</ion-label>
     </ion-list-header>
     <ion-list>
-      <ion-item
-        v-for="sample in samples"
-        :key="sample.path"
-        :router-link="sample.path"
-        detail
-      >
-        <ion-icon :icon="sample.icon" slot="start" />
-        <ion-label>{{ sample.title }}</ion-label>
+      <ion-item router-link="/samples" detail>
+        <ion-icon :icon="appsOutline" slot="start" />
+        <ion-label>サンプル一覧</ion-label>
       </ion-item>
     </ion-list>
   </PageLayout>
@@ -86,7 +81,7 @@ import {
 import {
   downloadOutline, pushOutline, clipboardOutline,
   searchOutline, swapHorizontalOutline,
-  appsOutline, scanOutline, notificationsOutline, chatboxOutline,
+  appsOutline,
 } from 'ionicons/icons';
 import PageLayout from '@/components/PageLayout.vue';
 import type { MenuAction } from '@/types';
@@ -114,13 +109,6 @@ const menus = [
   { title: '棚卸し', description: 'ロケーション・品目 → 数量確認', path: '/stocktaking', icon: clipboardOutline },
   { title: '在庫照会', description: '品目スキャン → 在庫情報表示', path: '/inventory', icon: searchOutline },
   { title: 'ロケーション移動', description: '移動元・移動先・品目を記録', path: '/relocation', icon: swapHorizontalOutline },
-];
-
-const samples = [
-  { title: 'コンポーネント一覧', path: '/samples/components', icon: appsOutline },
-  { title: 'スキャン入力デモ', path: '/samples/scan-demo', icon: scanOutline },
-  { title: 'スキャンフィードバック', path: '/samples/feedback', icon: notificationsOutline },
-  { title: 'ダイアログデモ', path: '/samples/dialog-demo', icon: chatboxOutline },
 ];
 </script>
 

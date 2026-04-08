@@ -1,5 +1,5 @@
 <template>
-  <PageLayout title="入力補助（ページ遷移）" back-href="/samples/dialog-demo">
+  <PageLayout title="入力補助（ページ遷移）" back-href="/samples/mockups/dialog-demo">
     <p>実際のページ遷移です。URLが変わり、ブラウザの戻るボタンでも戻れます。</p>
 
     <ion-list>

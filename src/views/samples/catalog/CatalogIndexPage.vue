@@ -64,5 +64,6 @@ const components = [
   { name: 'Breadcrumbs', path: '/samples/catalog/breadcrumbs', description: '階層パンくずリスト。3階層のサンプルあり' },
   { name: 'Textarea',  path: '/samples/catalog/textarea',  description: '複数行テキスト入力。auto-grow で行数自動拡張。備考・メモ入力に' },
   { name: 'Picker',    path: '/samples/catalog/picker',    description: '複数列のホイール選択。時刻・カスタム値の入力に' },
+  { name: 'Input OTP', path: '/samples/catalog/input-otp', description: 'OTP/認証コード入力。1文字ごとに自動フォーカス遷移' },
 ];
 </script>

@@ -218,6 +218,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/PickerPage.vue'),
   },
   {
+    path: '/samples/catalog/input-otp',
+    component: () => import('@/views/samples/catalog/InputOtpPage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

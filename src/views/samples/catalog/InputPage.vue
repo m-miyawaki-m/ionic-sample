@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Basic</h2>
       <p>デフォルトの ion-input。label と placeholder を持つ。</p>
       <ion-input label="Default" placeholder="Enter text" />
@@ -49,6 +53,29 @@
       <ion-input label="Password" type="password" value="secret123">
         <ion-input-password-toggle slot="end" />
       </ion-input>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/input" target="_blank" rel="noopener">ionicframework.com/docs/api/input ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプルをそのまま実装 -->
+      <ion-list>
+        <ion-item>
+          <ion-input label="Default input"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Input with value" value="121 S Pinckney St #300"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Readonly input" value="Madison" :readonly="true"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Disabled input" value="53703" :disabled="true"></ion-input>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -57,5 +84,6 @@
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonInput, IonInputPasswordToggle,
+  IonNote, IonList, IonItem,
 } from '@ionic/vue';
 </script>

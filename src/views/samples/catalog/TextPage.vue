@@ -10,6 +10,10 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-note color="medium" class="ion-margin-bottom" style="display: block;">
+        📝 以下のサンプルは自作。末尾の「公式サンプル」セクションに公式ドキュメントのコード例あり。
+      </ion-note>
+
       <h2>Color 変化</h2>
       <p>
         <code>ion-text</code> はインラインテキストに色やタイポグラフィを適用するラッパ要素。
@@ -66,6 +70,23 @@
       <p>
         <ion-text color="warning">パスワードが弱いです。英数字と記号を組み合わせてください。</ion-text>
       </p>
+
+      <h2>公式サンプル (Ionic Docs)</h2>
+      <p>
+        公式: <a href="https://ionicframework.com/docs/api/text" target="_blank" rel="noopener">ionicframework.com/docs/api/text ↗</a>
+      </p>
+      <!-- 公式ドキュメントの基本サンプル -->
+      <p>
+        <ion-text color="primary">
+          <h1>H1 Primary</h1>
+        </ion-text>
+        <ion-text color="secondary">
+          <h2>H2 Secondary</h2>
+        </ion-text>
+        <ion-text color="danger">
+          <p>Danger paragraph text.</p>
+        </ion-text>
+      </p>
     </ion-content>
   </ion-page>
 </template>
@@ -73,6 +94,6 @@
 <script setup lang="ts">
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonText,
+  IonButtons, IonBackButton, IonText, IonNote,
 } from '@ionic/vue';
 </script>

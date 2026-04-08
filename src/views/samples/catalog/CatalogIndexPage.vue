@@ -32,5 +32,6 @@ const components = [
   { name: 'Toast',  path: '/samples/catalog/toast'  },
   { name: 'Radio Group', path: '/samples/catalog/radio-group' },
   { name: 'Checkbox', path: '/samples/catalog/checkbox' },
+  { name: 'Toggle', path: '/samples/catalog/toggle' },
 ];
 </script>

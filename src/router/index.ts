@@ -75,6 +75,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/CheckboxPage.vue'),
   },
   {
+    path: '/samples/catalog/toggle',
+    component: () => import('@/views/samples/catalog/TogglePage.vue'),
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

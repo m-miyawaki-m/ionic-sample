@@ -26,5 +26,6 @@ import {
 
 const components = [
   { name: 'Button', path: '/samples/catalog/button' },
+  { name: 'Input',  path: '/samples/catalog/input'  },
 ];
 </script>

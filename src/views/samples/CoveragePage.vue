@@ -668,5 +668,26 @@ const components: Coverage[] = [
       'ionInfiniteScroll の getScrollElement() 活用',
     ],
   },
+  {
+    name: 'Grid',
+    catalogPath: '/samples/catalog/grid',
+    officialUrl: 'https://ionicframework.com/docs/api/grid',
+    implemented: [
+      'Basic 2・3・4カラムグリッド (size="6/4/3")',
+      '異なる幅のカラム (size カスタム組み合わせ)',
+      'レスポンシブ (size-md / size-lg ブレークポイント)',
+      'Offset (offset="2" などのカラムずらし)',
+      'Fixed Grid (fixed 属性)',
+      'No Padding (ion-no-padding クラス)',
+    ],
+    missingHigh: [
+      'ion-row の align-items / justify-content (縦・横揃え)',
+      'push / pull (カラム順序変更)',
+    ],
+    missingMedium: [
+      'size-xs / size-sm のブレークポイント詳細',
+      'ion-grid の --ion-grid-columns でカラム数変更',
+    ],
+  },
 ];
 </script>

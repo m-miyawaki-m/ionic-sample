@@ -58,5 +58,6 @@ const components = [
   { name: 'FAB',         path: '/samples/catalog/fab',         description: '画面に固定されるフローティングアクションボタン。FAB リスト・配置・Edge モードに対応' },
   { name: 'Refresher',     path: '/samples/catalog/refresher',     description: '上に引っ張って更新するプルトゥリフレッシュ。カスタムテキスト・アイコン・有効/無効切替に対応' },
   { name: 'Infinite Scroll', path: '/samples/catalog/infinite-scroll', description: 'スクロール末尾で追加データを自動読み込み。threshold・position・全件完了後の無効化に対応' },
+  { name: 'Grid',            path: '/samples/catalog/grid',            description: '12カラムグリッドレイアウト。レスポンシブ・Offset・Fixed・No Padding に対応' },
 ];
 </script>

@@ -569,5 +569,25 @@ const components: Coverage[] = [
       'readonly (読み取り専用)',
     ],
   },
+  {
+    name: 'Item Sliding',
+    catalogPath: '/samples/catalog/item-sliding',
+    officialUrl: 'https://ionicframework.com/docs/api/item-sliding',
+    implemented: [
+      'Basic (左スワイプ + 削除アクション)',
+      '複数オプション (3ボタン構成)',
+      'アイコンのみオプション (slot="icon-only")',
+      '両サイドオプション (side="start" + side="end")',
+      '削除後の配列更新 (reactiveなリスト管理)',
+    ],
+    missingHigh: [
+      'ion-item-sliding の open() / close() メソッド呼び出し',
+      'expandable オプション (全展開スワイプ)',
+    ],
+    missingMedium: [
+      'ionDrag イベント (スワイプ量の取得)',
+      'disabled での無効化',
+    ],
+  },
 ];
 </script>

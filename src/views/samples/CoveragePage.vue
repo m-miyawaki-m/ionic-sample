@@ -689,5 +689,25 @@ const components: Coverage[] = [
       'ion-grid の --ion-grid-columns でカラム数変更',
     ],
   },
+  {
+    name: 'Tabs',
+    catalogPath: '/samples/catalog/tabs',
+    officialUrl: 'https://ionicframework.com/docs/api/tabs',
+    implemented: [
+      'ion-tabs + ion-router-outlet (ネスト routing)',
+      'ion-tab-bar slot="bottom"',
+      'ion-tab-button (icon + label)',
+      '3 サブページ間の遷移',
+      'デフォルトリダイレクト (/tabs → /tabs/tab1)',
+    ],
+    missingHigh: [
+      '上部タブバー (slot="top")',
+      'タブバッジ (ion-tab-button + ion-badge)',
+    ],
+    missingMedium: [
+      'layout 切替 (icon-top/icon-start)',
+      'タブごとの履歴管理',
+    ],
+  },
 ];
 </script>

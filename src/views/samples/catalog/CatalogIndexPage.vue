@@ -59,5 +59,6 @@ const components = [
   { name: 'Refresher',     path: '/samples/catalog/refresher',     description: '上に引っ張って更新するプルトゥリフレッシュ。カスタムテキスト・アイコン・有効/無効切替に対応' },
   { name: 'Infinite Scroll', path: '/samples/catalog/infinite-scroll', description: 'スクロール末尾で追加データを自動読み込み。threshold・position・全件完了後の無効化に対応' },
   { name: 'Grid',            path: '/samples/catalog/grid',            description: '12カラムグリッドレイアウト。レスポンシブ・Offset・Fixed・No Padding に対応' },
+  { name: 'Tabs',        path: '/samples/catalog/tabs',        description: 'タブナビゲーション。子ルートで複数ページを切替' },
 ];
 </script>

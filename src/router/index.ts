@@ -176,6 +176,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/catalog/GridPage.vue'),
   },
   {
+    path: '/samples/catalog/tabs',
+    component: () => import('@/views/samples/catalog/tabs/TabsLayoutPage.vue'),
+    children: [
+      { path: '', redirect: '/samples/catalog/tabs/tab1' },
+      { path: 'tab1', component: () => import('@/views/samples/catalog/tabs/Tab1Page.vue') },
+      { path: 'tab2', component: () => import('@/views/samples/catalog/tabs/Tab2Page.vue') },
+      { path: 'tab3', component: () => import('@/views/samples/catalog/tabs/Tab3Page.vue') },
+    ],
+  },
+  {
     path: '/samples/mockups',
     name: 'MockupsIndex',
     component: () => import('@/views/samples/mockups/MockupsIndexPage.vue'),

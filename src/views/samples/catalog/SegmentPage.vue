@@ -53,6 +53,25 @@
         <ion-segment-button value="a"><ion-label>A</ion-label></ion-segment-button>
         <ion-segment-button value="b"><ion-label>B</ion-label></ion-segment-button>
       </ion-segment>
+
+      <h2>Segment View (スワイプ連動)</h2>
+      <p>ion-segment-view と ion-segment-content を使うと、segment-button のタップに加えてコンテンツ領域をスワイプして切り替えられる。各 segment-button に content-id を、対応する segment-content に同じ id を指定する。</p>
+      <ion-segment value="first">
+        <ion-segment-button value="first" content-id="first">
+          <ion-label>First</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="second" content-id="second">
+          <ion-label>Second</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="third" content-id="third">
+          <ion-label>Third</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <ion-segment-view>
+        <ion-segment-content id="first">First の内容</ion-segment-content>
+        <ion-segment-content id="second">Second の内容</ion-segment-content>
+        <ion-segment-content id="third">Third の内容</ion-segment-content>
+      </ion-segment-view>
     </ion-content>
   </ion-page>
 </template>
@@ -62,7 +81,7 @@ import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
   IonButtons, IonBackButton, IonLabel,
-  IonSegment, IonSegmentButton,
+  IonSegment, IonSegmentButton, IonSegmentView, IonSegmentContent,
 } from '@ionic/vue';
 
 const basicValue = ref<string>('all');

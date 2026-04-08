@@ -39,5 +39,6 @@ const components = [
   { name: 'Select',      path: '/samples/catalog/select',      description: 'ドロップダウン選択。Alert/Popover/ActionSheet の3UI と複数選択対応' },
   { name: 'Searchbar',   path: '/samples/catalog/searchbar',   description: '検索用入力欄。虫眼鏡アイコン・キャンセルボタン・debounce 付き' },
   { name: 'Segment',     path: '/samples/catalog/segment',     description: 'タブ風の選択UI。横スクロール対応' },
+  { name: 'Card',        path: '/samples/catalog/card',        description: 'コンテンツをまとめるカード。ヘッダー・タイトル・サブタイトル・ボタン配置など' },
 ];
 </script>

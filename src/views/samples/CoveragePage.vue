@@ -294,5 +294,25 @@ const components: Coverage[] = [
       '個別ボタンの disabled (swipeGesture 無効時)',
     ],
   },
+  {
+    name: 'Card',
+    catalogPath: '/samples/catalog/card',
+    officialUrl: 'https://ionicframework.com/docs/api/card',
+    implemented: [
+      'Basic (ion-card-content のみ)',
+      'Header + Title + Subtitle + Content',
+      'Card with button (ion-button inside)',
+      'Color (primary/secondary/success/danger)',
+      'Disabled',
+    ],
+    missingHigh: [
+      'ion-card を button として使う (routerLink / href)',
+      'ion-img による画像表示',
+    ],
+    missingMedium: [
+      'ion-item を card 内に配置するパターン',
+      'card の ion-ripple-effect',
+    ],
+  },
 ];
 </script>

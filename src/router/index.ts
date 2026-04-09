@@ -111,6 +111,26 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/pickup/TextLinkPatterns.vue'),
   },
   {
+    path: '/samples/screen-patterns',
+    component: () => import('@/views/samples/screen-patterns/ScreenPatternsIndex.vue'),
+  },
+  {
+    path: '/samples/screen-patterns/receiving',
+    component: () => import('@/views/samples/screen-patterns/ReceivingPattern.vue'),
+  },
+  {
+    path: '/samples/screen-patterns/shipping',
+    component: () => import('@/views/samples/screen-patterns/ShippingPattern.vue'),
+  },
+  {
+    path: '/samples/screen-patterns/inventory',
+    component: () => import('@/views/samples/screen-patterns/InventoryPattern.vue'),
+  },
+  {
+    path: '/samples/screen-patterns/inventory-card',
+    component: () => import('@/views/samples/screen-patterns/InventoryCardPattern.vue'),
+  },
+  {
     path: '/samples/coverage',
     name: 'SamplesCoverage',
     component: () => import('@/views/samples/CoveragePage.vue'),

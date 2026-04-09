@@ -16,6 +16,12 @@
             <p>Ionic公式コンポーネントの動作サンプル</p>
           </ion-label>
         </ion-item>
+        <ion-item router-link="/samples/screen-patterns" detail>
+          <ion-label>
+            <h2>画面パターン集</h2>
+            <p>入荷検品・出庫・在庫照会の画面モック</p>
+          </ion-label>
+        </ion-item>
         <ion-item router-link="/samples/mockups" detail>
           <ion-label>
             <h2>画面モック</h2>

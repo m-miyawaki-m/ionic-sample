@@ -6,6 +6,11 @@
           <ion-back-button default-href="/samples" />
         </ion-buttons>
         <ion-title>画面パターン集</ion-title>
+        <ion-buttons slot="end">
+          <ion-button @click="toggle">
+            <ion-icon slot="icon-only" :icon="isDark ? sunnyOutline : moonOutline" />
+          </ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -47,7 +52,10 @@
 // @ts-nocheck
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-  IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonIcon,
+  IonButtons, IonBackButton, IonButton, IonList, IonItem, IonLabel, IonIcon,
 } from '@ionic/vue';
-import { downloadOutline, pushOutline, searchOutline, gridOutline } from 'ionicons/icons';
+import { downloadOutline, pushOutline, searchOutline, gridOutline, moonOutline, sunnyOutline } from 'ionicons/icons';
+import { useDarkMode } from '@/composables/useDarkMode';
+
+const { isDark, toggle } = useDarkMode();
 </script>

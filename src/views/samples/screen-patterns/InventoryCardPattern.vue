@@ -7,6 +7,11 @@
           <ion-back-button default-href="/samples/screen-patterns" />
         </ion-buttons>
         <ion-title>在庫照会（カード表示）</ion-title>
+        <ion-buttons slot="end">
+          <ion-button @click="toggle">
+            <ion-icon slot="icon-only" :icon="isDark ? sunnyOutline : moonOutline" />
+          </ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -230,6 +235,9 @@ import {
   alertController,
   toastController,
 } from '@ionic/vue';
+import { moonOutline, sunnyOutline } from 'ionicons/icons';
+import { useDarkMode } from '@/composables/useDarkMode';
+const { isDark, toggle } = useDarkMode();
 import { searchOutline } from 'ionicons/icons';
 
 const dummyData = [

@@ -8,6 +8,9 @@
         </ion-buttons>
         <ion-title>出庫</ion-title>
         <ion-buttons slot="end">
+          <ion-button @click="toggle">
+            <ion-icon slot="icon-only" :icon="isDark ? sunnyOutline : moonOutline" />
+          </ion-button>
           <ion-button fill="solid" color="primary" size="small" @click="bulkRegister">
             一括登録
           </ion-button>
@@ -131,6 +134,9 @@ import {
   alertController,
   toastController,
 } from '@ionic/vue';
+import { moonOutline, sunnyOutline } from 'ionicons/icons';
+import { useDarkMode } from '@/composables/useDarkMode';
+const { isDark, toggle } = useDarkMode();
 import { searchOutline, trashOutline } from 'ionicons/icons';
 
 /** @typedef {{ no: number; code: string; name: string; orderQty: number; shipQty: number; registeredAt: string; checked: boolean; }} RowItem */

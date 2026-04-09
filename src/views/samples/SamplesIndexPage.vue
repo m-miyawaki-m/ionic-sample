@@ -34,6 +34,12 @@
             <p>公式ドキュメントとカタログ実装状況の対応表</p>
           </ion-label>
         </ion-item>
+        <ion-item router-link="/samples/ionicons" detail>
+          <ion-label>
+            <h2>Ionicons 全集</h2>
+            <p>514種のアイコン一覧・バリアント切替・インポート文コピー</p>
+          </ion-label>
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-page>

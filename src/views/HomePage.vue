@@ -69,6 +69,13 @@
           <p>入荷検品・出庫・在庫照会の画面モック</p>
         </ion-label>
       </ion-item>
+      <ion-item router-link="/samples/ionicons" detail>
+        <ion-icon :icon="appsOutline" slot="start" />
+        <ion-label>
+          <h2>Ionicons 全集</h2>
+          <p>514種のアイコン一覧・バリアント切替</p>
+        </ion-label>
+      </ion-item>
       <ion-item router-link="/samples/pickup" detail>
         <ion-icon :icon="colorPaletteOutline" slot="start" />
         <ion-label>

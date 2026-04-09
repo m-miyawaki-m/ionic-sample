@@ -111,10 +111,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/pickup/TextLinkPatterns.vue'),
   },
   {
-    path: '/samples/pickup/material-icons',
-    component: () => import('@/views/samples/pickup/MaterialIconsPage.vue'),
-  },
-  {
     path: '/samples/screen-patterns',
     component: () => import('@/views/samples/screen-patterns/ScreenPatternsIndex.vue'),
   },
@@ -138,6 +134,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/samples/coverage',
     name: 'SamplesCoverage',
     component: () => import('@/views/samples/CoveragePage.vue'),
+  },
+  {
+    path: '/samples/ionicons',
+    name: 'IoniconsCatalog',
+    component: () => import('@/views/samples/IoniconsCatalog.vue'),
   },
   {
     path: '/samples/catalog',

@@ -34,8 +34,6 @@ import '@ionic/vue/css/palettes/dark.class.css';
 /* Theme variables */
 import './theme/variables.css';
 
-/* Google Material Icons (offline) */
-import 'material-icons/iconfont/material-icons.css';
 
 const app = createApp(App)
   .use(IonicVue)

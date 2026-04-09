@@ -367,7 +367,7 @@ Android プロジェクト (android/)
     ↓  ./gradlew assembleDebug
 APK (android/app/build/outputs/apk/debug/app-debug.apk)
     ↓  adb install
-Xnavis 端末
+業務用HT端末
 ```
 
 各段階で VS Code のターミナルからコマンドを実行するだけ。Android Studio は不要。

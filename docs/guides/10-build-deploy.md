@@ -1,7 +1,7 @@
 # ビルドとデプロイ
 
 倉庫管理アプリ（Ionic Vue + TypeScript + Capacitor）のビルドからAndroid端末へのデプロイまでの手順。
-対象端末: Xnavis（Android 15）。
+対象端末: 業務用HT（Android 15）。
 
 ---
 
@@ -162,7 +162,7 @@ ext {
 - `targetSdkVersion = 36`: Android 15（API 36）を対象にしている
 - `minSdkVersion = 24`: Android 7.0 以上で動作する
 
-Xnavis 端末は Android 15 なので、この設定で問題ない。
+業務用HT端末は Android 15 なので、この設定で問題ない。
 
 ---
 

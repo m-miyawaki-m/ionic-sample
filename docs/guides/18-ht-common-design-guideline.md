@@ -88,8 +88,8 @@
 
 | 項目 | 値 |
 |---|---|
-| 対象端末 | Xnavis（SP2 スキャナ搭載 Android HT） |
-| 対象OS | (未決 — Xnavis 採用機種の Android バージョンに依存) |
+| 対象端末 | 業務用HT（SP2 スキャナ搭載 Android HT） |
+| 対象OS | (未決 — 業務用HTの Android バージョンに依存) |
 | バイブモータ | 端末ケース装着時に弱まる場合あり。`ImpactStyle.Medium` で実機確認必須、必要なら `Heavy` へ変更 |
 | SP2 ビープ音 | Haptics と二重フィードバックになるため運用前に調整 |
 | エミュレータ動作 | 一部の AAR SDK はエミュレータ非対応の場合あり |
@@ -280,7 +280,7 @@
 | 候補 | 説明 | 実装 |
 |---|---|---|
 | ユーザーID/PW（トークン認証） | 一般的な Web 認証と同じ | [12 §3 認証の追加](12-api-integration.md) |
-| 端末認証（デバイスIDベース） | Xnavis 端末のみ許可、私物ブロック | `@capacitor/device` + サーバ照合（[12 §3](12-api-integration.md) / [14 §7-3](14-android-capability-checklist.md)） |
+| 端末認証（デバイスIDベース） | 業務用HT端末のみ許可、私物ブロック | `@capacitor/device` + サーバ照合（[12 §3](12-api-integration.md) / [14 §7-3](14-android-capability-checklist.md)） |
 | 生体認証（指紋/顔） | 簡易ログイン、重要操作の本人確認 | `capacitor-native-biometric`（[14 §7-2](14-android-capability-checklist.md)） |
 | NFC社員証 | カードタッチでログイン | `capacitor-nfc`（[14 §1-4](14-android-capability-checklist.md)） |
 

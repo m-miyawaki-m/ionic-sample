@@ -25,6 +25,19 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
+      <ion-list-header class="ion-margin-top">
+        <ion-label>アイコン比較</ion-label>
+      </ion-list-header>
+      <ion-list>
+        <ion-item router-link="/samples/pickup/material-icons" detail>
+          <span class="material-icons" slot="start" style="color:var(--ion-color-primary);font-size:24px">category</span>
+          <ion-label>
+            <h2>Material Icons 一覧</h2>
+            <p>Google Material Design アイコン 228個をカテゴリ別に表示</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -35,7 +48,7 @@ import {
   IonButtons, IonBackButton,
   IonGrid, IonRow, IonCol,
   IonCard, IonCardContent,
-  IonIcon,
+  IonIcon, IonList, IonListHeader, IonItem, IonLabel,
 } from '@ionic/vue';
 import {
   imageOutline,

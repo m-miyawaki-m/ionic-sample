@@ -62,6 +62,13 @@
       <ion-label>サンプル</ion-label>
     </ion-list-header>
     <ion-list>
+      <ion-item router-link="/samples/screen-patterns" detail>
+        <ion-icon :icon="laptopOutline" slot="start" />
+        <ion-label>
+          <h2>画面パターン集</h2>
+          <p>入荷検品・出庫・在庫照会の画面モック</p>
+        </ion-label>
+      </ion-item>
       <ion-item router-link="/samples/pickup" detail>
         <ion-icon :icon="colorPaletteOutline" slot="start" />
         <ion-label>
@@ -90,6 +97,7 @@ import {
   searchOutline, swapHorizontalOutline,
   appsOutline,
   colorPaletteOutline,
+  laptopOutline,
 } from 'ionicons/icons';
 import PageLayout from '@/components/PageLayout.vue';
 import type { MenuAction } from '@/types';

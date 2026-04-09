@@ -1,6 +1,26 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+// ── Catalog demo routes (auto-discovered from file system) ──
+const demoModules = import.meta.glob('../views/samples/catalog/demos/**/*.vue');
+
+function pascalToKebab(str: string): string {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+const catalogDemoRoutes: RouteRecordRaw[] = Object.keys(demoModules)
+  .map((modulePath) => {
+    const match = modulePath.match(/\/demos\/([^/]+)\/(.+)\.vue$/);
+    if (!match) return null;
+    const [, componentSlug, fileName] = match;
+    const demoSlug = pascalToKebab(fileName);
+    return {
+      path: `${componentSlug}/${demoSlug}`,
+      component: demoModules[modulePath],
+    } as RouteRecordRaw;
+  })
+  .filter((r): r is RouteRecordRaw => r !== null);
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -42,224 +62,69 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/SamplesIndexPage.vue'),
   },
   {
+    path: '/samples/pickup',
+    name: 'SamplesPickup',
+    component: () => import('@/views/samples/pickup/PickupIndex.vue'),
+  },
+  {
+    path: '/samples/pickup/button',
+    component: () => import('@/views/samples/pickup/ButtonPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/input',
+    component: () => import('@/views/samples/pickup/InputPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/select',
+    component: () => import('@/views/samples/pickup/SelectPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/checkbox',
+    component: () => import('@/views/samples/pickup/CheckboxPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/radio',
+    component: () => import('@/views/samples/pickup/RadioPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/list',
+    component: () => import('@/views/samples/pickup/ListPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/tabs',
+    component: () => import('@/views/samples/pickup/TabsPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/icon',
+    component: () => import('@/views/samples/pickup/IconPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/label',
+    component: () => import('@/views/samples/pickup/LabelPatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/datetime',
+    component: () => import('@/views/samples/pickup/DatetimePatterns.vue'),
+  },
+  {
+    path: '/samples/pickup/textlink',
+    component: () => import('@/views/samples/pickup/TextLinkPatterns.vue'),
+  },
+  {
     path: '/samples/coverage',
     name: 'SamplesCoverage',
     component: () => import('@/views/samples/CoveragePage.vue'),
   },
   {
     path: '/samples/catalog',
-    name: 'CatalogIndex',
-    component: () => import('@/views/samples/catalog/CatalogIndexPage.vue'),
-  },
-  {
-    path: '/samples/catalog/button',
-    component: () => import('@/views/samples/catalog/ButtonPage.vue'),
-  },
-  {
-    path: '/samples/catalog/input',
-    component: () => import('@/views/samples/catalog/InputPage.vue'),
-  },
-  {
-    path: '/samples/catalog/list',
-    component: () => import('@/views/samples/catalog/ListPage.vue'),
-  },
-  {
-    path: '/samples/catalog/modal',
-    component: () => import('@/views/samples/catalog/ModalPage.vue'),
-  },
-  {
-    path: '/samples/catalog/toast',
-    component: () => import('@/views/samples/catalog/ToastPage.vue'),
-  },
-  {
-    path: '/samples/catalog/radio-group',
-    component: () => import('@/views/samples/catalog/RadioGroupPage.vue'),
-  },
-  {
-    path: '/samples/catalog/checkbox',
-    component: () => import('@/views/samples/catalog/CheckboxPage.vue'),
-  },
-  {
-    path: '/samples/catalog/toggle',
-    component: () => import('@/views/samples/catalog/TogglePage.vue'),
-  },
-  {
-    path: '/samples/catalog/select',
-    component: () => import('@/views/samples/catalog/SelectPage.vue'),
-  },
-  {
-    path: '/samples/catalog/searchbar',
-    component: () => import('@/views/samples/catalog/SearchbarPage.vue'),
-  },
-  {
-    path: '/samples/catalog/segment',
-    component: () => import('@/views/samples/catalog/SegmentPage.vue'),
-  },
-  {
-    path: '/samples/catalog/card',
-    component: () => import('@/views/samples/catalog/CardPage.vue'),
-  },
-  {
-    path: '/samples/catalog/badge',
-    component: () => import('@/views/samples/catalog/BadgePage.vue'),
-  },
-  {
-    path: '/samples/catalog/chip',
-    component: () => import('@/views/samples/catalog/ChipPage.vue'),
-  },
-  {
-    path: '/samples/catalog/avatar',
-    component: () => import('@/views/samples/catalog/AvatarPage.vue'),
-  },
-  {
-    path: '/samples/catalog/spinner',
-    component: () => import('@/views/samples/catalog/SpinnerPage.vue'),
-  },
-  {
-    path: '/samples/catalog/skeleton-text',
-    component: () => import('@/views/samples/catalog/SkeletonTextPage.vue'),
-  },
-  {
-    path: '/samples/catalog/progress-bar',
-    component: () => import('@/views/samples/catalog/ProgressBarPage.vue'),
-  },
-  {
-    path: '/samples/catalog/alert',
-    component: () => import('@/views/samples/catalog/AlertPage.vue'),
-  },
-  {
-    path: '/samples/catalog/action-sheet',
-    component: () => import('@/views/samples/catalog/ActionSheetPage.vue'),
-  },
-  {
-    path: '/samples/catalog/loading',
-    component: () => import('@/views/samples/catalog/LoadingPage.vue'),
-  },
-  {
-    path: '/samples/catalog/popover',
-    component: () => import('@/views/samples/catalog/PopoverPage.vue'),
-  },
-  {
-    path: '/samples/catalog/datetime',
-    component: () => import('@/views/samples/catalog/DatetimePage.vue'),
-  },
-  {
-    path: '/samples/catalog/range',
-    component: () => import('@/views/samples/catalog/RangePage.vue'),
-  },
-  {
-    path: '/samples/catalog/accordion',
-    component: () => import('@/views/samples/catalog/AccordionPage.vue'),
-  },
-  {
-    path: '/samples/catalog/item-sliding',
-    component: () => import('@/views/samples/catalog/ItemSlidingPage.vue'),
-  },
-  {
-    path: '/samples/catalog/reorder',
-    component: () => import('@/views/samples/catalog/ReorderPage.vue'),
-  },
-  {
-    path: '/samples/catalog/fab',
-    component: () => import('@/views/samples/catalog/FabPage.vue'),
-  },
-  {
-    path: '/samples/catalog/refresher',
-    component: () => import('@/views/samples/catalog/RefresherPage.vue'),
-  },
-  {
-    path: '/samples/catalog/infinite-scroll',
-    component: () => import('@/views/samples/catalog/InfiniteScrollPage.vue'),
-  },
-  {
-    path: '/samples/catalog/grid',
-    component: () => import('@/views/samples/catalog/GridPage.vue'),
-  },
-  {
-    path: '/samples/catalog/tabs',
-    component: () => import('@/views/samples/catalog/tabs/TabsLayoutPage.vue'),
+    component: () => import('@/views/samples/catalog/CatalogLayout.vue'),
     children: [
-      { path: '', redirect: '/samples/catalog/tabs/tab1' },
-      { path: 'tab1', component: () => import('@/views/samples/catalog/tabs/Tab1Page.vue') },
-      { path: 'tab2', component: () => import('@/views/samples/catalog/tabs/Tab2Page.vue') },
-      { path: 'tab3', component: () => import('@/views/samples/catalog/tabs/Tab3Page.vue') },
+      {
+        path: '',
+        component: () => import('@/views/samples/catalog/CatalogWelcome.vue'),
+      },
+      ...catalogDemoRoutes,
     ],
-  },
-  {
-    path: '/samples/catalog/menu',
-    component: () => import('@/views/samples/catalog/menu/MenuHomePage.vue'),
-  },
-  {
-    path: '/samples/catalog/menu/about',
-    component: () => import('@/views/samples/catalog/menu/MenuAboutPage.vue'),
-  },
-  {
-    path: '/samples/catalog/menu/settings',
-    component: () => import('@/views/samples/catalog/menu/MenuSettingsPage.vue'),
-  },
-  {
-    path: '/samples/catalog/breadcrumbs',
-    component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel1Page.vue'),
-  },
-  {
-    path: '/samples/catalog/breadcrumbs/electronics',
-    component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel2Page.vue'),
-  },
-  {
-    path: '/samples/catalog/breadcrumbs/electronics/laptops',
-    component: () => import('@/views/samples/catalog/breadcrumbs/BreadcrumbsLevel3Page.vue'),
-  },
-  {
-    path: '/samples/catalog/textarea',
-    component: () => import('@/views/samples/catalog/TextareaPage.vue'),
-  },
-  {
-    path: '/samples/catalog/picker',
-    component: () => import('@/views/samples/catalog/PickerPage.vue'),
-  },
-  {
-    path: '/samples/catalog/input-otp',
-    component: () => import('@/views/samples/catalog/InputOtpPage.vue'),
-  },
-  {
-    path: '/samples/catalog/split-pane',
-    component: () => import('@/views/samples/catalog/SplitPanePage.vue'),
-  },
-  {
-    path: '/samples/catalog/footer',
-    component: () => import('@/views/samples/catalog/FooterPage.vue'),
-  },
-  {
-    path: '/samples/catalog/nav',
-    component: () => import('@/views/samples/catalog/nav/NavPage.vue'),
-  },
-  {
-    path: '/samples/catalog/backdrop',
-    component: () => import('@/views/samples/catalog/BackdropPage.vue'),
-  },
-  {
-    path: '/samples/catalog/note',
-    component: () => import('@/views/samples/catalog/NotePage.vue'),
-  },
-  {
-    path: '/samples/catalog/img',
-    component: () => import('@/views/samples/catalog/ImgPage.vue'),
-  },
-  {
-    path: '/samples/catalog/thumbnail',
-    component: () => import('@/views/samples/catalog/ThumbnailPage.vue'),
-  },
-  {
-    path: '/samples/catalog/text',
-    component: () => import('@/views/samples/catalog/TextPage.vue'),
-  },
-  {
-    path: '/samples/catalog/ripple-effect',
-    component: () => import('@/views/samples/catalog/RippleEffectPage.vue'),
-  },
-  {
-    path: '/samples/catalog/item-divider',
-    component: () => import('@/views/samples/catalog/ItemDividerPage.vue'),
   },
   {
     path: '/samples/mockups',

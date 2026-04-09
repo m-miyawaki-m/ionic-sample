@@ -9,7 +9,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <p>公式 Ionic API インデックス (https://ionicframework.com/docs/api) に掲載されている全コンポーネントの実装状況。</p>
+      <p>Ionic API の全コンポーネント実装状況。</p>
       <p>
         <strong>凡例:</strong>
         ✅ 専用カタログページあり ／
@@ -24,9 +24,6 @@
           <h3>
             {{ statusEmoji(item.status) }}
             {{ item.displayName }}
-            <span v-if="item.officialUrl">
-              <a :href="item.officialUrl" target="_blank" rel="noopener">公式 ↗</a>
-            </span>
             <span v-if="item.catalogPath">
               ・<router-link :to="item.catalogPath">カタログ →</router-link>
             </span>
@@ -68,7 +65,6 @@ type Item = {
   apiName: string;
   displayName: string;
   status: Status;
-  officialUrl?: string;
   catalogPath?: string;
   note?: string;
   implemented?: string[];
@@ -99,28 +95,24 @@ const categories: Category[] = [
         apiName: 'app',
         displayName: 'App',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/app',
         note: 'アプリ全体の root。src/App.vue で使用',
       },
       {
         apiName: 'content',
         displayName: 'Content',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/content',
         note: '全カタログページで使用',
       },
       {
         apiName: 'header',
         displayName: 'Header',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/header',
         note: '全カタログページで使用',
       },
       {
         apiName: 'footer',
         displayName: 'Footer',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/footer',
         catalogPath: '/samples/catalog/footer',
         implemented: [
           'Basic footer (画面下部固定ツールバー)',
@@ -139,28 +131,24 @@ const categories: Category[] = [
         apiName: 'title',
         displayName: 'Title',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/title',
         note: '全ページのヘッダーで使用',
       },
       {
         apiName: 'toolbar',
         displayName: 'Toolbar',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/toolbar',
         note: '全ページで使用',
       },
       {
         apiName: 'buttons',
         displayName: 'Buttons',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/buttons',
         note: 'header/footer 内で使用',
       },
       {
         apiName: 'back-button',
         displayName: 'Back Button',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/back-button',
         note: '全カタログページの戻るボタンで使用',
       },
     ],
@@ -176,42 +164,36 @@ const categories: Category[] = [
         apiName: 'router',
         displayName: 'Router',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/router',
         note: '@ionic/vue-router の Vue Router バインディング。src/router/index.ts で構成',
       },
       {
         apiName: 'router-link',
         displayName: 'Router Link',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/router-link',
         note: 'Vue Router 由来。CatalogIndex 等で使用',
       },
       {
         apiName: 'router-outlet',
         displayName: 'Router Outlet',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/router-outlet',
         note: 'App.vue / TabsLayoutPage で使用',
       },
       {
         apiName: 'route',
         displayName: 'Route',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/route',
         note: 'Vue Router 構成要素',
       },
       {
         apiName: 'route-redirect',
         displayName: 'Route Redirect',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/route-redirect',
         note: 'Vue Router 構成要素',
       },
       {
         apiName: 'nav',
         displayName: 'Nav',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/nav',
         catalogPath: '/samples/catalog/nav',
         implemented: [
           'ion-nav + root コンポーネント指定',
@@ -232,7 +214,6 @@ const categories: Category[] = [
         apiName: 'nav-link',
         displayName: 'Nav Link',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/nav-link',
         catalogPath: '/samples/catalog/nav',
         note: 'NavPage (NavRoot) 内で使用',
       },
@@ -240,7 +221,6 @@ const categories: Category[] = [
         apiName: 'tabs',
         displayName: 'Tabs',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/tabs',
         catalogPath: '/samples/catalog/tabs',
         implemented: [
           'ion-tabs + ion-router-outlet (ネスト routing)',
@@ -262,7 +242,6 @@ const categories: Category[] = [
         apiName: 'tab',
         displayName: 'Tab',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/tab',
         catalogPath: '/samples/catalog/tabs',
         note: 'TabsLayoutPage 内で使用',
       },
@@ -270,7 +249,6 @@ const categories: Category[] = [
         apiName: 'tab-bar',
         displayName: 'Tab Bar',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/tab-bar',
         catalogPath: '/samples/catalog/tabs',
         note: 'TabsLayoutPage 内で使用',
       },
@@ -278,7 +256,6 @@ const categories: Category[] = [
         apiName: 'tab-button',
         displayName: 'Tab Button',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/tab-button',
         catalogPath: '/samples/catalog/tabs',
         note: 'TabsLayoutPage 内で使用',
       },
@@ -286,7 +263,6 @@ const categories: Category[] = [
         apiName: 'menu',
         displayName: 'Menu',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/menu',
         catalogPath: '/samples/catalog/menu',
         implemented: [
           'ion-menu (side drawer)',
@@ -309,7 +285,6 @@ const categories: Category[] = [
         apiName: 'menu-button',
         displayName: 'Menu Button',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/menu-button',
         catalogPath: '/samples/catalog/menu',
         note: 'MenuHomePage 等で使用',
       },
@@ -317,7 +292,6 @@ const categories: Category[] = [
         apiName: 'menu-toggle',
         displayName: 'Menu Toggle',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/menu-toggle',
         catalogPath: '/samples/catalog/menu',
         note: 'CatalogMenu 内で使用',
       },
@@ -325,7 +299,6 @@ const categories: Category[] = [
         apiName: 'split-pane',
         displayName: 'Split Pane',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/split-pane',
         catalogPath: '/samples/catalog/split-pane',
         implemented: [
           'ion-split-pane + ion-menu の2ペインレイアウト',
@@ -346,7 +319,6 @@ const categories: Category[] = [
         apiName: 'breadcrumbs',
         displayName: 'Breadcrumbs',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/breadcrumbs',
         catalogPath: '/samples/catalog/breadcrumbs',
         implemented: [
           '3階層パンくず (ion-breadcrumbs + ion-breadcrumb)',
@@ -366,7 +338,6 @@ const categories: Category[] = [
         apiName: 'breadcrumb',
         displayName: 'Breadcrumb',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/breadcrumb',
         catalogPath: '/samples/catalog/breadcrumbs',
         note: 'BreadcrumbsLevel*Page 内で使用',
       },
@@ -383,7 +354,6 @@ const categories: Category[] = [
         apiName: 'list',
         displayName: 'List',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/list',
         catalogPath: '/samples/catalog/list',
         implemented: [
           'Basic list',
@@ -405,7 +375,6 @@ const categories: Category[] = [
         apiName: 'list-header',
         displayName: 'List Header',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/list-header',
         catalogPath: '/samples/catalog/list',
         note: 'ListPage 内で使用',
       },
@@ -413,14 +382,12 @@ const categories: Category[] = [
         apiName: 'item',
         displayName: 'Item',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/item',
         note: 'ほぼ全カタログページで使用される基本要素',
       },
       {
         apiName: 'item-divider',
         displayName: 'Item Divider',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/item-divider',
         catalogPath: '/samples/catalog/item-divider',
         implemented: [
           'Basic グループ区切り (ion-item-group + ion-item-divider)',
@@ -439,7 +406,6 @@ const categories: Category[] = [
         apiName: 'item-group',
         displayName: 'Item Group',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/item-group',
         catalogPath: '/samples/catalog/item-divider',
         note: 'ItemDividerPage 内で使用',
       },
@@ -447,7 +413,6 @@ const categories: Category[] = [
         apiName: 'item-sliding',
         displayName: 'Item Sliding',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/item-sliding',
         catalogPath: '/samples/catalog/item-sliding',
         implemented: [
           'Basic (左スワイプ + 削除アクション)',
@@ -469,7 +434,6 @@ const categories: Category[] = [
         apiName: 'item-options',
         displayName: 'Item Options',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/item-options',
         catalogPath: '/samples/catalog/item-sliding',
         note: 'ItemSlidingPage 内で使用',
       },
@@ -477,7 +441,6 @@ const categories: Category[] = [
         apiName: 'item-option',
         displayName: 'Item Option',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/item-option',
         catalogPath: '/samples/catalog/item-sliding',
         note: 'ItemSlidingPage 内で使用',
       },
@@ -485,14 +448,12 @@ const categories: Category[] = [
         apiName: 'label',
         displayName: 'Label',
         status: 'structural',
-        officialUrl: 'https://ionicframework.com/docs/api/label',
         note: 'ほぼ全カタログページで使用される基本要素',
       },
       {
         apiName: 'note',
         displayName: 'Note',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/note',
         catalogPath: '/samples/catalog/note',
         implemented: [
           'Basic (スタンドアロン補足テキスト)',
@@ -511,7 +472,6 @@ const categories: Category[] = [
         apiName: 'reorder',
         displayName: 'Reorder',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/reorder',
         catalogPath: '/samples/catalog/reorder',
         implemented: [
           'Basic (ハンドル右端 slot="end")',
@@ -531,7 +491,6 @@ const categories: Category[] = [
         apiName: 'reorder-group',
         displayName: 'Reorder Group',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/reorder-group',
         catalogPath: '/samples/catalog/reorder',
         note: 'ReorderPage 内で使用',
       },
@@ -548,7 +507,6 @@ const categories: Category[] = [
         apiName: 'input',
         displayName: 'Input',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/input',
         catalogPath: '/samples/catalog/input',
         implemented: [
           'type (text/password/number/tel)',
@@ -576,7 +534,6 @@ const categories: Category[] = [
         apiName: 'input-password-toggle',
         displayName: 'Input Password Toggle',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/input-password-toggle',
         catalogPath: '/samples/catalog/input',
         note: 'InputPage 内で使用',
       },
@@ -584,7 +541,6 @@ const categories: Category[] = [
         apiName: 'input-otp',
         displayName: 'Input OTP',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/input-otp',
         catalogPath: '/samples/catalog/input-otp',
         implemented: [
           'Basic (4桁 OTP + 再送リンクスロット)',
@@ -606,7 +562,6 @@ const categories: Category[] = [
         apiName: 'textarea',
         displayName: 'Textarea',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/textarea',
         catalogPath: '/samples/catalog/textarea',
         implemented: [
           'Basic (regular/readonly/disabled)',
@@ -629,7 +584,6 @@ const categories: Category[] = [
         apiName: 'checkbox',
         displayName: 'Checkbox',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/checkbox',
         catalogPath: '/samples/catalog/checkbox',
         implemented: [
           'Basic (v-model)',
@@ -652,7 +606,6 @@ const categories: Category[] = [
         apiName: 'toggle',
         displayName: 'Toggle',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/toggle',
         catalogPath: '/samples/catalog/toggle',
         implemented: [
           'Basic (v-model)',
@@ -673,7 +626,6 @@ const categories: Category[] = [
         apiName: 'radio',
         displayName: 'Radio',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/radio',
         catalogPath: '/samples/catalog/radio-group',
         note: 'RadioGroupPage 内で使用',
       },
@@ -681,7 +633,6 @@ const categories: Category[] = [
         apiName: 'radio-group',
         displayName: 'Radio Group',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/radio-group',
         catalogPath: '/samples/catalog/radio-group',
         implemented: [
           'Basic (v-model + value)',
@@ -703,7 +654,6 @@ const categories: Category[] = [
         apiName: 'select',
         displayName: 'Select',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/select',
         catalogPath: '/samples/catalog/select',
         implemented: [
           'Basic (v-model + ion-select-option)',
@@ -729,7 +679,6 @@ const categories: Category[] = [
         apiName: 'select-option',
         displayName: 'Select Option',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/select-option',
         catalogPath: '/samples/catalog/select',
         note: 'SelectPage 内で使用',
       },
@@ -737,7 +686,6 @@ const categories: Category[] = [
         apiName: 'range',
         displayName: 'Range',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/range',
         catalogPath: '/samples/catalog/range',
         implemented: [
           'Basic (デフォルト 0〜100)',
@@ -762,7 +710,6 @@ const categories: Category[] = [
         apiName: 'datetime',
         displayName: 'Datetime',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/datetime',
         catalogPath: '/samples/catalog/datetime',
         implemented: [
           'Inline datetime (presentation="date-time")',
@@ -787,7 +734,6 @@ const categories: Category[] = [
         apiName: 'datetime-button',
         displayName: 'Datetime Button',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/datetime-button',
         catalogPath: '/samples/catalog/datetime',
         note: 'DatetimePage 内で使用',
       },
@@ -795,7 +741,6 @@ const categories: Category[] = [
         apiName: 'picker',
         displayName: 'Picker',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/picker',
         catalogPath: '/samples/catalog/picker',
         implemented: [
           'Basic 単一列 (ion-picker-column + ion-picker-column-option)',
@@ -815,7 +760,6 @@ const categories: Category[] = [
         apiName: 'picker-column',
         displayName: 'Picker Column',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/picker-column',
         catalogPath: '/samples/catalog/picker',
         note: 'PickerPage 内で使用',
       },
@@ -823,7 +767,6 @@ const categories: Category[] = [
         apiName: 'picker-column-option',
         displayName: 'Picker Column Option',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/picker-column-option',
         catalogPath: '/samples/catalog/picker',
         note: 'PickerPage 内で使用',
       },
@@ -831,14 +774,12 @@ const categories: Category[] = [
         apiName: 'picker-legacy',
         displayName: 'Picker Legacy',
         status: 'missing',
-        officialUrl: 'https://ionicframework.com/docs/api/picker-legacy',
         note: 'Ionic 8 で非推奨。新版の picker を使用',
       },
       {
         apiName: 'searchbar',
         displayName: 'Searchbar',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/searchbar',
         catalogPath: '/samples/catalog/searchbar',
         implemented: [
           'Basic (v-model)',
@@ -863,7 +804,6 @@ const categories: Category[] = [
         apiName: 'segment',
         displayName: 'Segment',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/segment',
         catalogPath: '/samples/catalog/segment',
         implemented: [
           'Basic (v-model)',
@@ -885,7 +825,6 @@ const categories: Category[] = [
         apiName: 'segment-button',
         displayName: 'Segment Button',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/segment-button',
         catalogPath: '/samples/catalog/segment',
         note: 'SegmentPage 内で使用',
       },
@@ -893,7 +832,6 @@ const categories: Category[] = [
         apiName: 'segment-content',
         displayName: 'Segment Content',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/segment-content',
         catalogPath: '/samples/catalog/segment',
         note: 'SegmentPage 内で使用',
       },
@@ -901,7 +839,6 @@ const categories: Category[] = [
         apiName: 'segment-view',
         displayName: 'Segment View',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/segment-view',
         catalogPath: '/samples/catalog/segment',
         note: 'SegmentPage 内で使用',
       },
@@ -909,7 +846,6 @@ const categories: Category[] = [
         apiName: 'accordion',
         displayName: 'Accordion',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/accordion',
         catalogPath: '/samples/catalog/accordion',
         implemented: [
           'Basic (シングル展開 + value)',
@@ -931,7 +867,6 @@ const categories: Category[] = [
         apiName: 'accordion-group',
         displayName: 'Accordion Group',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/accordion-group',
         catalogPath: '/samples/catalog/accordion',
         note: 'AccordionPage 内で使用',
       },
@@ -948,7 +883,6 @@ const categories: Category[] = [
         apiName: 'button',
         displayName: 'Button',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/button',
         catalogPath: '/samples/catalog/button',
         implemented: [
           'Color (6色)',
@@ -971,7 +905,6 @@ const categories: Category[] = [
         apiName: 'ripple-effect',
         displayName: 'Ripple Effect',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/ripple-effect',
         catalogPath: '/samples/catalog/ripple-effect',
         implemented: [
           'Basic bounded (ion-activatable + overflow: hidden)',
@@ -990,7 +923,6 @@ const categories: Category[] = [
         apiName: 'fab',
         displayName: 'FAB',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/fab',
         catalogPath: '/samples/catalog/fab',
         implemented: [
           'Basic (slot="fixed" による固定表示)',
@@ -1013,7 +945,6 @@ const categories: Category[] = [
         apiName: 'fab-button',
         displayName: 'FAB Button',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/fab-button',
         catalogPath: '/samples/catalog/fab',
         note: 'FabPage 内で使用',
       },
@@ -1021,7 +952,6 @@ const categories: Category[] = [
         apiName: 'fab-list',
         displayName: 'FAB List',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/fab-list',
         catalogPath: '/samples/catalog/fab',
         note: 'FabPage 内で使用',
       },
@@ -1038,14 +968,12 @@ const categories: Category[] = [
         apiName: 'icon',
         displayName: 'Icon',
         status: 'missing',
-        officialUrl: 'https://ionicframework.com/docs/api/icon',
         note: 'ionicons/icons ライブラリ。多くのカタログページで間接的に使用',
       },
       {
         apiName: 'badge',
         displayName: 'Badge',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/badge',
         catalogPath: '/samples/catalog/badge',
         implemented: [
           'Basic (数値・文字列)',
@@ -1063,7 +991,6 @@ const categories: Category[] = [
         apiName: 'chip',
         displayName: 'Chip',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/chip',
         catalogPath: '/samples/catalog/chip',
         implemented: [
           'Basic',
@@ -1085,7 +1012,6 @@ const categories: Category[] = [
         apiName: 'avatar',
         displayName: 'Avatar',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/avatar',
         catalogPath: '/samples/catalog/avatar',
         implemented: [
           'Basic (img を内包した丸型アバター)',
@@ -1104,7 +1030,6 @@ const categories: Category[] = [
         apiName: 'img',
         displayName: 'Img',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/img',
         catalogPath: '/samples/catalog/img',
         implemented: [
           'Basic (遅延読込 Intersection Observer)',
@@ -1124,7 +1049,6 @@ const categories: Category[] = [
         apiName: 'thumbnail',
         displayName: 'Thumbnail',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/thumbnail',
         catalogPath: '/samples/catalog/thumbnail',
         implemented: [
           'Basic (slot="start" リスト項目サムネイル)',
@@ -1142,7 +1066,6 @@ const categories: Category[] = [
         apiName: 'text',
         displayName: 'Text',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/text',
         catalogPath: '/samples/catalog/text',
         implemented: [
           'Color 変化 (全9テーマカラー)',
@@ -1161,7 +1084,6 @@ const categories: Category[] = [
         apiName: 'card',
         displayName: 'Card',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/card',
         catalogPath: '/samples/catalog/card',
         implemented: [
           'Basic (ion-card-content のみ)',
@@ -1183,7 +1105,6 @@ const categories: Category[] = [
         apiName: 'card-header',
         displayName: 'Card Header',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/card-header',
         catalogPath: '/samples/catalog/card',
         note: 'CardPage 内で使用',
       },
@@ -1191,7 +1112,6 @@ const categories: Category[] = [
         apiName: 'card-title',
         displayName: 'Card Title',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/card-title',
         catalogPath: '/samples/catalog/card',
         note: 'CardPage 内で使用',
       },
@@ -1199,7 +1119,6 @@ const categories: Category[] = [
         apiName: 'card-subtitle',
         displayName: 'Card Subtitle',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/card-subtitle',
         catalogPath: '/samples/catalog/card',
         note: 'CardPage 内で使用',
       },
@@ -1207,7 +1126,6 @@ const categories: Category[] = [
         apiName: 'card-content',
         displayName: 'Card Content',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/card-content',
         catalogPath: '/samples/catalog/card',
         note: 'CardPage 内で使用',
       },
@@ -1224,7 +1142,6 @@ const categories: Category[] = [
         apiName: 'spinner',
         displayName: 'Spinner',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/spinner',
         catalogPath: '/samples/catalog/spinner',
         implemented: [
           'Basic (デフォルト)',
@@ -1244,7 +1161,6 @@ const categories: Category[] = [
         apiName: 'skeleton-text',
         displayName: 'Skeleton Text',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/skeleton-text',
         catalogPath: '/samples/catalog/skeleton-text',
         implemented: [
           'Basic (幅指定のプレースホルダー)',
@@ -1264,7 +1180,6 @@ const categories: Category[] = [
         apiName: 'progress-bar',
         displayName: 'Progress Bar',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/progress-bar',
         catalogPath: '/samples/catalog/progress-bar',
         implemented: [
           'Determinate (value 0〜1)',
@@ -1294,7 +1209,6 @@ const categories: Category[] = [
         apiName: 'modal',
         displayName: 'Modal',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/modal',
         catalogPath: '/samples/catalog/modal',
         implemented: [
           'Basic Modal (is-open + did-dismiss)',
@@ -1316,7 +1230,6 @@ const categories: Category[] = [
         apiName: 'popover',
         displayName: 'Popover',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/popover',
         catalogPath: '/samples/catalog/popover',
         implemented: [
           'Basic (trigger プロパティ + dismiss-on-select)',
@@ -1338,7 +1251,6 @@ const categories: Category[] = [
         apiName: 'alert',
         displayName: 'Alert',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/alert',
         catalogPath: '/samples/catalog/alert',
         implemented: [
           'Basic (message + OK ボタン)',
@@ -1361,7 +1273,6 @@ const categories: Category[] = [
         apiName: 'action-sheet',
         displayName: 'Action Sheet',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/action-sheet',
         catalogPath: '/samples/catalog/action-sheet',
         implemented: [
           'Basic',
@@ -1383,7 +1294,6 @@ const categories: Category[] = [
         apiName: 'loading',
         displayName: 'Loading',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/loading',
         catalogPath: '/samples/catalog/loading',
         implemented: [
           'Basic (duration で自動閉じ)',
@@ -1405,7 +1315,6 @@ const categories: Category[] = [
         apiName: 'toast',
         displayName: 'Toast',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/toast',
         catalogPath: '/samples/catalog/toast',
         implemented: [
           'Basic (message + duration)',
@@ -1428,7 +1337,6 @@ const categories: Category[] = [
         apiName: 'backdrop',
         displayName: 'Backdrop',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/backdrop',
         catalogPath: '/samples/catalog/backdrop',
         implemented: [
           'Basic (:visible + @ionBackdropTap)',
@@ -1457,7 +1365,6 @@ const categories: Category[] = [
         apiName: 'refresher',
         displayName: 'Refresher',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/refresher',
         catalogPath: '/samples/catalog/refresher',
         implemented: [
           'Basic pull-to-refresh (ionRefresh + complete())',
@@ -1480,7 +1387,6 @@ const categories: Category[] = [
         apiName: 'refresher-content',
         displayName: 'Refresher Content',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/refresher-content',
         catalogPath: '/samples/catalog/refresher',
         note: 'RefresherPage 内で使用',
       },
@@ -1488,7 +1394,6 @@ const categories: Category[] = [
         apiName: 'infinite-scroll',
         displayName: 'Infinite Scroll',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/infinite-scroll',
         catalogPath: '/samples/catalog/infinite-scroll',
         implemented: [
           'Basic infinite scroll (ionInfinite + complete())',
@@ -1509,7 +1414,6 @@ const categories: Category[] = [
         apiName: 'infinite-scroll-content',
         displayName: 'Infinite Scroll Content',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/infinite-scroll-content',
         catalogPath: '/samples/catalog/infinite-scroll',
         note: 'InfiniteScrollPage 内で使用',
       },
@@ -1526,7 +1430,6 @@ const categories: Category[] = [
         apiName: 'grid',
         displayName: 'Grid',
         status: 'implemented',
-        officialUrl: 'https://ionicframework.com/docs/api/grid',
         catalogPath: '/samples/catalog/grid',
         implemented: [
           'Basic 2・3・4カラムグリッド (size="6/4/3")',
@@ -1549,7 +1452,6 @@ const categories: Category[] = [
         apiName: 'row',
         displayName: 'Row',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/row',
         catalogPath: '/samples/catalog/grid',
         note: 'GridPage 内で使用',
       },
@@ -1557,7 +1459,6 @@ const categories: Category[] = [
         apiName: 'col',
         displayName: 'Col',
         status: 'partial',
-        officialUrl: 'https://ionicframework.com/docs/api/col',
         catalogPath: '/samples/catalog/grid',
         note: 'GridPage 内で使用',
       },

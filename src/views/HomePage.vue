@@ -62,6 +62,13 @@
       <ion-label>サンプル</ion-label>
     </ion-list-header>
     <ion-list>
+      <ion-item router-link="/samples/pickup" detail>
+        <ion-icon :icon="colorPaletteOutline" slot="start" />
+        <ion-label>
+          <h2>ピックアップ部品</h2>
+          <p>よく使う UI 部品を厳選</p>
+        </ion-label>
+      </ion-item>
       <ion-item router-link="/samples" detail>
         <ion-icon :icon="appsOutline" slot="start" />
         <ion-label>サンプル一覧</ion-label>
@@ -82,6 +89,7 @@ import {
   downloadOutline, pushOutline, clipboardOutline,
   searchOutline, swapHorizontalOutline,
   appsOutline,
+  colorPaletteOutline,
 } from 'ionicons/icons';
 import PageLayout from '@/components/PageLayout.vue';
 import type { MenuAction } from '@/types';

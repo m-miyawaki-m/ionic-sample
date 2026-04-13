@@ -102,6 +102,7 @@ import {
 import {
   downloadOutline, pushOutline, clipboardOutline,
   searchOutline, swapHorizontalOutline,
+  createOutline,
   appsOutline,
   colorPaletteOutline,
   laptopOutline,
@@ -132,6 +133,7 @@ const menus = [
   { title: '棚卸し', description: 'ロケーション・品目 → 数量確認', path: '/stocktaking', icon: clipboardOutline },
   { title: '在庫照会', description: '品目スキャン → 在庫情報表示', path: '/inventory', icon: searchOutline },
   { title: 'ロケーション移動', description: '移動元・移動先・品目を記録', path: '/relocation', icon: swapHorizontalOutline },
+  { title: '出荷実績登録', description: 'バーコードスキャン → 実績登録', path: '/shipping-record', icon: createOutline },
 ];
 </script>
 

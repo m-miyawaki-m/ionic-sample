@@ -57,6 +57,17 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/RelocationPage.vue'),
   },
   {
+    path: '/shipping-record',
+    name: 'ShippingRecord',
+    component: () => import('@/views/ShippingRecordPage.vue'),
+  },
+  {
+    path: '/shipping-record/detail/:id',
+    name: 'ShippingRecordDetail',
+    component: () => import('@/views/ShippingRecordDetailPage.vue'),
+    props: (route: { params: { id: string } }) => ({ id: Number(route.params.id) }),
+  },
+  {
     path: '/samples',
     name: 'SamplesIndex',
     component: () => import('@/views/samples/SamplesIndexPage.vue'),

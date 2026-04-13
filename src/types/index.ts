@@ -82,3 +82,29 @@ export interface ParsedScanCode {
   itemCode: string;
   raw: string;
 }
+
+/** 出荷実績登録 — 種別 */
+export type ShippingRecordType = 'typeA' | 'typeB' | 'typeC';
+
+/** 出荷実績登録 — スキャン結果1件 */
+export interface ShippingRecordItem {
+  id: number;
+  type: ShippingRecordType;
+  itemCode: string;
+  quantity: number;
+  lotNumber: string;
+  storageLoc: string;
+  remarks: string;
+  manualInputComplete: boolean;
+  scannedAt: string;
+}
+
+/** 出荷実績登録 — フォーム */
+export interface ShippingRecordForm {
+  recordNumber: string;
+  recordType: ShippingRecordType;
+  registeredAt: string;
+  category: string;
+  memo1: string;
+  memo2: string;
+}

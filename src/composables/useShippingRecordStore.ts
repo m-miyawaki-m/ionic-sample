@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue';
-import type { ShippingRecordItem, ShippingRecordForm, ShippingRecordType } from '@/types';
+import type { ShippingRecordItem, ShippingRecordForm, ShippingRecordType, ShippingRecordFilter } from '@/types';
 
 const toLocalDatetime = (d: Date) => {
   const y = d.getFullYear();
@@ -45,7 +45,9 @@ const mockIndex: Record<ShippingRecordType, number> = { typeA: 0, typeB: 0, type
 
 export function useShippingRecordStore() {
   const filteredItems = computed(() =>
-    items.filter((item) => item.type === form.recordType),
+    form.recordType === 'all'
+      ? [...items]
+      : items.filter((item) => item.type === form.recordType),
   );
 
   const filteredCount = computed(() => filteredItems.value.length);
@@ -60,7 +62,7 @@ export function useShippingRecordStore() {
   };
 
   const addScannedItem = () => {
-    const type = form.recordType;
+    const type: ShippingRecordType = form.recordType === 'all' ? 'typeA' : form.recordType;
     const mockList = mockDataByType[type];
     const idx = mockIndex[type] % mockList.length;
     mockIndex[type]++;

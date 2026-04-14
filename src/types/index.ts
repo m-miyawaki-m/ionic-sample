@@ -86,6 +86,9 @@ export interface ParsedScanCode {
 /** 出荷実績登録 — 種別 */
 export type ShippingRecordType = 'typeA' | 'typeB' | 'typeC';
 
+/** 出荷実績登録 — 表示フィルタ（種別 + すべて） */
+export type ShippingRecordFilter = ShippingRecordType | 'all';
+
 /** 出荷実績登録 — スキャン結果1件 */
 export interface ShippingRecordItem {
   id: number;
@@ -102,7 +105,7 @@ export interface ShippingRecordItem {
 /** 出荷実績登録 — フォーム */
 export interface ShippingRecordForm {
   recordNumber: string;
-  recordType: ShippingRecordType;
+  recordType: ShippingRecordFilter;
   registeredAt: string;
   category: string;
   memo1: string;

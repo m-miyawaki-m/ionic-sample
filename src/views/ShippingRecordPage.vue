@@ -28,14 +28,20 @@
             />
           </ion-item>
 
-          <!-- 種別ラジオ（必須・縦並び） -->
+          <!-- 種別ラジオ（必須・2列） -->
           <ion-radio-group v-model="form.recordType">
             <ion-list-header>
               <ion-label>種別 *</ion-label>
             </ion-list-header>
-            <ion-item v-for="opt in typeOptions" :key="opt.value" lines="none">
-              <ion-radio :value="opt.value" label-placement="end" justify="start">{{ opt.label }}</ion-radio>
-            </ion-item>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6" v-for="opt in typeOptions" :key="opt.value">
+                  <ion-item lines="none" class="radio-item">
+                    <ion-radio :value="opt.value" label-placement="end" justify="start">{{ opt.label }}</ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-radio-group>
         </ion-list>
 
@@ -262,7 +268,7 @@ import { useSP2Scanner } from '@/composables/useSP2Scanner';
 import { useApi } from '@/composables/useApi';
 import { useLoadingMode } from '@/composables/useLoadingMode';
 import { useShippingRecordStore } from '@/composables/useShippingRecordStore';
-import type { ParsedScanCode, SelectOption, ShippingRecordType } from '@/types';
+import type { ParsedScanCode, SelectOption, ShippingRecordFilter } from '@/types';
 
 const router = useRouter();
 const { status, startScan, onScanResult } = useSP2Scanner();
@@ -274,10 +280,11 @@ const {
 } = useShippingRecordStore();
 
 // ── 定数 ──
-const typeOptions: { label: string; value: ShippingRecordType }[] = [
+const typeOptions: { label: string; value: ShippingRecordFilter }[] = [
   { label: '種別A', value: 'typeA' },
   { label: '種別B', value: 'typeB' },
   { label: '種別C', value: 'typeC' },
+  { label: 'すべて', value: 'all' },
 ];
 
 const categoryOptions: SelectOption[] = [
@@ -357,6 +364,10 @@ const submitAll = async () => {
 </script>
 
 <style scoped>
+.radio-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
 .scanned-item-card {
   margin: 8px 0;
 }

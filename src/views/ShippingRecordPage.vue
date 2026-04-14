@@ -28,15 +28,15 @@
             />
           </ion-item>
 
-          <!-- 種別セグメント（必須） -->
-          <ion-item lines="none">
-            <ion-label position="stacked">種別 *</ion-label>
-            <ion-segment v-model="form.recordType">
-              <ion-segment-button v-for="opt in typeOptions" :key="opt.value" :value="opt.value">
-                <ion-label>{{ opt.label }}</ion-label>
-              </ion-segment-button>
-            </ion-segment>
-          </ion-item>
+          <!-- 種別ラジオ（必須・縦並び） -->
+          <ion-radio-group v-model="form.recordType">
+            <ion-list-header>
+              <ion-label>種別 *</ion-label>
+            </ion-list-header>
+            <ion-item v-for="opt in typeOptions" :key="opt.value" lines="none">
+              <ion-radio :value="opt.value" label-placement="end">{{ opt.label }}</ion-radio>
+            </ion-item>
+          </ion-radio-group>
         </ion-list>
 
         <!-- その他条件トグル -->
@@ -232,7 +232,7 @@ import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton,
   IonContent, IonFooter,
   IonList, IonListHeader, IonItem, IonLabel, IonInput, IonIcon, IonButton,
-  IonSegment, IonSegmentButton, IonRow, IonCol,
+  IonRadioGroup, IonRadio, IonRow, IonCol,
   IonCard, IonCardHeader, IonCardSubtitle, IonCardContent,
   IonGrid, IonBadge, IonText, IonSpinner, IonAlert,
 } from '@ionic/vue';

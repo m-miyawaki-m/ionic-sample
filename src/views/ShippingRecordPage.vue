@@ -39,39 +39,17 @@
           </ion-radio-group>
         </ion-list>
 
-        <!-- その他条件 -->
-        <ion-list>
-          <ion-item>
-            <ion-input
-              v-model="form.registeredAt"
-              label="登録日時"
-              label-placement="stacked"
-              type="datetime-local"
-            />
-          </ion-item>
-          <ion-item button @click="showCategoryPopup = true">
-            <ion-label>
-              <p>区分</p>
-              <h2>{{ form.category || '未選択' }}</h2>
-            </ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-input
-              v-model="form.memo1"
-              label="メモ1"
-              label-placement="stacked"
-              placeholder="メモを入力"
-            />
-          </ion-item>
-          <ion-item>
-            <ion-input
-              v-model="form.memo2"
-              label="メモ2"
-              label-placement="stacked"
-              placeholder="メモを入力"
-            />
-          </ion-item>
-        </ion-list>
+        <!-- 詳細入力ボタン -->
+        <ion-button
+          fill="outline"
+          size="small"
+          expand="block"
+          class="ion-margin-top"
+          @click="showDetailInput = true"
+        >
+          <ion-icon :icon="listOutline" slot="start" />
+          詳細入力
+        </ion-button>
       </div>
 
       <!-- ===== スキャン結果カードエリア ===== -->
@@ -193,6 +171,52 @@
       @confirm="onScanConfirm"
     />
 
+    <!-- 詳細入力モーダル -->
+    <ion-modal :is-open="showDetailInput" @did-dismiss="showDetailInput = false">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>詳細入力</ion-title>
+          <ion-buttons slot="end">
+            <ion-button @click="showDetailInput = false">閉じる</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list>
+          <ion-item>
+            <ion-input
+              v-model="form.registeredAt"
+              label="登録日時"
+              label-placement="stacked"
+              type="datetime-local"
+            />
+          </ion-item>
+          <ion-item button @click="showCategoryPopup = true">
+            <ion-label>
+              <p>区分</p>
+              <h2>{{ form.category || '未選択' }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              v-model="form.memo1"
+              label="メモ1"
+              label-placement="stacked"
+              placeholder="メモを入力"
+            />
+          </ion-item>
+          <ion-item>
+            <ion-input
+              v-model="form.memo2"
+              label="メモ2"
+              label-placement="stacked"
+              placeholder="メモを入力"
+            />
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-modal>
+
     <SelectPopup
       :is-open="showCategoryPopup"
       title="区分を選択"
@@ -219,14 +243,14 @@
 import { ref, computed } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton,
-  IonContent, IonFooter,
+  IonContent, IonFooter, IonModal,
   IonList, IonListHeader, IonItem, IonLabel, IonInput, IonIcon, IonButton,
   IonRadioGroup, IonRadio, IonRow, IonCol,
   IonCard, IonCardHeader, IonCardSubtitle, IonCardContent,
   IonGrid, IonBadge, IonText, IonSpinner, IonAlert,
 } from '@ionic/vue';
 import {
-  scanOutline, createOutline,
+  scanOutline, createOutline, listOutline,
 } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 import ScannerStatus from '@/components/ScannerStatus.vue';
@@ -267,6 +291,7 @@ const currentTypeLabel = computed(() =>
 );
 
 // ── UI 状態 ──
+const showDetailInput = ref(false);
 const showScanDialog = ref(false);
 const showCategoryPopup = ref(false);
 const showConfirmAlert = ref(false);

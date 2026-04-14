@@ -34,7 +34,7 @@
               <ion-label>種別 *</ion-label>
             </ion-list-header>
             <ion-item v-for="opt in typeOptions" :key="opt.value" lines="none">
-              <ion-radio :value="opt.value" label-placement="end">{{ opt.label }}</ion-radio>
+              <ion-radio :value="opt.value" label-placement="end" justify="start">{{ opt.label }}</ion-radio>
             </ion-item>
           </ion-radio-group>
         </ion-list>

@@ -39,19 +39,8 @@
           </ion-radio-group>
         </ion-list>
 
-        <!-- その他条件トグル -->
-        <ion-button
-          fill="clear"
-          size="small"
-          expand="block"
-          @click="showExtraConditions = !showExtraConditions"
-        >
-          <ion-icon :icon="showExtraConditions ? chevronUpOutline : chevronDownOutline" slot="start" />
-          {{ showExtraConditions ? 'その他条件を閉じる' : 'その他条件' }}
-        </ion-button>
-
-        <!-- その他条件（折りたたみ） -->
-        <ion-list v-if="showExtraConditions">
+        <!-- その他条件 -->
+        <ion-list>
           <ion-item>
             <ion-input
               v-model="form.registeredAt"
@@ -238,7 +227,6 @@ import {
 } from '@ionic/vue';
 import {
   scanOutline, createOutline,
-  chevronDownOutline, chevronUpOutline,
 } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 import ScannerStatus from '@/components/ScannerStatus.vue';
@@ -279,7 +267,6 @@ const currentTypeLabel = computed(() =>
 );
 
 // ── UI 状態 ──
-const showExtraConditions = ref(false);
 const showScanDialog = ref(false);
 const showCategoryPopup = ref(false);
 const showConfirmAlert = ref(false);

@@ -43,11 +43,8 @@
           <ion-menu-button slot="start" />
           <ion-title>スキャン入力型</ion-title>
         </ion-toolbar>
-      </ion-header>
-
-      <ion-content class="ion-padding">
-        <!-- 条件エリア -->
-        <div class="condition-area">
+        <!-- 条件エリア (fixed in header) -->
+        <div class="condition-area ion-padding-horizontal">
           <div class="condition-header">
             <span class="condition-title">入力条件</span>
             <div class="condition-buttons">
@@ -75,7 +72,9 @@
             <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
           </div>
         </div>
+      </ion-header>
 
+      <ion-content class="ion-padding">
         <!-- コンテンツ: 登録済み履歴 -->
         <div class="content-area">
           <p class="result-count">登録済み {{ items.length }}件</p>

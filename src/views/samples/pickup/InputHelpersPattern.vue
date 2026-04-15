@@ -43,11 +43,8 @@
           <ion-menu-button slot="start" />
           <ion-title>入力補助パターン</ion-title>
         </ion-toolbar>
-      </ion-header>
-
-      <ion-content class="ion-padding">
         <!-- 条件エリア（入力補助UIフル活用） -->
-        <div class="condition-area">
+        <div class="condition-area ion-padding-horizontal">
           <div class="condition-header">
             <span class="condition-title">入力条件</span>
             <div class="condition-buttons">
@@ -101,7 +98,9 @@
             <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
           </div>
         </div>
+      </ion-header>
 
+      <ion-content class="ion-padding">
         <!-- コンテンツ: 入力補助UIカタログ -->
         <div class="content-area">
           <div class="section">

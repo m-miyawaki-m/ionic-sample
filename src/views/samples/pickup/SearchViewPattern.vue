@@ -43,11 +43,8 @@
           <ion-menu-button slot="start" />
           <ion-title>検索照会型</ion-title>
         </ion-toolbar>
-      </ion-header>
-
-      <ion-content class="ion-padding">
-        <!-- 条件エリア -->
-        <div class="condition-area">
+        <!-- 条件エリア (fixed in header) -->
+        <div class="condition-area ion-padding-horizontal">
           <div class="condition-header">
             <span class="condition-title">検索条件</span>
             <div class="condition-buttons">
@@ -85,7 +82,9 @@
             <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
           </div>
         </div>
+      </ion-header>
 
+      <ion-content class="ion-padding">
         <!-- コンテンツ: 検索結果 -->
         <div class="content-area">
           <p class="result-count">検索結果 {{ items.length }}件</p>

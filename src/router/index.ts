@@ -122,6 +122,34 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/pickup/TextLinkPatterns.vue'),
   },
   {
+    path: '/samples/pickup/scan-input',
+    component: () => import('@/views/samples/pickup/ScanInputPattern.vue'),
+  },
+  {
+    path: '/samples/pickup/scan-accumulate',
+    component: () => import('@/views/samples/pickup/ScanAccumulatePattern.vue'),
+  },
+  {
+    path: '/samples/pickup/search-view',
+    component: () => import('@/views/samples/pickup/SearchViewPattern.vue'),
+  },
+  {
+    path: '/samples/pickup/input-helpers',
+    component: () => import('@/views/samples/pickup/InputHelpersPattern.vue'),
+  },
+  {
+    path: '/samples/pickup/inline-edit',
+    component: () => import('@/views/samples/pickup/InlineEditPattern.vue'),
+  },
+  {
+    path: '/samples/pickup/detail-screen',
+    component: () => import('@/views/samples/pickup/DetailScreenPattern.vue'),
+  },
+  {
+    path: '/samples/pickup/detail-screen/detail/:id',
+    component: () => import('@/views/samples/pickup/DetailScreenDetailPage.vue'),
+  },
+  {
     path: '/samples/screen-patterns',
     component: () => import('@/views/samples/screen-patterns/ScreenPatternsIndex.vue'),
   },

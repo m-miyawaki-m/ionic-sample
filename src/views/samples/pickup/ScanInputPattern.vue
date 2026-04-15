@@ -1,42 +1,5 @@
 <template>
-  <!-- サイドドロワー -->
-  <ion-menu side="start" content-id="scan-input-main">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>メニュー</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-item button @click="closeMenu" router-link="/pattern/scan-input" class="menu-active">
-            <ion-icon :icon="scanOutline" slot="start" />
-            <ion-label>スキャン入力型</ion-label>
-          </ion-item>
-          <ion-item button @click="closeMenu" router-link="/pattern/scan-accumulate">
-            <ion-icon :icon="layersOutline" slot="start" />
-            <ion-label>スキャン蓄積型</ion-label>
-          </ion-item>
-          <ion-item button @click="closeMenu" router-link="/pattern/search-view">
-            <ion-icon :icon="searchOutline" slot="start" />
-            <ion-label>検索照会型</ion-label>
-          </ion-item>
-          <ion-item button @click="closeMenu" router-link="/pattern/input-helpers">
-            <ion-icon :icon="constructOutline" slot="start" />
-            <ion-label>入力補助パターン</ion-label>
-          </ion-item>
-          <ion-item button @click="closeMenu" router-link="/pattern/inline-edit">
-            <ion-icon :icon="createOutline" slot="start" />
-            <ion-label>インライン編集型</ion-label>
-          </ion-item>
-          <ion-item button @click="closeMenu" router-link="/pattern/detail-screen">
-            <ion-icon :icon="documentTextOutline" slot="start" />
-            <ion-label>詳細表示・編集型</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-
-  <ion-page id="scan-input-main">
+  <ion-page>
       <ion-header>
         <ion-toolbar>
           <ion-menu-button slot="start" />
@@ -126,16 +89,13 @@
 // @ts-nocheck
 import { ref } from 'vue';
 import {
-  menuController, IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter,
-  IonMenu, IonMenuButton, IonButtons, IonButton, IonList, IonItem,
+  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter,
+  IonMenuButton, IonButtons, IonButton, IonList, IonItem,
   IonLabel, IonInput, IonIcon, IonBadge,
 } from '@ionic/vue';
 import {
-  searchOutline, scanOutline, layersOutline, constructOutline,
-  createOutline, documentTextOutline, menuOutline, printOutline,
+  searchOutline, scanOutline, createOutline, menuOutline, printOutline,
 } from 'ionicons/icons';
-
-const closeMenu = () => menuController.close();
 const isOpen = ref(true);
 
 const form = ref({

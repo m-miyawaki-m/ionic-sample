@@ -65,20 +65,22 @@
             <ion-button fill="clear" size="small">次へ</ion-button>
           </ion-buttons>
         </ion-toolbar>
-        <ion-tab-bar>
-          <ion-tab-button tab="menu">
-            <ion-icon :icon="menuOutline" />
-            <ion-label>メニュー</ion-label>
-          </ion-tab-button>
-          <ion-tab-button tab="scan">
-            <ion-icon :icon="scanOutline" />
-            <ion-label>スキャン</ion-label>
-          </ion-tab-button>
-          <ion-tab-button tab="print">
-            <ion-icon :icon="printOutline" />
-            <ion-label>印刷</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
+        <ion-toolbar class="nav-bar">
+          <div class="nav-bar-inner">
+            <button class="nav-bar-item">
+              <ion-icon :icon="menuOutline" />
+              <span>メニュー</span>
+            </button>
+            <button class="nav-bar-item">
+              <ion-icon :icon="scanOutline" />
+              <span>スキャン</span>
+            </button>
+            <button class="nav-bar-item">
+              <ion-icon :icon="printOutline" />
+              <span>印刷</span>
+            </button>
+          </div>
+        </ion-toolbar>
       </ion-footer>
   </ion-page>
 </template>
@@ -87,7 +89,7 @@
 // @ts-nocheck
 import { ref } from 'vue';
 import {
-  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonTabBar, IonTabButton,
+  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter,
   IonMenuButton, IonButtons, IonButton, IonList, IonItem,
   IonLabel, IonInput, IonIcon, IonBadge,
 } from '@ionic/vue';
@@ -150,5 +152,32 @@ const items = ref([
 .menu-active {
   --background: var(--ion-color-primary-tint);
   font-weight: 600;
+}
+.nav-bar {
+  --background: var(--ion-color-light);
+  --border-width: 1px 0 0 0;
+}
+.nav-bar-inner {
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 0;
+}
+.nav-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  color: var(--ion-color-medium);
+  font-size: 11px;
+  padding: 4px 16px;
+  cursor: pointer;
+}
+.nav-bar-item ion-icon {
+  font-size: 22px;
+}
+.nav-bar-item:active {
+  color: var(--ion-color-primary);
 }
 </style>

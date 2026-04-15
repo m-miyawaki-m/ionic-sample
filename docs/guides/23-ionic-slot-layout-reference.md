@@ -618,6 +618,92 @@ start  default                  end
 </div>
 ```
 
+### 横並び時の縦方向制御
+
+ボタンやアイコンを横に並べたとき、**縦（垂直）方向の揃え**はどこで制御するか。
+
+#### 場所別の縦方向制御
+
+| 場所 | 縦方向の制御方法 | デフォルト |
+|------|----------------|-----------|
+| `ion-toolbar` | **自動**（制御不要） | 中央揃え |
+| `ion-item` | **自動**（制御不要） | 中央揃え |
+| `ion-row` | `ion-align-items-*` クラス | stretch（高さ揃え） |
+| CSS Flex (`div`等) | `align-items` プロパティ | stretch（高さ揃え） |
+
+#### ion-toolbar / ion-item は自動中央揃え
+
+これらのコンポーネントは内部で `align-items: center` を適用しているため、
+高さの異なる要素を横に並べても自動で上下中央に揃う。自分で指定する必要はない。
+
+```html
+<!-- 自動で中央揃え。高さが違っても OK -->
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button size="small">小さいボタン</ion-button>
+  </ion-buttons>
+  <ion-title>タイトル</ion-title>  <!-- 高さが違っても中央 -->
+</ion-toolbar>
+
+<ion-item>
+  <ion-icon :icon="cubeOutline" slot="start" />  <!-- アイコン: 24px -->
+  <ion-label>テキスト</ion-label>                  <!-- テキスト: 行高に依存 -->
+  <ion-badge slot="end">150</ion-badge>            <!-- バッジ: 小さい -->
+  <!-- → 全て自動で上下中央に揃う -->
+</ion-item>
+```
+
+#### ion-row の縦揃えクラス
+
+`ion-grid` では明示的にクラスを指定する。
+
+| クラス | 効果 |
+|-------|------|
+| `ion-align-items-start` | 上揃え |
+| `ion-align-items-center` | 上下中央揃え |
+| `ion-align-items-end` | 下揃え |
+| `ion-align-items-stretch` | 高さを揃える（デフォルト） |
+
+```html
+<ion-grid>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="6">
+      <ion-button expand="block">短いボタン</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      高さの違う<br/>複数行の<br/>テキスト
+      <!-- ↑ これでもボタンと上下中央が揃う -->
+    </ion-col>
+  </ion-row>
+</ion-grid>
+```
+
+#### CSS Flex の縦揃え
+
+| CSS | 効果 |
+|-----|------|
+| `align-items: flex-start` | 上揃え |
+| `align-items: center` | 上下中央揃え |
+| `align-items: flex-end` | 下揃え |
+| `align-items: stretch` | 高さを揃える（デフォルト） |
+| `align-items: baseline` | テキストのベースライン揃え |
+
+```html
+<div style="display:flex; gap:8px; align-items:center">
+  <ion-button fill="outline" style="flex:1">キャンセル</ion-button>
+  <ion-button style="flex:1">登録</ion-button>
+  <!-- align-items:center で高さが違っても中央揃え -->
+</div>
+```
+
+#### まとめ: 縦揃えで迷ったら
+
+```
+ion-toolbar / ion-item の中 → 何もしなくてよい（自動中央）
+ion-grid の中              → ion-row に ion-align-items-center を付ける
+div (CSS Flex) の中        → align-items: center を付ける
+```
+
 ### 横方向配置の選び方
 
 | 場面 | 方法 |
@@ -962,6 +1048,278 @@ slot による配置制御ではなく、DOM 順 = 表示順。
   </ion-toolbar>
 </ion-footer>
 ```
+
+### ボタンの固定配置パターン（グリッド型）
+
+業務画面では「ボタンを2列×N行で均等に並べる」ことが多い。
+方法ごとに使い分けを整理する。
+
+#### パターン 1: ion-grid で 2列×3行（6ボタン）
+
+最も Ionic らしい方法。ボタン数が固定の場合に適する。
+
+```html
+<ion-grid>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button expand="block" fill="outline">
+        <ion-icon :icon="scanOutline" slot="start" />
+        スキャン
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="block" fill="outline">
+        <ion-icon :icon="printOutline" slot="start" />
+        印刷
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button expand="block" fill="outline">
+        <ion-icon :icon="downloadOutline" slot="start" />
+        CSV出力
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="block" fill="outline">
+        <ion-icon :icon="searchOutline" slot="start" />
+        検索
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button expand="block" color="danger" fill="outline">
+        <ion-icon :icon="trashOutline" slot="start" />
+        削除
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="block" color="primary">
+        <ion-icon :icon="checkmarkOutline" slot="start" />
+        登録
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+```
+
+```
+表示イメージ:
+┌──────────────┬──────────────┐
+│ [🔍 スキャン] │ [🖨 印刷]    │
+├──────────────┼──────────────┤
+│ [📥 CSV出力]  │ [🔎 検索]    │
+├──────────────┼──────────────┤
+│ [🗑 削除]     │ [✓ 登録]     │
+└──────────────┴──────────────┘
+```
+
+**ポイント:**
+- `size="6"` で2列均等（12÷2=6）
+- `expand="block"` でボタンをカラム幅いっぱいに広げる
+- 3列にしたい場合は `size="4"`（12÷3=4）
+
+#### パターン 2: ion-grid + v-for でデータ駆動
+
+ボタンの定義をデータで管理する場合。
+
+```html
+<template>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" v-for="btn in buttons" :key="btn.label">
+        <ion-button
+          expand="block"
+          :fill="btn.fill || 'outline'"
+          :color="btn.color || 'primary'"
+          @click="btn.action"
+        >
+          <ion-icon :icon="btn.icon" slot="start" />
+          {{ btn.label }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</template>
+
+<script setup lang="ts">
+const buttons = [
+  { label: 'スキャン', icon: scanOutline, action: () => openScan() },
+  { label: '印刷',    icon: printOutline, action: () => print() },
+  { label: 'CSV出力', icon: downloadOutline, action: () => exportCsv() },
+  { label: '検索',    icon: searchOutline, action: () => search() },
+  { label: '削除',    icon: trashOutline, fill: 'outline', color: 'danger', action: () => remove() },
+  { label: '登録',    icon: checkmarkOutline, fill: 'solid', color: 'primary', action: () => submit() },
+];
+</script>
+```
+
+`ion-row` に `ion-col size="6"` の v-for を入れると、**自動的に2列で折り返す**。
+Ionic の grid は CSS Flexbox ベースなので `flex-wrap: wrap` が効いている。
+
+#### パターン 3: CSS Grid で 2列×N行
+
+Ionic のグリッドを使わず、CSS Grid で完全制御する方法。
+gap やサイズの細かい調整が必要な場合に向く。
+
+```html
+<div class="button-grid">
+  <ion-button expand="block" fill="outline">スキャン</ion-button>
+  <ion-button expand="block" fill="outline">印刷</ion-button>
+  <ion-button expand="block" fill="outline">CSV出力</ion-button>
+  <ion-button expand="block" fill="outline">検索</ion-button>
+  <ion-button expand="block" fill="outline" color="danger">削除</ion-button>
+  <ion-button expand="block" color="primary">登録</ion-button>
+</div>
+
+<style scoped>
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 2列均等 */
+  gap: 8px;
+  padding: 0 16px;
+}
+</style>
+```
+
+**3列にする場合:**
+```css
+grid-template-columns: 1fr 1fr 1fr;  /* 3列均等 */
+```
+
+**列数を可変にする場合（レスポンシブ）:**
+```css
+grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+/* 最小140px、収まるだけ列を作る */
+```
+
+#### パターン 4: CSS Flex で 2列×N行
+
+CSS Flex の `flex-wrap` で折り返す方法。
+
+```html
+<div class="button-flex">
+  <ion-button fill="outline">スキャン</ion-button>
+  <ion-button fill="outline">印刷</ion-button>
+  <ion-button fill="outline">CSV出力</ion-button>
+  <ion-button fill="outline">検索</ion-button>
+  <ion-button fill="outline" color="danger">削除</ion-button>
+  <ion-button color="primary">登録</ion-button>
+</div>
+
+<style scoped>
+.button-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px;
+}
+.button-flex ion-button {
+  flex: 0 0 calc(50% - 4px);  /* 2列（gap の半分を引く） */
+}
+</style>
+```
+
+#### パターン 5: フッターに固定配置（2列×2行）
+
+フッターに4つのボタンを固定配置する場合。
+`ion-toolbar` 2段で実現する方法と、grid を toolbar 内に入れる方法がある。
+
+**方法 A: toolbar 2段**
+
+```html
+<ion-footer>
+  <ion-toolbar>
+    <div style="display:flex; gap:8px; padding:0 16px">
+      <ion-button fill="outline" style="flex:1">スキャン</ion-button>
+      <ion-button fill="outline" style="flex:1">印刷</ion-button>
+    </div>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div style="display:flex; gap:8px; padding:0 16px">
+      <ion-button fill="outline" color="danger" style="flex:1">削除</ion-button>
+      <ion-button color="primary" style="flex:1">登録</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+```
+
+**方法 B: toolbar 内に grid**
+
+```html
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" fill="outline">スキャン</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" fill="outline">印刷</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" fill="outline" color="danger">削除</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="primary">登録</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+```
+
+```
+フッター表示イメージ:
+┌──────────────┬──────────────┐
+│ [スキャン]    │ [印刷]       │
+├──────────────┼──────────────┤
+│ [削除]        │ [登録]       │
+└──────────────┴──────────────┘
+```
+
+#### ボタングリッドの縦方向制御
+
+グリッド内でボタンの高さが揃わない場合（テキスト量の違い等）:
+
+| 方法 | 縦揃え制御 |
+|------|-----------|
+| `ion-grid` | `ion-row` に `ion-align-items-center` / `ion-align-items-stretch` |
+| CSS Grid | `align-items: center` / `align-items: stretch` |
+| CSS Flex | `align-items: center` / `align-items: stretch` |
+
+```html
+<!-- ion-grid: 行内のボタン高さを揃える（stretch） -->
+<ion-row class="ion-align-items-stretch">
+  <ion-col size="6">
+    <ion-button expand="block" style="height:100%">短い</ion-button>
+  </ion-col>
+  <ion-col size="6">
+    <ion-button expand="block" style="height:100%">長いラベルの<br/>ボタン</ion-button>
+  </ion-col>
+</ion-row>
+
+<!-- CSS Grid: 自動で高さが揃う -->
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px">
+  <ion-button expand="block">短い</ion-button>
+  <ion-button expand="block">長いラベルの<br/>ボタン</ion-button>
+  <!-- CSS Grid のデフォルトが stretch なので自動で揃う -->
+</div>
+```
+
+#### パターンの選び方
+
+| 要件 | 推奨方法 |
+|------|---------|
+| シンプルな 2列×N行 | ion-grid (`size="6"`) |
+| ボタン定義をデータ管理 | ion-grid + v-for |
+| gap や間隔を細かく制御 | CSS Grid |
+| フッターに固定配置 | toolbar 内に flex or grid |
+| レスポンシブ（画面幅で列数変動） | CSS Grid (`auto-fill`) |
 
 ### Android 業務端末での推奨
 

@@ -1,7 +1,5 @@
 <template>
-  <ion-page>
-    <!-- サイドドロワー -->
-    <ion-menu side="start" content-id="input-helpers-main">
+  <ion-menu side="start" content-id="input-helpers-main">
       <ion-header>
         <ion-toolbar>
           <ion-title>メニュー</ion-title>
@@ -37,7 +35,7 @@
       </ion-content>
     </ion-menu>
 
-    <div id="input-helpers-main">
+  <ion-page id="input-helpers-main">
       <ion-header>
         <ion-toolbar>
           <ion-menu-button slot="start" />
@@ -201,7 +199,6 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-footer>
-    </div>
   </ion-page>
 </template>
 
@@ -255,7 +252,6 @@ const selectItem = (code: string) => {
 </script>
 
 <style scoped>
-#input-helpers-main { display: flex; flex-direction: column; height: 100%; }
 .condition-area {
   background: var(--ion-color-light);
   border-radius: 8px;

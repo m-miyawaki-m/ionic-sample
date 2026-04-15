@@ -1,7 +1,6 @@
 <template>
-  <ion-page>
-    <!-- サイドドロワー -->
-    <ion-menu side="start" content-id="search-view-main">
+  <!-- サイドドロワー -->
+  <ion-menu side="start" content-id="search-view-main">
       <ion-header>
         <ion-toolbar>
           <ion-title>メニュー</ion-title>
@@ -37,7 +36,7 @@
       </ion-content>
     </ion-menu>
 
-    <div id="search-view-main">
+  <ion-page id="search-view-main">
       <ion-header>
         <ion-toolbar>
           <ion-menu-button slot="start" />
@@ -131,7 +130,6 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-footer>
-    </div>
   </ion-page>
 </template>
 
@@ -169,7 +167,6 @@ const items = ref([
 </script>
 
 <style scoped>
-#search-view-main { display: flex; flex-direction: column; height: 100%; }
 .condition-area {
   background: var(--ion-color-light);
   border-radius: 8px;

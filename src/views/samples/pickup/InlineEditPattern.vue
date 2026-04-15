@@ -1,7 +1,5 @@
 <template>
-  <ion-page>
-    <!-- サイドドロワー -->
-    <ion-menu side="start" content-id="inline-edit-main">
+  <ion-menu side="start" content-id="inline-edit-main">
       <ion-header>
         <ion-toolbar>
           <ion-title>メニュー</ion-title>
@@ -37,7 +35,7 @@
       </ion-content>
     </ion-menu>
 
-    <div id="inline-edit-main">
+  <ion-page id="inline-edit-main">
       <ion-header>
         <ion-toolbar>
           <ion-menu-button slot="start" />
@@ -146,7 +144,6 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-footer>
-    </div>
   </ion-page>
 </template>
 
@@ -177,7 +174,6 @@ const items = ref([
 </script>
 
 <style scoped>
-#inline-edit-main { display: flex; flex-direction: column; height: 100%; }
 .condition-area {
   background: var(--ion-color-light);
   border-radius: 8px;

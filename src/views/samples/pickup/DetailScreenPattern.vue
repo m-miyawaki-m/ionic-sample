@@ -1,7 +1,5 @@
 <template>
-  <ion-page>
-    <!-- サイドドロワー -->
-    <ion-menu side="start" content-id="detail-screen-main">
+  <ion-menu side="start" content-id="detail-screen-main">
       <ion-header>
         <ion-toolbar>
           <ion-title>メニュー</ion-title>
@@ -37,7 +35,7 @@
       </ion-content>
     </ion-menu>
 
-    <div id="detail-screen-main">
+  <ion-page id="detail-screen-main">
       <ion-header>
         <ion-toolbar>
           <ion-menu-button slot="start" />
@@ -164,7 +162,6 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-footer>
-    </div>
   </ion-page>
 </template>
 
@@ -199,7 +196,6 @@ const openModal = (item) => {
 </script>
 
 <style scoped>
-#detail-screen-main { display: flex; flex-direction: column; height: 100%; }
 .content-area {
   margin-top: 8px;
 }

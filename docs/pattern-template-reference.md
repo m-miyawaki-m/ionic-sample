@@ -7,6 +7,8 @@
 
 ## 目次
 
+**基本（パターンテンプレートで使用中）**
+
 1. [ページ構造](#1-ページ構造)
 2. [データ表示](#2-データ表示)
 3. [入力部品](#3-入力部品)
@@ -16,6 +18,22 @@
 7. [ページ追加・遷移](#7-ページ追加遷移)
 8. [アイコン](#8-アイコン)
 9. [CSS パターン](#9-css-パターン)
+
+**追加（業務アプリで必要になる部品・概念）**
+
+10. [トースト通知](#10-トースト通知)
+11. [ローディング表示](#11-ローディング表示)
+12. [スワイプアクション](#12-スワイプアクション)
+13. [アクションシート](#13-アクションシート)
+14. [アコーディオン](#14-アコーディオン)
+15. [グリッドレイアウト](#15-グリッドレイアウト)
+16. [トグルスイッチ](#16-トグルスイッチ)
+17. [チップ](#17-チップ)
+18. [Ionic ライフサイクル](#18-ionic-ライフサイクル)
+19. [無限スクロール](#19-無限スクロール)
+20. [プルトゥリフレッシュ](#20-プルトゥリフレッシュ)
+21. [FAB（フローティングアクションボタン）](#21-fabフローティングアクションボタン)
+22. [フォームバリデーション表示](#22-フォームバリデーション表示)
 
 ---
 
@@ -680,3 +698,501 @@ import { searchOutline, scanOutline, homeOutline, printOutline } from 'ionicons/
 
 > `--` プレフィックスの CSS 変数は Ionic 部品の内部スタイルを上書きする方法。
 > 通常の CSS プロパティ (`background`, `color` 等) とは別に、各 Ionic 部品が独自の CSS 変数を持っている。
+
+---
+
+## 10. トースト通知
+
+操作結果のフィードバック（登録成功、エラー等）に使う。
+
+```vue
+<template>
+  <ion-button @click="showToast">登録</ion-button>
+</template>
+
+<script setup lang="ts">
+import { toastController } from '@ionic/vue';
+
+const showToast = async () => {
+  const toast = await toastController.create({
+    message: '登録が完了しました',
+    duration: 2000,           // 2秒で自動消去
+    position: 'bottom',       // top | middle | bottom
+    color: 'success',         // success / danger / warning
+  });
+  await toast.present();
+};
+</script>
+```
+
+| オプション | 値 | 説明 |
+|-----------|-----|------|
+| `message` | 文字列 | 表示テキスト |
+| `duration` | ミリ秒 | 自動消去までの時間（0で手動閉じ） |
+| `position` | `'top'` `'middle'` `'bottom'` | 表示位置 |
+| `color` | `'success'` `'danger'` 等 | 背景色 |
+| `buttons` | 配列 | 閉じるボタン等を追加可能 |
+
+### 閉じるボタン付きトースト
+
+```ts
+const toast = await toastController.create({
+  message: 'エラーが発生しました',
+  color: 'danger',
+  duration: 0,              // 手動で閉じるまで表示
+  buttons: [
+    { text: '閉じる', role: 'cancel' }
+  ],
+});
+```
+
+---
+
+## 11. ローディング表示
+
+API 通信中やデータ検索中にスピナーを表示する。
+
+### 方法1: loadingController（全画面オーバーレイ）
+
+```ts
+import { loadingController } from '@ionic/vue';
+
+const search = async () => {
+  const loading = await loadingController.create({
+    message: '検索中...',
+    spinner: 'crescent',     // crescent | dots | circular 等
+  });
+  await loading.present();
+
+  // データ取得処理...
+
+  await loading.dismiss();   // 完了後に閉じる
+};
+```
+
+### 方法2: ion-spinner（インライン表示）
+
+```vue
+<ion-spinner v-if="isLoading" name="crescent" />
+<ion-list v-else>
+  <!-- 結果表示 -->
+</ion-list>
+```
+
+```ts
+const isLoading = ref(false);
+
+const search = async () => {
+  isLoading.value = true;
+  // データ取得処理...
+  isLoading.value = false;
+};
+```
+
+| スピナー名 | 見た目 |
+|-----------|--------|
+| `crescent` | 三日月回転（iOS風） |
+| `dots` | 3点点滅 |
+| `circular` | 円回転（Material風） |
+| `lines` | 線放射 |
+
+---
+
+## 12. スワイプアクション
+
+リスト行を横スワイプして削除・編集ボタンを表示する。
+
+```vue
+<ion-list>
+  <ion-item-sliding v-for="item in items" :key="item.id">
+    <!-- メイン行 -->
+    <ion-item>
+      <ion-label>{{ item.itemCode }} {{ item.itemName }}</ion-label>
+    </ion-item>
+
+    <!-- 右スワイプで出るボタン -->
+    <ion-item-options side="end">
+      <ion-item-option color="primary" @click="editItem(item)">
+        <ion-icon :icon="createOutline" slot="icon-only" />
+      </ion-item-option>
+      <ion-item-option color="danger" @click="deleteItem(item)">
+        <ion-icon :icon="trashOutline" slot="icon-only" />
+      </ion-item-option>
+    </ion-item-options>
+
+    <!-- 左スワイプで出るボタン（任意） -->
+    <ion-item-options side="start">
+      <ion-item-option color="success" @click="markDone(item)">完了</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+```
+
+| 属性 | 値 | 説明 |
+|------|-----|------|
+| `side` | `"end"` | 右スワイプ（←方向にドラッグ） |
+| `side` | `"start"` | 左スワイプ（→方向にドラッグ） |
+| `expandable` | (属性) | スワイプしきると自動実行 |
+
+---
+
+## 13. アクションシート
+
+画面下部からスライドアップするメニュー。「...」ボタンや長押しの選択肢に使う。
+
+```ts
+import { actionSheetController } from '@ionic/vue';
+
+const showActions = async () => {
+  const actionSheet = await actionSheetController.create({
+    header: '操作を選択',
+    buttons: [
+      { text: '編集',   icon: createOutline,  handler: () => { /* 編集処理 */ } },
+      { text: 'コピー', icon: copyOutline,    handler: () => { /* コピー処理 */ } },
+      { text: '削除',   icon: trashOutline,   role: 'destructive', handler: () => { /* 削除処理 */ } },
+      { text: 'キャンセル', role: 'cancel' },
+    ],
+  });
+  await actionSheet.present();
+};
+```
+
+| ボタンの role | 効果 |
+|-------------|------|
+| `'destructive'` | 赤色で表示（削除等の危険操作） |
+| `'cancel'` | 一番下に分離表示 |
+| なし | 通常表示 |
+
+---
+
+## 14. アコーディオン
+
+セクションの折りたたみ/展開。条件エリアの `v-show` 自作よりも Ionic ネイティブの見た目が得られる。
+
+```vue
+<ion-accordion-group>
+  <ion-accordion value="detail">
+    <ion-item slot="header" color="light">
+      <ion-label>詳細情報</ion-label>
+    </ion-item>
+    <div slot="content" class="ion-padding">
+      <p>ここに折りたたみコンテンツ</p>
+      <ion-list>
+        <ion-item><ion-input label="備考" label-placement="stacked" /></ion-item>
+      </ion-list>
+    </div>
+  </ion-accordion>
+
+  <ion-accordion value="history">
+    <ion-item slot="header" color="light">
+      <ion-label>履歴</ion-label>
+    </ion-item>
+    <div slot="content" class="ion-padding">
+      <p>履歴コンテンツ</p>
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
+```
+
+| 属性 | 説明 |
+|------|------|
+| `value` | 開閉を識別するキー |
+| `slot="header"` | クリックで開閉するヘッダー |
+| `slot="content"` | 折りたたまれる中身 |
+| `multiple` | `ion-accordion-group` に付けると複数同時展開可能 |
+
+---
+
+## 15. グリッドレイアウト
+
+フォームやカードの2列・3列配置に使う。
+
+```vue
+<ion-grid>
+  <ion-row>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input label="品目コード" label-placement="stacked" />
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-input label="ロケーション" label-placement="stacked" />
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <ion-input label="備考" label-placement="stacked" />
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+```
+
+### size 一覧（12カラムグリッド）
+
+| size | 幅 | 用途 |
+|------|-----|------|
+| `"12"` | 100% | 全幅（1列） |
+| `"6"` | 50% | 2列均等 |
+| `"4"` | 33% | 3列均等 |
+| `"3"` | 25% | 4列均等 |
+| `"8"` + `"4"` | 66% + 33% | メイン + サブ |
+
+### レスポンシブ対応
+
+```vue
+<!-- スマホ1列、タブレット2列 -->
+<ion-col size="12" size-md="6">...</ion-col>
+```
+
+| 属性 | ブレークポイント |
+|------|----------------|
+| `size` | 全サイズ共通 |
+| `size-sm` | 576px 以上 |
+| `size-md` | 768px 以上 |
+| `size-lg` | 992px 以上 |
+
+---
+
+## 16. トグルスイッチ
+
+ON/OFF の切り替え。設定画面やフィルタに使う。
+
+```vue
+<ion-item>
+  <ion-toggle v-model="settings.notifications">通知を受け取る</ion-toggle>
+</ion-item>
+
+<ion-item>
+  <ion-toggle v-model="settings.darkMode" color="dark">ダークモード</ion-toggle>
+</ion-item>
+
+<!-- 無効状態 -->
+<ion-item>
+  <ion-toggle :disabled="true">変更不可</ion-toggle>
+</ion-item>
+```
+
+### checkbox vs toggle の使い分け
+
+| 部品 | 用途 |
+|------|------|
+| `ion-checkbox` | 複数項目の選択（チェックリスト） |
+| `ion-toggle` | 単一の ON/OFF 切り替え（設定） |
+
+---
+
+## 17. チップ
+
+タグやフィルタ条件の表示に使う。
+
+```vue
+<!-- 基本 -->
+<ion-chip>
+  <ion-label>タグ名</ion-label>
+</ion-chip>
+
+<!-- 色付き -->
+<ion-chip color="success">
+  <ion-icon :icon="checkmarkOutline" />
+  <ion-label>完了</ion-label>
+</ion-chip>
+
+<!-- 閉じるボタン付き（フィルタ解除） -->
+<ion-chip @click="removeFilter('tokyo')">
+  <ion-label>東京倉庫</ion-label>
+  <ion-icon :icon="closeCircleOutline" />
+</ion-chip>
+
+<!-- 選択フィルタ（複数チップの並び） -->
+<div style="display:flex;flex-wrap:wrap;gap:4px;">
+  <ion-chip v-for="tag in tags" :key="tag.value"
+            :color="tag.selected ? 'primary' : 'medium'"
+            @click="tag.selected = !tag.selected">
+    <ion-label>{{ tag.label }}</ion-label>
+  </ion-chip>
+</div>
+```
+
+---
+
+## 18. Ionic ライフサイクル
+
+Vue の `onMounted` だけでなく、Ionic 固有のライフサイクルがある。
+ページ遷移時のデータ再取得に重要。
+
+```ts
+import { onIonViewWillEnter, onIonViewDidEnter, onIonViewWillLeave } from '@ionic/vue';
+
+// ページが表示される直前（毎回呼ばれる）
+onIonViewWillEnter(() => {
+  // データの再取得、リストのリフレッシュ
+  loadItems();
+});
+
+// ページが表示された後
+onIonViewDidEnter(() => {
+  // フォーカス設定等
+});
+
+// ページから離れる直前
+onIonViewWillLeave(() => {
+  // クリーンアップ処理
+});
+```
+
+### Vue ライフサイクルとの違い
+
+| フック | いつ呼ばれる | 用途 |
+|--------|------------|------|
+| `onMounted` | 初回マウント時のみ | 初期化処理 |
+| `onIonViewWillEnter` | **表示のたびに毎回** | データ再取得 |
+| `onIonViewDidEnter` | 表示アニメーション完了後 | フォーカス設定 |
+| `onIonViewWillLeave` | 離脱直前 | 保存確認、クリーンアップ |
+
+> Ionic はページをキャッシュするため、戻るボタンで戻ったとき `onMounted` は呼ばれない。
+> データの再取得には `onIonViewWillEnter` を使うこと。
+
+---
+
+## 19. 無限スクロール
+
+大量データを段階的に読み込む。
+
+```vue
+<ion-content>
+  <ion-list>
+    <ion-item v-for="item in displayedItems" :key="item.id">
+      <ion-label>{{ item.itemName }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll @ionInfinite="loadMore" threshold="100px">
+    <ion-infinite-scroll-content loading-spinner="crescent" loading-text="読み込み中..." />
+  </ion-infinite-scroll>
+</ion-content>
+```
+
+```ts
+const displayedItems = ref(items.value.slice(0, 20));  // 最初は20件
+
+const loadMore = (ev: CustomEvent) => {
+  const current = displayedItems.value.length;
+  const next = items.value.slice(current, current + 20);
+  displayedItems.value.push(...next);
+
+  // すべて読み込んだら無限スクロールを無効化
+  if (displayedItems.value.length >= items.value.length) {
+    (ev.target as HTMLIonInfiniteScrollElement).disabled = true;
+  }
+  (ev.target as HTMLIonInfiniteScrollElement).complete();
+};
+```
+
+---
+
+## 20. プルトゥリフレッシュ
+
+リストを引き下げてデータを再読み込み。
+
+```vue
+<ion-content>
+  <ion-refresher slot="fixed" @ionRefresh="doRefresh">
+    <ion-refresher-content pulling-text="引き下げて更新" refreshing-spinner="crescent" />
+  </ion-refresher>
+
+  <ion-list>
+    <!-- リスト内容 -->
+  </ion-list>
+</ion-content>
+```
+
+```ts
+const doRefresh = (ev: CustomEvent) => {
+  // データ再取得処理...
+  // 完了したらスピナーを閉じる
+  (ev.target as HTMLIonRefresherElement).complete();
+};
+```
+
+---
+
+## 21. FAB（フローティングアクションボタン）
+
+画面右下に浮遊するボタン。主操作（追加、スキャン等）に使う。
+
+```vue
+<ion-content>
+  <!-- コンテンツ -->
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon :icon="addOutline" />
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+```
+
+### 複数ボタン展開
+
+```vue
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+    <ion-icon :icon="addOutline" />
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button color="primary"><ion-icon :icon="scanOutline" /></ion-fab-button>
+    <ion-fab-button color="success"><ion-icon :icon="createOutline" /></ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+```
+
+| 属性 | 値 | 説明 |
+|------|-----|------|
+| `vertical` | `"bottom"` `"top"` `"center"` | 縦位置 |
+| `horizontal` | `"end"` `"start"` `"center"` | 横位置 |
+| `side` | `"top"` `"bottom"` `"start"` `"end"` | 展開方向 |
+
+---
+
+## 22. フォームバリデーション表示
+
+入力エラーの表示パターン。Ionic には組み込みバリデーションはないため、自前で制御する。
+
+```vue
+<ion-item :class="{ 'ion-invalid ion-touched': errors.itemCode }">
+  <ion-input label="品目コード" label-placement="stacked"
+             v-model="form.itemCode" required />
+  <ion-note slot="error">品目コードは必須です</ion-note>
+</ion-item>
+
+<ion-item :class="{ 'ion-invalid ion-touched': errors.quantity }">
+  <ion-input label="数量" label-placement="stacked" type="number"
+             v-model="form.quantity" />
+  <ion-note slot="error">数量は1以上を入力してください</ion-note>
+</ion-item>
+```
+
+```ts
+const errors = ref({
+  itemCode: false,
+  quantity: false,
+});
+
+const validate = () => {
+  errors.value.itemCode = !form.value.itemCode;
+  errors.value.quantity = Number(form.value.quantity) < 1;
+  return !errors.value.itemCode && !errors.value.quantity;
+};
+```
+
+| クラス | 効果 |
+|--------|------|
+| `ion-invalid` | エラー状態（赤い下線） |
+| `ion-touched` | 一度触れた状態（エラー表示の条件） |
+| `ion-valid` | 正常状態（緑の下線） |
+
+> `slot="error"` の `ion-note` は `ion-invalid` + `ion-touched` のときだけ表示される。

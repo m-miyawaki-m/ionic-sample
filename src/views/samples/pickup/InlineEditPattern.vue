@@ -25,14 +25,14 @@
                 </ion-select>
               </ion-item>
             </ion-list>
-            <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
+            <ion-button expand="block" color="primary" class="ion-margin-top" @click="showResults = true">検索</ion-button>
           </div>
         </div>
       </ion-header>
 
       <ion-content class="ion-padding">
         <!-- コンテンツ: インライン編集リスト -->
-        <div class="content-area">
+        <div v-show="showResults" class="content-area">
           <p class="result-count">{{ items.length }}件</p>
           <div class="edit-list">
             <div v-for="item in items" :key="item.id" class="edit-row" :class="{ 'row-ng': item.status === 'NG' }">
@@ -123,7 +123,8 @@ import {
 import {
   scanOutline, createOutline, homeOutline, printOutline,
 } from 'ionicons/icons';
-const isOpen = ref(true);
+const isOpen = ref(false);
+const showResults = ref(false);
 const filterStatus = ref('all');
 
 const items = ref([

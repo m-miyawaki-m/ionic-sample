@@ -31,14 +31,14 @@
                 <ion-input label="ロット番号" label-placement="stacked" placeholder="ロット番号" v-model="form.lotNumber" />
               </ion-item>
             </ion-list>
-            <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
+            <ion-button expand="block" color="primary" class="ion-margin-top" @click="showResults = true">検索</ion-button>
           </div>
         </div>
       </ion-header>
 
       <ion-content class="ion-padding">
         <!-- コンテンツ: 登録済み履歴 -->
-        <div class="content-area">
+        <div v-show="showResults" class="content-area">
           <p class="result-count">登録済み {{ items.length }}件</p>
           <ion-list>
             <ion-item v-for="item in items" :key="item.id">
@@ -96,7 +96,8 @@ import {
 import {
   searchOutline, scanOutline, createOutline, homeOutline, printOutline,
 } from 'ionicons/icons';
-const isOpen = ref(true);
+const isOpen = ref(false);
+const showResults = ref(false);
 
 const form = ref({
   location: '',

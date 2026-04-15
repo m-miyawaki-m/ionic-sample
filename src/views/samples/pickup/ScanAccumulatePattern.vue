@@ -28,13 +28,14 @@
                 <ion-input label="日付" label-placement="stacked" type="date" v-model="filterDate" />
               </ion-item>
             </ion-list>
-            <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
+            <ion-button expand="block" color="primary" class="ion-margin-top" @click="showResults = true">検索</ion-button>
           </div>
         </div>
       </ion-header>
 
       <ion-content class="ion-padding">
         <!-- リスト/カード切替 -->
+        <div v-show="showResults">
         <ion-segment v-model="viewMode">
           <ion-segment-button value="list">
             <ion-label>リスト</ion-label>
@@ -85,6 +86,7 @@
             </ion-card>
           </div>
         </div>
+        </div>
       </ion-content>
 
       <ion-footer>
@@ -132,7 +134,8 @@ import {
 import {
   scanOutline, createOutline, homeOutline, printOutline,
 } from 'ionicons/icons';
-const isOpen = ref(true);
+const isOpen = ref(false);
+const showResults = ref(false);
 const viewMode = ref('list');
 const filterType = ref('all');
 const filterDate = ref('');

@@ -41,14 +41,14 @@
                 <ion-checkbox v-model="filterLowStock">不足のみ</ion-checkbox>
               </ion-item>
             </ion-list>
-            <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
+            <ion-button expand="block" color="primary" class="ion-margin-top" @click="showResults = true">検索</ion-button>
           </div>
         </div>
       </ion-header>
 
       <ion-content class="ion-padding">
         <!-- コンテンツ: 検索結果 -->
-        <div class="content-area">
+        <div v-show="showResults" class="content-area">
           <p class="result-count">検索結果 {{ items.length }}件</p>
           <ion-list>
             <ion-item v-for="item in items" :key="item.id">
@@ -108,7 +108,8 @@ import {
 import {
   searchOutline, scanOutline, createOutline, homeOutline, printOutline,
 } from 'ionicons/icons';
-const isOpen = ref(true);
+const isOpen = ref(false);
+const showResults = ref(false);
 const searchText = ref('');
 const filterWarehouse = ref('');
 const filterShelf = ref('');

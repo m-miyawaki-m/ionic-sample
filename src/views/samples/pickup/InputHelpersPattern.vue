@@ -57,14 +57,14 @@
                 <ion-checkbox v-model="form.onlyDiff">差異ありのみ</ion-checkbox>
               </ion-item>
             </ion-list>
-            <ion-button expand="block" color="primary" class="ion-margin-top">検索</ion-button>
+            <ion-button expand="block" color="primary" class="ion-margin-top" @click="showResults = true">検索</ion-button>
           </div>
         </div>
       </ion-header>
 
       <ion-content class="ion-padding">
         <!-- コンテンツ: 入力補助UIカタログ -->
-        <div class="content-area">
+        <div v-show="showResults" class="content-area">
           <div class="section">
             <h2>プルダウン（ion-select）</h2>
             <p class="section-desc">単一選択・複数選択のプルダウン</p>
@@ -179,7 +179,8 @@ import {
 import {
   searchOutline, scanOutline, createOutline, homeOutline, printOutline,
 } from 'ionicons/icons';
-const isOpen = ref(true);
+const isOpen = ref(false);
+const showResults = ref(false);
 const isItemModalOpen = ref(false);
 const isAlertOpen = ref(false);
 

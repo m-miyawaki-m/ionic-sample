@@ -67,9 +67,9 @@
         </ion-toolbar>
         <ion-toolbar class="nav-bar">
           <div class="nav-bar-inner">
-            <button class="nav-bar-item">
-              <ion-icon :icon="menuOutline" />
-              <span>メニュー</span>
+            <button class="nav-bar-item" @click="$router.push('/home')">
+              <ion-icon :icon="homeOutline" />
+              <span>ホーム</span>
             </button>
             <button class="nav-bar-item">
               <ion-icon :icon="scanOutline" />
@@ -94,7 +94,7 @@ import {
   IonLabel, IonInput, IonIcon, IonBadge,
 } from '@ionic/vue';
 import {
-  searchOutline, scanOutline, createOutline, menuOutline, printOutline,
+  searchOutline, scanOutline, createOutline, homeOutline, printOutline,
 } from 'ionicons/icons';
 const isOpen = ref(true);
 

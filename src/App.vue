@@ -8,7 +8,7 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-item button :router-link="link.path" v-for="link in menuLinks" :key="link.path" @click="closeMenu">
+          <ion-item button v-for="link in menuLinks" :key="link.path" @click="navigateTo(link.path)">
             <ion-icon :icon="link.icon" slot="start" />
             <ion-label>{{ link.label }}</ion-label>
           </ion-item>
@@ -29,6 +29,9 @@ import {
   scanOutline, layersOutline, searchOutline, constructOutline,
   createOutline, documentTextOutline,
 } from 'ionicons/icons';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const menuLinks = [
   { path: '/pattern/scan-input', label: 'スキャン入力型', icon: scanOutline },
@@ -39,5 +42,8 @@ const menuLinks = [
   { path: '/pattern/detail-screen', label: '詳細表示・編集型', icon: documentTextOutline },
 ];
 
-const closeMenu = () => menuController.close();
+const navigateTo = async (path: string) => {
+  await menuController.close();
+  router.push(path);
+};
 </script>

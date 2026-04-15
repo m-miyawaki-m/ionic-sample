@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button default-href="/samples/pickup/detail-screen" />
+          <ion-back-button default-href="/pattern/detail-screen" />
         </ion-buttons>
         <ion-title>詳細・編集</ion-title>
       </ion-toolbar>
@@ -69,7 +69,7 @@
 
       <div class="page-actions">
         <ion-button expand="block" color="primary">保存</ion-button>
-        <ion-button expand="block" fill="outline" router-link="/samples/pickup/detail-screen">戻る</ion-button>
+        <ion-button expand="block" fill="outline" router-link="/pattern/detail-screen">戻る</ion-button>
       </div>
     </ion-content>
   </ion-page>

@@ -50,11 +50,6 @@ import {
   createOutline,
   calendarOutline,
   ellipseOutline,
-  scanOutline,
-  layersOutline,
-  searchOutline,
-  constructOutline,
-  documentTextOutline,
 } from 'ionicons/icons';
 
 const pickupItems = [
@@ -69,12 +64,6 @@ const pickupItems = [
   { slug: 'label',    title: 'ラベル',          description: 'テキストラベル要素',     icon: pricetagOutline },
   { slug: 'datetime', title: 'カレンダー',      description: '日付・時刻ピッカー',    icon: calendarOutline },
   { slug: 'textlink', title: 'テキストリンク',  description: 'タップでダイアログ表示', icon: linkOutline },
-  { slug: 'scan-input',      title: 'スキャン入力型',   description: 'スキャン→入力→登録',           icon: scanOutline },
-  { slug: 'scan-accumulate', title: 'スキャン蓄積型',   description: '連続スキャン→蓄積→一括登録',    icon: layersOutline },
-  { slug: 'search-view',     title: '検索照会型',       description: '条件入力→検索→結果一覧',        icon: searchOutline },
-  { slug: 'input-helpers',   title: '入力補助パターン', description: 'プルダウン/モーダル/日付/ラジオ', icon: constructOutline },
-  { slug: 'inline-edit',     title: 'インライン編集型', description: 'リスト行内のチェック・入力・選択', icon: createOutline },
-  { slug: 'detail-screen',   title: '詳細表示・編集型', description: '一覧→モーダル/ページで詳細編集',  icon: documentTextOutline },
 ];
 </script>
 

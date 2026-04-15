@@ -9,27 +9,27 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-item router-link="/samples/pickup/scan-input">
+          <ion-item router-link="/pattern/scan-input">
             <ion-icon :icon="scanOutline" slot="start" />
             <ion-label>スキャン入力型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/scan-accumulate">
+          <ion-item router-link="/pattern/scan-accumulate">
             <ion-icon :icon="layersOutline" slot="start" />
             <ion-label>スキャン蓄積型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/search-view">
+          <ion-item router-link="/pattern/search-view">
             <ion-icon :icon="searchOutline" slot="start" />
             <ion-label>検索照会型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/input-helpers">
+          <ion-item router-link="/pattern/input-helpers">
             <ion-icon :icon="constructOutline" slot="start" />
             <ion-label>入力補助パターン</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/inline-edit">
+          <ion-item router-link="/pattern/inline-edit">
             <ion-icon :icon="createOutline" slot="start" />
             <ion-label>インライン編集型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/detail-screen" class="menu-active">
+          <ion-item router-link="/pattern/detail-screen" class="menu-active">
             <ion-icon :icon="documentTextOutline" slot="start" />
             <ion-label>詳細表示・編集型</ion-label>
           </ion-item>
@@ -57,7 +57,7 @@
                 <p>数量: {{ item.quantity }} / ロット: {{ item.lotNumber }}</p>
               </ion-label>
               <ion-button slot="end" fill="outline" size="small" @click="openModal(item)">詳細</ion-button>
-              <ion-button slot="end" fill="outline" size="small" color="tertiary" :router-link="`/samples/pickup/detail-screen/detail/${item.id}`">別ページ</ion-button>
+              <ion-button slot="end" fill="outline" size="small" color="tertiary" :router-link="`/pattern/detail-screen/detail/${item.id}`">別ページ</ion-button>
             </ion-item>
           </ion-list>
         </div>
@@ -199,6 +199,7 @@ const openModal = (item) => {
 </script>
 
 <style scoped>
+#detail-screen-main { display: flex; flex-direction: column; height: 100%; }
 .content-area {
   margin-top: 8px;
 }

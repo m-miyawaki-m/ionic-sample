@@ -57,6 +57,55 @@
       </div>
     </template>
 
+    <!-- 画面パターンテンプレート -->
+    <ion-list-header class="ion-margin-top">
+      <ion-label>画面パターン</ion-label>
+    </ion-list-header>
+    <ion-list>
+      <ion-item router-link="/pattern/scan-input" detail>
+        <ion-icon :icon="scanOutline" slot="start" />
+        <ion-label>
+          <h2>スキャン入力型</h2>
+          <p>スキャン→入力→登録</p>
+        </ion-label>
+      </ion-item>
+      <ion-item router-link="/pattern/scan-accumulate" detail>
+        <ion-icon :icon="layersOutline" slot="start" />
+        <ion-label>
+          <h2>スキャン蓄積型</h2>
+          <p>連続スキャン→蓄積→一括登録</p>
+        </ion-label>
+      </ion-item>
+      <ion-item router-link="/pattern/search-view" detail>
+        <ion-icon :icon="searchOutline" slot="start" />
+        <ion-label>
+          <h2>検索照会型</h2>
+          <p>条件入力→検索→結果一覧</p>
+        </ion-label>
+      </ion-item>
+      <ion-item router-link="/pattern/input-helpers" detail>
+        <ion-icon :icon="constructOutline" slot="start" />
+        <ion-label>
+          <h2>入力補助パターン</h2>
+          <p>プルダウン/モーダル/日付/ラジオ</p>
+        </ion-label>
+      </ion-item>
+      <ion-item router-link="/pattern/inline-edit" detail>
+        <ion-icon :icon="createOutline" slot="start" />
+        <ion-label>
+          <h2>インライン編集型</h2>
+          <p>リスト行内のチェック・入力・選択</p>
+        </ion-label>
+      </ion-item>
+      <ion-item router-link="/pattern/detail-screen" detail>
+        <ion-icon :icon="documentTextOutline" slot="start" />
+        <ion-label>
+          <h2>詳細表示・編集型</h2>
+          <p>一覧→モーダル/ページで詳細編集</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
     <!-- サンプルリンク（常にリスト） -->
     <ion-list-header class="ion-margin-top">
       <ion-label>サンプル</ion-label>
@@ -106,6 +155,7 @@ import {
   appsOutline,
   colorPaletteOutline,
   laptopOutline,
+  scanOutline, layersOutline, constructOutline, documentTextOutline,
 } from 'ionicons/icons';
 import PageLayout from '@/components/PageLayout.vue';
 import type { MenuAction } from '@/types';

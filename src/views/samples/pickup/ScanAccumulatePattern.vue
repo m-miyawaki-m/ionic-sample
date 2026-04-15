@@ -9,27 +9,27 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-item router-link="/samples/pickup/scan-input">
+          <ion-item router-link="/pattern/scan-input">
             <ion-icon :icon="scanOutline" slot="start" />
             <ion-label>スキャン入力型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/scan-accumulate" class="menu-active">
+          <ion-item router-link="/pattern/scan-accumulate" class="menu-active">
             <ion-icon :icon="layersOutline" slot="start" />
             <ion-label>スキャン蓄積型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/search-view">
+          <ion-item router-link="/pattern/search-view">
             <ion-icon :icon="searchOutline" slot="start" />
             <ion-label>検索照会型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/input-helpers">
+          <ion-item router-link="/pattern/input-helpers">
             <ion-icon :icon="constructOutline" slot="start" />
             <ion-label>入力補助パターン</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/inline-edit">
+          <ion-item router-link="/pattern/inline-edit">
             <ion-icon :icon="createOutline" slot="start" />
             <ion-label>インライン編集型</ion-label>
           </ion-item>
-          <ion-item router-link="/samples/pickup/detail-screen">
+          <ion-item router-link="/pattern/detail-screen">
             <ion-icon :icon="documentTextOutline" slot="start" />
             <ion-label>詳細表示・編集型</ion-label>
           </ion-item>
@@ -189,6 +189,7 @@ const items = ref([
 </script>
 
 <style scoped>
+#scan-accumulate-main { display: flex; flex-direction: column; height: 100%; }
 .condition-area {
   background: var(--ion-color-light);
   border-radius: 8px;

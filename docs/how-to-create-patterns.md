@@ -247,7 +247,178 @@ import { ref } from 'vue';
 </style>
 ```
 
-### 5-2. セクション構成の目安
+### 5-2. データ駆動のリスト描画
+
+パターン集では、静的な HTML だけでなく `ref()` + `v-for` でデータから描画するパターンも多い。
+
+#### 基本: ref 配列 → v-for
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const stockItems = ref([
+  { id: 1, name: 'ボールペン (黒)', code: 'BP-001', qty: 150 },
+  { id: 2, name: 'コピー用紙 A4', code: 'PP-A4-500', qty: 8 },
+  { id: 3, name: 'クリアファイル', code: 'CF-010', qty: 45 },
+]);
+</script>
+
+<template>
+  <ion-list>
+    <ion-item v-for="stock in stockItems" :key="stock.id">
+      <ion-label>
+        <h3>{{ stock.name }}</h3>
+        <p>{{ stock.code }}</p>
+      </ion-label>
+      <ion-badge slot="end" :color="stock.qty < 10 ? 'warning' : 'primary'">
+        {{ stock.qty }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</template>
+```
+
+#### 応用: computed で派生データ
+
+選択状態に応じて表示を切り替える場合は `computed` を使う。
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+
+const selectedRegion = ref('');
+const regionCities: Record<string, string[]> = {
+  kanto: ['東京', '横浜', '千葉'],
+  kansai: ['大阪', '京都', '神戸'],
+};
+const citiesForRegion = computed(() => {
+  return selectedRegion.value ? regionCities[selectedRegion.value] ?? [] : [];
+});
+</script>
+
+<template>
+  <ion-select v-model="selectedRegion" label="地域">
+    <ion-select-option value="kanto">関東</ion-select-option>
+    <ion-select-option value="kansai">関西</ion-select-option>
+  </ion-select>
+  <ion-select label="都市" :disabled="!selectedRegion">
+    <ion-select-option v-for="city in citiesForRegion" :key="city" :value="city">
+      {{ city }}
+    </ion-select-option>
+  </ion-select>
+</template>
+```
+
+#### 使い分けの目安
+
+| パターン | データの持ち方 | 例 |
+|---------|-------------|-----|
+| Props の見た目比較 | **静的 HTML** — コピペで並べる | fill="solid" / "outline" / "clear" の比較 |
+| 業務リスト・繰り返し | **ref 配列 + v-for** | 在庫一覧、検品結果リスト |
+| 選択連動・フィルタ | **ref + computed** | 地域→都市連動、親子チェックボックス |
+| 複雑な状態管理 | **ref 配列 + イベントハンドラ** | チェック済み配列の push/filter、並べ替え |
+
+---
+
+### 5-3. 複数パターンの横並びレイアウト
+
+同一セクション内で複数のバリエーションを横並びにする場合、flexbox を使う。
+
+#### 基本: flex-wrap で折り返し
+
+```css
+/* ボタンやバッジなど小さい要素の横並び */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+```
+
+```html
+<div class="button-row">
+  <ion-button fill="solid">Solid</ion-button>
+  <ion-button fill="outline">Outline</ion-button>
+  <ion-button fill="clear">Clear</ion-button>
+</div>
+```
+
+#### ラジオ・チェックの横並び
+
+```css
+/* ラジオやチェックを横一列に */
+.radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.radio-row-item {
+  flex: 0 0 auto;
+}
+```
+
+```html
+<ion-radio-group>
+  <div class="radio-row">
+    <ion-item class="radio-row-item">
+      <ion-radio value="asc">昇順</ion-radio>
+    </ion-item>
+    <ion-item class="radio-row-item">
+      <ion-radio value="desc">降順</ion-radio>
+    </ion-item>
+    <ion-item class="radio-row-item">
+      <ion-radio value="recent">新しい順</ion-radio>
+    </ion-item>
+  </div>
+</ion-radio-group>
+```
+
+#### チップ風タグフィルタ
+
+```css
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.chip-check {
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+.chip-check.active {
+  background: var(--ion-color-primary);
+  color: #fff;
+  border-color: var(--ion-color-primary);
+}
+```
+
+#### gap の目安
+
+| 要素の種類 | gap | 理由 |
+|-----------|-----|------|
+| ボタン | `4px` | 密に並べて比較しやすく |
+| チップ・タグ | `8px` | タップ領域を確保 |
+| チェックボックス | `12px` | ラベル付きなのでゆったり |
+| ラジオ (ion-item 内) | `0` | ion-item 自体にパディングがあるため |
+
+#### レイアウト選択フロー
+
+```
+横並びにしたい？
+├─ YES → 要素は小さい？（ボタン、バッジ、チップ等）
+│    ├─ YES → flexbox + gap (上記パターン)
+│    └─ NO → ion-grid + ion-row + ion-col（カード比較等）
+└─ NO → そのまま縦積み（ion-list / div.section）
+```
+
+---
+
+### 5-4. セクション構成の目安
 
 | 区分 | セクション数 | 内容 |
 |------|------------|------|
@@ -255,7 +426,7 @@ import { ref } from 'vue';
 | 業務パターン | 5〜10 | 業務シナリオごとに 1 セクション |
 | **合計** | **10〜20+** | 網羅的にやるなら 30+ |
 
-### 5-3. ルート追加
+### 5-5. ルート追加
 
 `src/router/index.ts` にルートを追加する。
 

@@ -65,22 +65,20 @@
             <ion-button fill="clear" size="small">次へ</ion-button>
           </ion-buttons>
         </ion-toolbar>
-        <ion-toolbar class="common-buttons">
-          <ion-buttons slot="start">
-            <ion-button fill="solid" color="medium">
-              <ion-icon :icon="menuOutline" slot="start" />
-              メニュー
-            </ion-button>
-            <ion-button fill="solid" color="tertiary">
-              <ion-icon :icon="scanOutline" slot="start" />
-              スキャン
-            </ion-button>
-            <ion-button fill="solid" color="dark">
-              <ion-icon :icon="printOutline" slot="start" />
-              印刷
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
+        <ion-tab-bar>
+          <ion-tab-button tab="menu">
+            <ion-icon :icon="menuOutline" />
+            <ion-label>メニュー</ion-label>
+          </ion-tab-button>
+          <ion-tab-button tab="scan">
+            <ion-icon :icon="scanOutline" />
+            <ion-label>スキャン</ion-label>
+          </ion-tab-button>
+          <ion-tab-button tab="print">
+            <ion-icon :icon="printOutline" />
+            <ion-label>印刷</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
       </ion-footer>
   </ion-page>
 </template>
@@ -89,7 +87,7 @@
 // @ts-nocheck
 import { ref } from 'vue';
 import {
-  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter,
+  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonTabBar, IonTabButton,
   IonMenuButton, IonButtons, IonButton, IonList, IonItem,
   IonLabel, IonInput, IonIcon, IonBadge,
 } from '@ionic/vue';
@@ -148,9 +146,6 @@ const items = ref([
 }
 .screen-buttons {
   --border-width: 1px 0 0 0;
-}
-.common-buttons {
-  --background: var(--ion-color-light);
 }
 .menu-active {
   --background: var(--ion-color-primary-tint);

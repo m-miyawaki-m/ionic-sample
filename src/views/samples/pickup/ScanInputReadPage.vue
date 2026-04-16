@@ -61,7 +61,6 @@ import {
   IonContent, IonFooter, IonList, IonItem, IonInput,
   loadingController, toastController,
 } from '@ionic/vue';
-import { addItem } from './scanInputStore';
 
 const router = useRouter();
 
@@ -129,13 +128,6 @@ const onClear = () => {
 };
 
 const onRegister = () => {
-  addItem({
-    itemCode: form.itemCode,
-    itemName: form.itemName,
-    location: form.location,
-    quantity: Number(form.quantity),
-    lotNumber: form.lotNumber,
-  });
   router.back();
 };
 </script>

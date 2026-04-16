@@ -138,6 +138,15 @@
   </ion-page>
 </template>
 
+<style scoped>
+ion-footer ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  min-width: 6em;
+  width: 6em;
+}
+</style>
+
 <script setup lang="ts">
 // @ts-nocheck
 import { reactive } from 'vue';

@@ -126,6 +126,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/samples/pickup/ScanInputPattern.vue'),
   },
   {
+    path: '/pattern/scan-input/:id',
+    component: () => import('@/views/samples/pickup/ScanInputDetailPage.vue'),
+  },
+  {
     path: '/pattern/scan-accumulate',
     component: () => import('@/views/samples/pickup/ScanAccumulatePattern.vue'),
   },

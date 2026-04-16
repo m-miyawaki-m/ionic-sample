@@ -5,35 +5,45 @@
           <ion-menu-button slot="start" />
           <ion-title>スキャン入力型</ion-title>
         </ion-toolbar>
-        <!-- 条件エリア (fixed in header) -->
-        <div class="condition-area ion-padding-horizontal">
-          <div class="condition-header">
-            <span class="condition-title">入力条件</span>
-            <div class="condition-buttons">
-              <ion-button size="small" fill="solid" color="success" @click="isOpen = true">+</ion-button>
-              <ion-button size="small" fill="solid" color="danger" @click="isOpen = false">−</ion-button>
+        <!-- 条件エリア (accordion in header) -->
+        <ion-accordion-group v-model="accordionValue">
+          <ion-accordion value="condition">
+            <ion-item slot="header" color="light">
+              <ion-label>入力条件</ion-label>
+            </ion-item>
+            <div slot="content">
+              <ion-list>
+                <ion-item>
+                  <ion-input label="ロケーション" label-placement="stacked" placeholder="棚番を入力" v-model="form.location" />
+                </ion-item>
+                <ion-item>
+                  <ion-input label="品目コード" label-placement="stacked" placeholder="品目コードを入力" v-model="form.itemCode">
+                    <ion-icon :icon="searchOutline" slot="end" />
+                  </ion-input>
+                </ion-item>
+                <ion-item button @click="promptQuantity">
+                  <ion-input label="数量" label-placement="stacked" placeholder="タップして入力" :value="form.quantity" readonly />
+                </ion-item>
+                <ion-item>
+                  <ion-input label="ロット番号" label-placement="stacked" placeholder="ロット番号" v-model="form.lotNumber" />
+                </ion-item>
+                <ion-item>
+                  <ion-input label="年月日" label-placement="stacked" placeholder="日付を選択" :value="form.date" readonly id="cond-date-trigger" />
+                </ion-item>
+                <ion-popover trigger="cond-date-trigger" :keep-contents-mounted="true" class="datetime-popover">
+                  <ion-datetime presentation="date" prefer-wheel="true" v-model="form.date" show-default-buttons />
+                </ion-popover>
+                <ion-item>
+                  <ion-input label="時刻" label-placement="stacked" placeholder="時刻を選択" :value="form.time" readonly id="cond-time-trigger" />
+                </ion-item>
+                <ion-popover trigger="cond-time-trigger" :keep-contents-mounted="true" class="datetime-popover">
+                  <ion-datetime presentation="time" v-model="form.time" show-default-buttons />
+                </ion-popover>
+              </ion-list>
+              <ion-button expand="block" color="primary" class="ion-margin-top" @click="onSearch">検索</ion-button>
             </div>
-          </div>
-          <div v-show="isOpen" class="condition-body">
-            <ion-list>
-              <ion-item>
-                <ion-input label="ロケーション" label-placement="stacked" placeholder="棚番を入力" v-model="form.location" />
-              </ion-item>
-              <ion-item>
-                <ion-input label="品目コード" label-placement="stacked" placeholder="品目コードを入力" v-model="form.itemCode">
-                  <ion-icon :icon="searchOutline" slot="end" />
-                </ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input label="数量" label-placement="stacked" type="number" placeholder="0" v-model="form.quantity" />
-              </ion-item>
-              <ion-item>
-                <ion-input label="ロット番号" label-placement="stacked" placeholder="ロット番号" v-model="form.lotNumber" />
-              </ion-item>
-            </ion-list>
-            <ion-button expand="block" color="primary" class="ion-margin-top" @click="showResults = true">検索</ion-button>
-          </div>
-        </div>
+          </ion-accordion>
+        </ion-accordion-group>
       </ion-header>
 
       <ion-content class="ion-padding">
@@ -42,19 +52,20 @@
           <p class="result-count">登録済み {{ items.length }}件</p>
           <ion-list>
             <ion-item v-for="item in items" :key="item.id">
+              <ion-checkbox slot="start" v-model="item.selected" />
               <ion-label>
                 <h3>{{ item.itemCode }} {{ item.itemName }}</h3>
                 <p>棚: {{ item.location }} / 数量: {{ item.quantity }} / ロット: {{ item.lotNumber }}</p>
               </ion-label>
-              <ion-badge slot="end" :color="item.status === 'OK' ? 'success' : 'danger'">{{ item.status }}</ion-badge>
-              <ion-button slot="end" fill="clear" size="small">詳細</ion-button>
+              <ion-badge slot="end" :color="item.status === 'OK' ? 'success' : 'danger'" button @click="showStatus(item)">{{ item.status }}</ion-badge>
+              <ion-button slot="end" fill="clear" size="small" @click="$router.push(`/pattern/scan-input/${item.id}`)">詳細</ion-button>
             </ion-item>
           </ion-list>
         </div>
       </ion-content>
 
       <ion-footer>
-        <ion-toolbar class="screen-buttons">
+        <ion-toolbar>
           <ion-buttons slot="start">
             <ion-button fill="outline" color="primary">登録確定</ion-button>
             <ion-button fill="outline" color="medium">クリア</ion-button>
@@ -64,22 +75,6 @@
             <ion-button fill="clear" size="small">前へ</ion-button>
             <ion-button fill="clear" size="small">次へ</ion-button>
           </ion-buttons>
-        </ion-toolbar>
-        <ion-toolbar class="nav-bar">
-          <div class="nav-bar-inner">
-            <button class="nav-bar-item" @click="$router.push('/home')">
-              <ion-icon :icon="homeOutline" />
-              <span>ホーム</span>
-            </button>
-            <button class="nav-bar-item">
-              <ion-icon :icon="scanOutline" />
-              <span>スキャン</span>
-            </button>
-            <button class="nav-bar-item">
-              <ion-icon :icon="printOutline" />
-              <span>印刷</span>
-            </button>
-          </div>
         </ion-toolbar>
       </ion-footer>
   </ion-page>
@@ -91,54 +86,80 @@ import { ref } from 'vue';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter,
   IonMenuButton, IonButtons, IonButton, IonList, IonItem,
-  IonLabel, IonInput, IonIcon, IonBadge,
+  IonLabel, IonInput, IonIcon, IonBadge, IonCheckbox,
+  IonAccordion, IonAccordionGroup, IonDatetime, IonPopover,
+  alertController, loadingController,
 } from '@ionic/vue';
-import {
-  searchOutline, scanOutline, createOutline, homeOutline, printOutline,
-} from 'ionicons/icons';
-const isOpen = ref(false);
+import { searchOutline } from 'ionicons/icons';
 const showResults = ref(false);
+const accordionValue = ref<string | undefined>(undefined);
+const onSearch = async () => {
+  accordionValue.value = undefined;
+  const loading = await loadingController.create({
+    message: '読み込み中...',
+    spinner: 'crescent',
+  });
+  await loading.present();
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await loading.dismiss();
+  showResults.value = true;
+};
 
 const form = ref({
   location: '',
   itemCode: '',
   quantity: '',
   lotNumber: '',
+  date: '',
+  time: '',
 });
 
 const items = ref([
-  { id: 1, itemCode: 'BP-001', itemName: 'ボールペン（黒）', location: 'A-01', quantity: 150, lotNumber: 'L2025-001', status: 'OK' },
-  { id: 2, itemCode: 'PP-A4', itemName: 'コピー用紙 A4', location: 'B-03', quantity: 8, lotNumber: 'L2025-002', status: 'NG' },
-  { id: 3, itemCode: 'CF-010', itemName: 'クリアファイル', location: 'C-05', quantity: 45, lotNumber: 'L2025-003', status: 'OK' },
-  { id: 4, itemCode: 'TP-100', itemName: '梱包テープ', location: 'D-02', quantity: 30, lotNumber: 'L2025-004', status: 'OK' },
-  { id: 5, itemCode: 'EN-050', itemName: '封筒（角2）', location: 'A-07', quantity: 200, lotNumber: 'L2025-005', status: 'OK' },
+  { id: 1, itemCode: 'BP-001', itemName: 'ボールペン（黒）', location: 'A-01', quantity: 150, lotNumber: 'L2025-001', status: 'OK', selected: false, errorCode: '', errorMessage: '' },
+  { id: 2, itemCode: 'PP-A4', itemName: 'コピー用紙 A4', location: 'B-03', quantity: 8, lotNumber: 'L2025-002', status: 'NG', selected: false, errorCode: 'E-1023', errorMessage: '在庫数が安全在庫を下回っています。' },
+  { id: 3, itemCode: 'CF-010', itemName: 'クリアファイル', location: 'C-05', quantity: 45, lotNumber: 'L2025-003', status: 'OK', selected: false, errorCode: '', errorMessage: '' },
+  { id: 4, itemCode: 'TP-100', itemName: '梱包テープ', location: 'D-02', quantity: 30, lotNumber: 'L2025-004', status: 'OK', selected: false, errorCode: '', errorMessage: '' },
+  { id: 5, itemCode: 'EN-050', itemName: '封筒（角2）', location: 'A-07', quantity: 200, lotNumber: 'L2025-005', status: 'OK', selected: false, errorCode: '', errorMessage: '' },
 ]);
+
+const promptQuantity = async () => {
+  const alert = await alertController.create({
+    header: '数量入力',
+    inputs: [
+      {
+        name: 'quantity',
+        type: 'number',
+        value: form.value.quantity,
+        placeholder: '数量を入力',
+        min: 0,
+      },
+    ],
+    buttons: [
+      { text: 'キャンセル', role: 'cancel' },
+      {
+        text: 'OK',
+        handler: (data) => {
+          form.value.quantity = data.quantity;
+        },
+      },
+    ],
+  });
+  await alert.present();
+};
+
+const showStatus = async (item) => {
+  const isOk = item.status === 'OK';
+  const alert = await alertController.create({
+    header: isOk ? '正常' : 'エラー詳細',
+    subHeader: isOk ? undefined : `エラーコード: ${item.errorCode}`,
+    message: isOk ? 'エラーはありません。' : item.errorMessage,
+    buttons: ['閉じる'],
+  });
+  await alert.present();
+};
 </script>
 
 <style scoped>
-.condition-area {
-  background: var(--ion-color-light);
-  border-radius: 8px;
-  padding: 8px;
-  margin-bottom: 16px;
-}
-.condition-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4px 8px;
-}
-.condition-title {
-  font-weight: 600;
-  font-size: 16px;
-}
-.condition-buttons {
-  display: flex;
-  gap: 4px;
-}
-.condition-body {
-  padding-top: 8px;
-}
 .content-area {
   margin-top: 8px;
 }
@@ -147,38 +168,10 @@ const items = ref([
   color: var(--ion-color-medium);
   margin: 8px 0;
 }
-.screen-buttons {
-  --border-width: 1px 0 0 0;
-}
-.menu-active {
-  --background: var(--ion-color-primary-tint);
-  font-weight: 600;
-}
-.nav-bar {
-  --background: var(--ion-color-light);
-  --border-width: 1px 0 0 0;
-}
-.nav-bar-inner {
-  display: flex;
-  justify-content: space-around;
-  padding: 4px 0;
-}
-.nav-bar-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  background: none;
-  border: none;
-  color: var(--ion-color-medium);
-  font-size: 11px;
-  padding: 4px 16px;
-  cursor: pointer;
-}
-.nav-bar-item ion-icon {
-  font-size: 22px;
-}
-.nav-bar-item:active {
-  color: var(--ion-color-primary);
+</style>
+
+<style>
+.datetime-popover {
+  --width: 320px;
 }
 </style>

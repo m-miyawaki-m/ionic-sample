@@ -11,9 +11,19 @@ Ionic Vue によるサンプル・学習用プロジェクト。
 | npm | 11.x |
 | Ionic | 8.x |
 | Vue | 3.x |
-| Vite | 6.x |
-| Capacitor | 8.x |
+| Vite | 5.x |
+| Capacitor | 5.x |
 | TypeScript | 5.x |
+
+## Android ビルド環境
+
+- JDK 17 (SDKMAN 等で切替)
+- Android SDK 33 (Android 13)
+- AGP 8.0.x / Gradle 8.0.x (Capacitor 5 が自動生成)
+
+> Play ストア公開は想定せず、ローカル実機インストール (Android 13 前提) のみの運用。
+> Capacitor を 6 以上に上げると JDK / SDK の要求が上がるので、現状 5 系を維持する。
+> 検証の経緯は [docs/guides/27-capacitor-version-audit-2026-04-23.md](./docs/guides/27-capacitor-version-audit-2026-04-23.md) 参照。
 
 ## セットアップ手順 (Windows)
 

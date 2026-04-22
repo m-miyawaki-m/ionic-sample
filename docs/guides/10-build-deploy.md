@@ -28,7 +28,7 @@ npm install
 ```
 
 Android Studio は公式サイトからダウンロードしてインストールする。
-初回起動時に SDK Manager から **Android SDK 35 (Android 15)** をインストールすること。
+初回起動時に SDK Manager から **Android SDK 33 (Android 13)** をインストールすること。
 
 JDK は Android Studio に同梱されている。別途インストールは不要。
 ただし `JAVA_HOME` が正しく設定されていない場合は、Android Studio 同梱の JDK パスを設定する。
@@ -153,16 +153,17 @@ export default config;
 
 ```gradle
 ext {
-    minSdkVersion = 24
-    compileSdkVersion = 36
-    targetSdkVersion = 36
+    minSdkVersion = 22
+    compileSdkVersion = 33
+    targetSdkVersion = 33
 }
 ```
 
-- `targetSdkVersion = 36`: Android 15（API 36）を対象にしている
-- `minSdkVersion = 24`: Android 7.0 以上で動作する
+- `targetSdkVersion = 33`: Android 13（API 33）を対象にしている
+- `minSdkVersion = 22`: Android 5.1 以上で動作する（Capacitor 5 の既定値）
 
-業務用HT端末は Android 15 なので、この設定で問題ない。
+業務用HT端末は Android 13 想定なので、この設定で問題ない。Play ストア公開しないため target のフロア要求 (2026年時点で API 35) は適用されない。
+Capacitor / SDK / JDK の整合性は [`28-version-consistency-checklist.md`](./28-version-consistency-checklist.md) 参照。
 
 ---
 

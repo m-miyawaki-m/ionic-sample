@@ -14,7 +14,7 @@ Android Studio のインストールは不要。
 | Node.js | 24.11.0 | `node --version` |
 | npm | 11.6.1 | `npm --version` |
 | Ionic CLI | 7.2.1 | `ionic --version` |
-| JDK | OpenJDK 24 | `java -version` |
+| JDK | OpenJDK 17 | `java -version` |
 | OS | WSL2 (Ubuntu) | `uname -a` |
 
 ---
